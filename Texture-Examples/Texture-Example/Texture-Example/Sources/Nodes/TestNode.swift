@@ -1,5 +1,5 @@
 //
-//  TestNodeController.swift
+//  TestNode.swift
 //  Texture-Example
 //
 //  Created by SHIN YOON AH on 2021/08/11.
@@ -8,8 +8,7 @@
 import AsyncDisplayKit
 import Then
 
-/// ViewController에서 Component를 정의 및 사용하는 경우
-final class TestNodeController: ASDKViewController<ASDisplayNode> {
+final class TestNode: ASDisplayNode {
     // MARK: UI
     private let imageNode = ASImageNode().then {
         $0.image = UIImage(named: "image")
@@ -34,25 +33,23 @@ final class TestNodeController: ASDKViewController<ASDisplayNode> {
     
     // MARK: Initializing
     override init() {
-        super.init(node: ASDisplayNode())
-        self.node.backgroundColor = .white
-        self.node.automaticallyManagesSubnodes = true
-        self.node.automaticallyRelayoutOnSafeAreaChanges = true
-        self.node.layoutSpecBlock = { [weak self] (node, constraintedSize) -> ASLayoutSpec in
-            return self?.layoutSpecThatFits(constraintedSize) ?? ASLayoutSpec()
-        }
+        super.init()
+        self.automaticallyManagesSubnodes = true
+        self.automaticallyRelayoutOnSafeAreaChanges = true
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    // MARK: Node Life Cycle
+    override func layout() {
+        super.layout()
     }
     
     // MARK: Layout
-    private func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
-        var containerInsets: UIEdgeInsets = self.node.safeAreaInsets
+    override func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
+        var containerInsets: UIEdgeInsets = self.safeAreaInsets
         containerInsets.left += 15.0
         containerInsets.right += 15.0
         containerInsets.top = containerInsets.bottom
+        
         return ASInsetLayoutSpec(
             insets: containerInsets,
             child: self.contentLayoutSpec()
