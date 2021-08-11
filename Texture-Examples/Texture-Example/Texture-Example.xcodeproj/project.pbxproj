@@ -15,6 +15,8 @@
 		EDB91DB326C3861500F4562D /* TestNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB91DB226C3861500F4562D /* TestNodeController.swift */; };
 		EDB91DB526C39FF300F4562D /* TestNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB91DB426C39FF300F4562D /* TestNode.swift */; };
 		EDB91DB726C3A0BD00F4562D /* SubclassNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB91DB626C3A0BD00F4562D /* SubclassNodeController.swift */; };
+		EDB91DBB26C3ADE200F4562D /* TestCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB91DBA26C3ADE200F4562D /* TestCellNode.swift */; };
+		EDB91DBD26C3B1FE00F4562D /* TestCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB91DBC26C3B1FE00F4562D /* TestCellController.swift */; };
 		F2CCE86AC4BD9C919B27D8D1 /* Pods_Texture_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA2FB459FC647C1AFCE9529 /* Pods_Texture_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,8 @@
 		EDB91DB226C3861500F4562D /* TestNodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNodeController.swift; sourceTree = "<group>"; };
 		EDB91DB426C39FF300F4562D /* TestNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNode.swift; sourceTree = "<group>"; };
 		EDB91DB626C3A0BD00F4562D /* SubclassNodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubclassNodeController.swift; sourceTree = "<group>"; };
+		EDB91DBA26C3ADE200F4562D /* TestCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCellNode.swift; sourceTree = "<group>"; };
+		EDB91DBC26C3B1FE00F4562D /* TestCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCellController.swift; sourceTree = "<group>"; };
 		EEA2FB459FC647C1AFCE9529 /* Pods_Texture_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Texture_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -124,6 +128,7 @@
 				EDB91D9926C2AD3300F4562D /* ViewController.swift */,
 				EDB91DB226C3861500F4562D /* TestNodeController.swift */,
 				EDB91DB626C3A0BD00F4562D /* SubclassNodeController.swift */,
+				EDB91DBC26C3B1FE00F4562D /* TestCellController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -131,10 +136,27 @@
 		EDB91DAD26C2AD7C00F4562D /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				EDB91DB926C3ADD300F4562D /* Cell */,
+				EDB91DB826C3ADC800F4562D /* Display */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		EDB91DB826C3ADC800F4562D /* Display */ = {
+			isa = PBXGroup;
+			children = (
 				EDB91DAE26C3607C00F4562D /* ExampleNode.swift */,
 				EDB91DB426C39FF300F4562D /* TestNode.swift */,
 			);
-			path = Nodes;
+			path = Display;
+			sourceTree = "<group>";
+		};
+		EDB91DB926C3ADD300F4562D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EDB91DBA26C3ADE200F4562D /* TestCellNode.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,11 +273,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDB91DB526C39FF300F4562D /* TestNode.swift in Sources */,
+				EDB91DBB26C3ADE200F4562D /* TestCellNode.swift in Sources */,
 				EDB91D9A26C2AD3300F4562D /* ViewController.swift in Sources */,
 				EDB91D9626C2AD3300F4562D /* AppDelegate.swift in Sources */,
 				EDB91DAF26C3607C00F4562D /* ExampleNode.swift in Sources */,
 				EDB91DB326C3861500F4562D /* TestNodeController.swift in Sources */,
 				EDB91DB726C3A0BD00F4562D /* SubclassNodeController.swift in Sources */,
+				EDB91DBD26C3B1FE00F4562D /* TestCellController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

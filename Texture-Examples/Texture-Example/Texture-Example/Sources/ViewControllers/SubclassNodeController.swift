@@ -7,6 +7,7 @@
 
 import AsyncDisplayKit
 
+/// Container에 들어갈 노드를 Subclass 화 시켜서 넣어주기. (Avoid Massive ViewController)
 final class SubclassNodeController: ASDKViewController<TestNode> {
     
     // MARK: Initializing
