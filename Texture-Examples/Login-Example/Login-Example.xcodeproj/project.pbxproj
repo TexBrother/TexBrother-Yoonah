@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		EDB91DCF26C3B8A800F4562D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB91DCE26C3B8A800F4562D /* ViewController.swift */; };
 		EDB91DD426C3B8AA00F4562D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDB91DD326C3B8AA00F4562D /* Assets.xcassets */; };
 		EDB91DD726C3B8AA00F4562D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDB91DD526C3B8AA00F4562D /* LaunchScreen.storyboard */; };
+		EDB91DE526C3C41C00F4562D /* LoginNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB91DE426C3C41C00F4562D /* LoginNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		EDB91DD326C3B8AA00F4562D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDB91DD626C3B8AA00F4562D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDB91DD826C3B8AA00F4562D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDB91DE426C3C41C00F4562D /* LoginNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +46,6 @@
 				07A16A19F9306DB57FAA72E4 /* Pods-Login-Example.debug.xcconfig */,
 				91C1A501F12E575CAF032439 /* Pods-Login-Example.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -123,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				EDB91DE326C3B8C900F4562D /* Display */,
+				EDB91DE426C3C41C00F4562D /* LoginNode.swift */,
 			);
 			path = Node;
 			sourceTree = "<group>";
@@ -247,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDB91DE526C3C41C00F4562D /* LoginNode.swift in Sources */,
 				EDB91DCF26C3B8A800F4562D /* ViewController.swift in Sources */,
 				EDB91DCB26C3B8A800F4562D /* AppDelegate.swift in Sources */,
 			);
