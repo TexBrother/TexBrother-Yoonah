@@ -7,4 +7,5 @@ target 'Texture-Example' do
 
   # Pods for Texture-Example
   pod "Texture"
+  pod "Then"
 end

@@ -34,9 +34,11 @@ PODS:
     - Texture/Core
   - Texture/Video (3.0.0):
     - Texture/Core
+  - Then (2.7.0)
 
 DEPENDENCIES:
   - Texture
+  - Then
 
 SPEC REPOS:
   trunk:
@@ -44,13 +46,15 @@ SPEC REPOS:
     - PINOperation
     - PINRemoteImage
     - Texture
+    - Then
 
 SPEC CHECKSUMS:
   PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
   PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
+  Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 6a5481a712278797d78a05433a2d64ff570d2954
+PODFILE CHECKSUM: e6c209e9cb51b351aeee2265db36ed10dab792e8
 
 COCOAPODS: 1.10.2
