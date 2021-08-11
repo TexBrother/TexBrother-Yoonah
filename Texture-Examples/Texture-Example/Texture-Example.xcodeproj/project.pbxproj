@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		EDB91D9626C2AD3300F4562D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB91D9526C2AD3300F4562D /* AppDelegate.swift */; };
-		EDB91D9826C2AD3300F4562D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB91D9726C2AD3300F4562D /* SceneDelegate.swift */; };
 		EDB91D9A26C2AD3300F4562D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB91D9926C2AD3300F4562D /* ViewController.swift */; };
 		EDB91D9F26C2AD3500F4562D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDB91D9E26C2AD3500F4562D /* Assets.xcassets */; };
 		EDB91DA226C2AD3500F4562D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDB91DA026C2AD3500F4562D /* LaunchScreen.storyboard */; };
 		EDB91DAF26C3607C00F4562D /* ExampleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB91DAE26C3607C00F4562D /* ExampleNode.swift */; };
+		EDB91DB326C3861500F4562D /* TestNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB91DB226C3861500F4562D /* TestNodeController.swift */; };
 		F2CCE86AC4BD9C919B27D8D1 /* Pods_Texture_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEA2FB459FC647C1AFCE9529 /* Pods_Texture_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,12 +21,12 @@
 		70E8D0C468717EA58A44A335 /* Pods-Texture-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Texture-Example.debug.xcconfig"; path = "Target Support Files/Pods-Texture-Example/Pods-Texture-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		EDB91D9226C2AD3300F4562D /* Texture-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Texture-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDB91D9526C2AD3300F4562D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EDB91D9726C2AD3300F4562D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EDB91D9926C2AD3300F4562D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		EDB91D9E26C2AD3500F4562D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDB91DA126C2AD3500F4562D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDB91DA326C2AD3500F4562D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDB91DAE26C3607C00F4562D /* ExampleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleNode.swift; sourceTree = "<group>"; };
+		EDB91DB226C3861500F4562D /* TestNodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNodeController.swift; sourceTree = "<group>"; };
 		EEA2FB459FC647C1AFCE9529 /* Pods_Texture_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Texture_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -110,7 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				EDB91D9526C2AD3300F4562D /* AppDelegate.swift */,
-				EDB91D9726C2AD3300F4562D /* SceneDelegate.swift */,
 			);
 			path = Supports;
 			sourceTree = "<group>";
@@ -119,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				EDB91D9926C2AD3300F4562D /* ViewController.swift */,
+				EDB91DB226C3861500F4562D /* TestNodeController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -247,7 +247,7 @@
 				EDB91D9A26C2AD3300F4562D /* ViewController.swift in Sources */,
 				EDB91D9626C2AD3300F4562D /* AppDelegate.swift in Sources */,
 				EDB91DAF26C3607C00F4562D /* ExampleNode.swift in Sources */,
-				EDB91D9826C2AD3300F4562D /* SceneDelegate.swift in Sources */,
+				EDB91DB326C3861500F4562D /* TestNodeController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
