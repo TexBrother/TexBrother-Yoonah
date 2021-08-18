@@ -11,19 +11,6 @@ import Then
 
 final class HomeNode: ASDisplayNode {
     // MARK: UI
-    private let dateTextNode = ASTextNode().then {
-        let dateFormatter = DateFormatter()
-        let today = Date()
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "M월 dd일 EEEE"
-        $0.attributedText = NSAttributedString(string: dateFormatter.string(from: today), attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 12)])
-    }
-    private let todayTextNode = ASTextNode().then {
-        $0.attributedText = NSAttributedString(string: "투데이", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 28)])
-    }
-    private let profileButtonNode = ASButtonNode().then {
-        $0.setImage(UIImage(named: "appstoreProfileImg"), for: .normal)
-    }
     private let bannerImageNode = ASImageNode().then {
         $0.image = UIImage(named: "appstoreBanner1")
     }
@@ -51,48 +38,7 @@ final class HomeNode: ASDisplayNode {
     
     // MARK: Layout
     override func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
-        var containerInsets: UIEdgeInsets = self.safeAreaInsets
-        containerInsets.left = 20.0
-        containerInsets.right = 20.0
-        containerInsets.top = 64.0
-        containerInsets.bottom = .infinity
-        
-        return ASInsetLayoutSpec(
-            insets: containerInsets,
-            child: contentLayoutSpec()
-        )
-    }
-    
-    private func dateLayoutSpec() -> ASLayoutSpec {
-        return ASStackLayoutSpec(
-            direction: .vertical,
-            spacing: 2.0,
-            justifyContent: .start,
-            alignItems: .start,
-            children: [
-                dateTextNode,
-                todayTextNode
-            ]
-        )
-    }
-    
-    private func profileImageLayoutSpec() -> ASLayoutSpec {
-        return ASRatioLayoutSpec(ratio: 1.0, child: profileButtonNode).styled {
-            $0.flexShrink = 1.0
-        }
-    }
-    
-    private func headerLayoutSpec() -> ASLayoutSpec {
-        return ASStackLayoutSpec(
-            direction: .horizontal,
-            spacing: 232.0,
-            justifyContent: .spaceBetween,
-            alignItems: .end,
-            children: [
-                dateLayoutSpec(),
-                profileImageLayoutSpec()
-            ]
-        )
+        return bannerLayoutSpec()
     }
     
     private func bannerImageLayoutSpec() -> ASLayoutSpec {
@@ -156,19 +102,6 @@ final class HomeNode: ASDisplayNode {
     
     private func bannerLayoutSpec() -> ASLayoutSpec {
         return ASOverlayLayoutSpec(child: bannerTopLayoutSpec(), overlay: bannerBottomInsetLayoutSpec()
-        )
-    }
-    
-    private func contentLayoutSpec() -> ASLayoutSpec {
-        return ASStackLayoutSpec(
-            direction: .vertical,
-            spacing: 5.0,
-            justifyContent: .start,
-            alignItems: .center,
-            children: [
-                headerLayoutSpec(),
-                bannerLayoutSpec()
-            ]
         )
     }
 }
