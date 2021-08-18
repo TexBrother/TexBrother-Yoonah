@@ -13,6 +13,7 @@
 		EDB91DD426C3B8AA00F4562D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDB91DD326C3B8AA00F4562D /* Assets.xcassets */; };
 		EDB91DD726C3B8AA00F4562D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDB91DD526C3B8AA00F4562D /* LaunchScreen.storyboard */; };
 		EDB91DE526C3C41C00F4562D /* LoginNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB91DE426C3C41C00F4562D /* LoginNode.swift */; };
+		EDC00D6C26CD349B0075092B /* ASButtonNode+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC00D6B26CD349B0075092B /* ASButtonNode+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		EDB91DD626C3B8AA00F4562D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDB91DD826C3B8AA00F4562D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDB91DE426C3C41C00F4562D /* LoginNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNode.swift; sourceTree = "<group>"; };
+		EDC00D6B26CD349B0075092B /* ASButtonNode+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASButtonNode+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		EDB91DDF26C3B8B800F4562D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				EDC00D6A26CD348A0075092B /* Extension */,
 				EDB91DE226C3B8C700F4562D /* Node */,
 				EDB91DE126C3B8C200F4562D /* ViewController */,
 				EDB91DE026C3B8BB00F4562D /* Support */,
@@ -134,6 +137,14 @@
 			children = (
 			);
 			path = Display;
+			sourceTree = "<group>";
+		};
+		EDC00D6A26CD348A0075092B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EDC00D6B26CD349B0075092B /* ASButtonNode+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +263,7 @@
 				EDB91DE526C3C41C00F4562D /* LoginNode.swift in Sources */,
 				EDB91DCF26C3B8A800F4562D /* ViewController.swift in Sources */,
 				EDB91DCB26C3B8A800F4562D /* AppDelegate.swift in Sources */,
+				EDC00D6C26CD349B0075092B /* ASButtonNode+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
