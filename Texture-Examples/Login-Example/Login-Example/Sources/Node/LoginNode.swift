@@ -15,10 +15,21 @@ final class LoginNode: ASDisplayNode {
         $0.image = UIImage(named: "logoImage")
         $0.contentMode = .scaleAspectFit
     }
-    
     private let emailNode = ASEditableTextNode().then {
-        $0.attributedPlaceholderText = NSAttributedString(string: "입력해주세요.")
+        $0.backgroundColor = .init(red: 47/255, green: 47/255, blue: 47/255, alpha: 1.0)
+        $0.attributedPlaceholderText = NSAttributedString(string: "이메일")
         $0.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
+    private let passwordNode = ASEditableTextNode().then {
+        $0.backgroundColor = .init(red: 47/255, green: 47/255, blue: 47/255, alpha: 1.0)
+        $0.attributedPlaceholderText = NSAttributedString(string: "비밀번호")
+        $0.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
+    private let autoButtonNode = ASButtonNode().then {
+        $0.setTitle("자동 로그인", with: .systemFont(ofSize: 15), with: .white, for: .normal)
+        $0.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+        $0.setImage(UIImage(systemName: "checkmark.square.fill"), for: .selected)
+        $0.tintColor = .systemPink
     }
     
     // MARK: Initializing
@@ -36,13 +47,13 @@ final class LoginNode: ASDisplayNode {
     // MARK: Layout
     override func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
         var containerInsets: UIEdgeInsets = self.safeAreaInsets
-        containerInsets.left += 15.0
-        containerInsets.right += 15.0
+        containerInsets.left += 28.0
+        containerInsets.right += 28.0
         containerInsets.top = containerInsets.bottom
         
         return ASInsetLayoutSpec(
             insets: containerInsets,
-            child: self.contentLayoutSpec()
+            child: contentLayoutSpec()
         )
     }
     
@@ -50,11 +61,37 @@ final class LoginNode: ASDisplayNode {
         return ASStackLayoutSpec(
             direction: .vertical,
             spacing: 10.0,
-            justifyContent: .center,
-            alignItems: .center,
+            justifyContent: .start,
+            alignItems: .stretch,
             children: [
-                self.imageLayoutSpec(),
-                self.emailNode
+                imageLayoutSpec(),
+                textFieldLayoutSpec()
+            ]
+        )
+    }
+    
+    private func textFieldLayoutSpec() -> ASLayoutSpec {
+        return ASStackLayoutSpec(
+            direction: .vertical,
+            spacing: 36.0,
+            justifyContent: .start,
+            alignItems: .stretch,
+            children: [
+                emailNode,
+                passwordNode,
+                autoButtonLayoutSpec()
+            ]
+        )
+    }
+    
+    private func autoButtonLayoutSpec() -> ASLayoutSpec {
+        return ASStackLayoutSpec(
+            direction: .vertical,
+            spacing: 0.0,
+            justifyContent: .start,
+            alignItems: .start,
+            children: [
+                autoButtonNode
             ]
         )
     }
