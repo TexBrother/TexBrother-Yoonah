@@ -127,8 +127,8 @@
 		EDC00D9126CD368A0075092B /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				EDC00D9226CD37480075092B /* HomeNode.swift */,
 				EDC00D9526CD43BC0075092B /* HeaderNode.swift */,
+				EDC00D9226CD37480075092B /* HomeNode.swift */,
 				EDC00D9726CD45FF0075092B /* MainNode.swift */,
 			);
 			path = Nodes;
