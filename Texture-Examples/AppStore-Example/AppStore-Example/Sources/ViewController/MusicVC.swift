@@ -1,13 +1,13 @@
 //
-//  ViewController.swift
+//  MusicVC.swift
 //  AppStore-Example
 //
-//  Created by SHIN YOON AH on 2021/08/18.
+//  Created by SHIN YOON AH on 2021/08/25.
 //
 
 import AsyncDisplayKit
 
-final class ViewController: ASDKViewController<ASTableNode> {
+final class MusicVC: ASDKViewController<ASTableNode> {
     enum Section: Int, CaseIterable {
         case header
         case apps
@@ -45,12 +45,10 @@ final class ViewController: ASDKViewController<ASTableNode> {
         self.node.view.separatorStyle = .none
         self.node.view.backgroundColor = .black
         self.node.dataSource = self
-        self.node.delegate = self
-        self.node.allowsSelection = true
     }
 }
 
-extension ViewController: ASTableDataSource {
+extension MusicVC: ASTableDataSource {
     func numberOfSections(in tableNode: ASTableNode) -> Int {
         return Section.allCases.count
     }
@@ -84,12 +82,6 @@ extension ViewController: ASTableDataSource {
     }
 }
 
-extension ViewController: ASTableDelegate {
-    func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            let vc = MusicVC()
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true, completion: nil)
-        }
-    }
+extension MusicVC: ASTableDelegate {
+    
 }

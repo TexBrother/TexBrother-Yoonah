@@ -13,7 +13,7 @@ class HeaderCellNode: ASCellNode {
         super.init()
         self.automaticallyManagesSubnodes = true
         self.automaticallyRelayoutOnSafeAreaChanges = true
-        self.selectionStyle = .none
+        self.selectionStyle = .default
         self.backgroundColor = .black
     }
     

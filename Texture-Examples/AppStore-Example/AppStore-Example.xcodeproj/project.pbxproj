@@ -11,6 +11,7 @@
 		EDA705BE26D62347000ECBFD /* Apps.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA705BD26D62347000ECBFD /* Apps.swift */; };
 		EDA705C126D62625000ECBFD /* AppCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA705C026D62625000ECBFD /* AppCellNode.swift */; };
 		EDA705C326D658EC000ECBFD /* HeaderCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA705C226D658EC000ECBFD /* HeaderCellNode.swift */; };
+		EDA705C526D65CFE000ECBFD /* MusicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA705C426D65CFE000ECBFD /* MusicVC.swift */; };
 		EDC00D7A26CD366A0075092B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC00D7926CD366A0075092B /* AppDelegate.swift */; };
 		EDC00D7E26CD366A0075092B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC00D7D26CD366A0075092B /* ViewController.swift */; };
 		EDC00D8326CD366B0075092B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDC00D8226CD366B0075092B /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		EDA705BD26D62347000ECBFD /* Apps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apps.swift; sourceTree = "<group>"; };
 		EDA705C026D62625000ECBFD /* AppCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCellNode.swift; sourceTree = "<group>"; };
 		EDA705C226D658EC000ECBFD /* HeaderCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellNode.swift; sourceTree = "<group>"; };
+		EDA705C426D65CFE000ECBFD /* MusicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVC.swift; sourceTree = "<group>"; };
 		EDC00D7626CD366A0075092B /* AppStore-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AppStore-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC00D7926CD366A0075092B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDC00D7D26CD366A0075092B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				EDC00D7D26CD366A0075092B /* ViewController.swift */,
+				EDA705C426D65CFE000ECBFD /* MusicVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				EDC00D9826CD45FF0075092B /* MainNode.swift in Sources */,
 				EDA705C126D62625000ECBFD /* AppCellNode.swift in Sources */,
 				EDA705BE26D62347000ECBFD /* Apps.swift in Sources */,
+				EDA705C526D65CFE000ECBFD /* MusicVC.swift in Sources */,
 				EDC00D9626CD43BC0075092B /* HeaderNode.swift in Sources */,
 				EDA705C326D658EC000ECBFD /* HeaderCellNode.swift in Sources */,
 				EDC00D9326CD37480075092B /* HomeNode.swift in Sources */,

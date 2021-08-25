@@ -35,7 +35,6 @@ final class HeaderNode: ASDisplayNode {
         super.layout()
     }
     
-    
     // MARK: Layout
     override func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
         return ASStackLayoutSpec(
