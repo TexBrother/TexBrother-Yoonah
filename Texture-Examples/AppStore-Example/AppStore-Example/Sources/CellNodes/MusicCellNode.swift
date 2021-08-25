@@ -1,5 +1,5 @@
 //
-//  AppCellNode.swift
+//  MusicCellNode.swift
 //  AppStore-Example
 //
 //  Created by SHIN YOON AH on 2021/08/25.
@@ -7,15 +7,15 @@
 
 import AsyncDisplayKit
 
-class AppCellNode: ASCellNode {
+class MusicCellNode: ASCellNode {
     struct Const {
-        static var descAttribute: [NSAttributedString.Key: Any] {
-            return [.font: UIFont.systemFont(ofSize: 11.0, weight: .regular),
+        static var singerAttribute: [NSAttributedString.Key: Any] {
+            return [.font: UIFont.systemFont(ofSize: 10.0, weight: .regular),
                     .foregroundColor: UIColor.gray]
         }
         
         static var titleAttribute: [NSAttributedString.Key: Any] {
-            return [.font: UIFont.systemFont(ofSize: 13.0, weight: .medium),
+            return [.font: UIFont.systemFont(ofSize: 11.0, weight: .regular),
                     .foregroundColor: UIColor.white]
         }
         
@@ -25,7 +25,7 @@ class AppCellNode: ASCellNode {
     
     lazy var imageNode: ASImageNode = {
         let node = ASImageNode()
-        node.cornerRadius = 10.0
+        node.cornerRadius = 5.0
         node.contentMode = .scaleAspectFit
         node.backgroundColor = .clear
         return node
@@ -33,27 +33,19 @@ class AppCellNode: ASCellNode {
     
     lazy var titleNode: ASTextNode = {
         let node = ASTextNode()
-        node.maximumNumberOfLines = 2
+        node.maximumNumberOfLines = 1
         return node
     }()
     
-    lazy var descriptionNode: ASTextNode = {
+    lazy var singerNode: ASTextNode = {
         let node = ASTextNode()
-        node.maximumNumberOfLines = 2
-        return node
-    }()
-    
-    lazy var followButton: ASButtonNode = {
-        let node = ASButtonNode()
-        node.style.height = .init(unit: .points, value: 25.0)
-        node.style.width = .init(unit: .points, value: 65.0)
-        node.setImage(UIImage(named: "downloadBtn"), for: .normal)
+        node.maximumNumberOfLines = 1
         return node
     }()
     
     private var imageRatio: CGFloat = 0.5
-
-    init(title: String, description: String, image: String) {
+    
+    init(title: String, singer: String, image: String) {
         super.init()
         self.automaticallyManagesSubnodes = true
         self.automaticallyRelayoutOnSafeAreaChanges = true
@@ -62,7 +54,7 @@ class AppCellNode: ASCellNode {
         
         imageNode.image = UIImage(named: image)
         titleNode.attributedText = NSAttributedString(string: title, attributes: Const.titleAttribute)
-        descriptionNode.attributedText = NSAttributedString(string: description, attributes: Const.descAttribute)
+        singerNode.attributedText = NSAttributedString(string: singer, attributes: Const.singerAttribute)
     }
     
     override func didLoad() {
@@ -70,15 +62,7 @@ class AppCellNode: ASCellNode {
     }
     
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        let stackLayout = ASStackLayoutSpec(direction: .horizontal,
-                                            spacing: 20.0,
-                                            justifyContent: .start,
-                                            alignItems: .stretch,
-                                            children: [imageLayoutSpec(),
-                                                       contentAreaLayoutSpec()])
-        
-        return ASInsetLayoutSpec(insets: Const.insets, child: stackLayout)
-        
+        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 6, left: 6, bottom: 5, right: 6), child: contentAreaLayoutSpec())
     }
     
     func imageLayoutSpec() -> ASLayoutSpec {
@@ -87,15 +71,15 @@ class AppCellNode: ASCellNode {
     
     func contentAreaLayoutSpec() -> ASLayoutSpec {
         let infoAreaStackLayout = ASStackLayoutSpec(direction: .vertical,
-                                                    spacing: 6.0,
+                                                    spacing: 4.0,
                                                     justifyContent: .start,
                                                     alignItems: .start,
-                                                    children: [titleNode, descriptionNode])
+                                                    children: [imageLayoutSpec(), titleNode])
         
         return ASStackLayoutSpec(direction: .vertical,
-                                 spacing: 23.0,
+                                 spacing: 3.0,
                                  justifyContent: .start,
                                  alignItems: .start,
-                                 children: [infoAreaStackLayout, followButton])
+                                 children: [infoAreaStackLayout, singerNode])
     }
 }

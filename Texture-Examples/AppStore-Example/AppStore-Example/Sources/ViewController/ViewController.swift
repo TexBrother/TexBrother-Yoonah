@@ -88,7 +88,6 @@ extension ViewController: ASTableDelegate {
     func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             let vc = MusicVC()
-            vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true, completion: nil)
         }
     }
