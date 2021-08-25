@@ -41,12 +41,12 @@ final class ViewController: ASDKViewController<ASTableNode> {
         super.viewDidLoad()
         
         self.node.backgroundColor = .black
-        self.node.view.allowsSelection = false
+        self.node.view.allowsSelection = true
         self.node.view.separatorStyle = .none
         self.node.view.backgroundColor = .black
         self.node.dataSource = self
         self.node.delegate = self
-        self.node.allowsSelection = true
+//        self.node.allowsSelection = true
     }
 }
 

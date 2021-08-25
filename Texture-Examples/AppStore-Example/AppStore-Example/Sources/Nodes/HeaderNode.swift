@@ -21,6 +21,13 @@ final class HeaderNode: ASDisplayNode {
     }
     private let profileButtonNode = ASButtonNode().then {
         $0.setImage(UIImage(named: "appstoreProfileImg"), for: .normal)
+        $0.addTarget(self, action: #selector(touchUpProfile), forControlEvents: .touchUpInside)
+    }
+    
+    // MARK: - @objc
+    @objc
+    func touchUpProfile() {
+        print("hi")
     }
     
     // MARK: Initializing

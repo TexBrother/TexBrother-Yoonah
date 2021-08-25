@@ -26,7 +26,7 @@ class MusicCellNode: ASCellNode {
     lazy var imageNode: ASImageNode = {
         let node = ASImageNode()
         node.cornerRadius = 5.0
-        node.contentMode = .scaleAspectFit
+        node.contentMode = .scaleAspectFill
         node.backgroundColor = .clear
         return node
     }()
@@ -43,7 +43,7 @@ class MusicCellNode: ASCellNode {
         return node
     }()
     
-    private var imageRatio: CGFloat = 0.5
+    private var imageRatio: CGFloat = 1.0
     
     init(title: String, singer: String, image: String) {
         super.init()
