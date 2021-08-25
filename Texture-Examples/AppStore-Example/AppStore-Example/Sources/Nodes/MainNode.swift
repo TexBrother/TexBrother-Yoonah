@@ -29,7 +29,6 @@ final class MainNode: ASDisplayNode {
         containerInsets.left = 20.0
         containerInsets.right = 20.0
         containerInsets.top = 64.0
-        containerInsets.bottom = .infinity
         
         return ASInsetLayoutSpec(
             insets: containerInsets,
