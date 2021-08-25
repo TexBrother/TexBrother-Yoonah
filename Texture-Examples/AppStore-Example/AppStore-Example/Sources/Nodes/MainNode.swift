@@ -28,7 +28,8 @@ final class MainNode: ASDisplayNode {
         var containerInsets: UIEdgeInsets = self.safeAreaInsets
         containerInsets.left = 20.0
         containerInsets.right = 20.0
-        containerInsets.top = 64.0
+        containerInsets.top = 20.0
+        containerInsets.bottom = 30.0
         
         return ASInsetLayoutSpec(
             insets: containerInsets,

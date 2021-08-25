@@ -8,6 +8,11 @@
 import AsyncDisplayKit
 
 final class ViewController: ASDKViewController<ASTableNode> {
+    enum Section: Int, CaseIterable {
+        case header
+        case apps
+    }
+    
     // MARK: - Properties
     let tableNode = ASTableNode(style: .plain)
     
@@ -26,9 +31,6 @@ final class ViewController: ASDKViewController<ASTableNode> {
         super.init(node: tableNode)
         self.node.automaticallyManagesSubnodes = true
         self.node.automaticallyRelayoutOnSafeAreaChanges = true
-//        self.node.layoutSpecBlock = { [weak self] (node, constraintedSize) -> ASLayoutSpec in
-//              return self?.layoutSpecThatFits(constraintedSize) ?? ASLayoutSpec()
-//        }
     }
     
     required init?(coder: NSCoder) {
@@ -44,39 +46,38 @@ final class ViewController: ASDKViewController<ASTableNode> {
         self.node.view.backgroundColor = .black
         self.node.dataSource = self
     }
-    
-    // MARK: Layout
-//    private func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
-//        let homeStackLayout = ASStackLayoutSpec(direction: .vertical,
-//                                                spacing: 20,
-//                                                justifyContent: .start,
-//                                                alignItems: .start,
-//                                                children: [
-//                                                    MainNode()
-//                                                ])
-//
-//        return ASInsetLayoutSpec(
-//            insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
-//            child: homeStackLayout
-//        )
-//    }
 }
 
 extension ViewController: ASTableDataSource {
-    func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+    func numberOfSections(in tableNode: ASTableNode) -> Int {
+        return Section.allCases.count
+    }
+    
+    func tableNode(_ tableNode: ASTableNode,
+                   numberOfRowsInSection section: Int) -> Int {
+        guard let section = Section.init(rawValue: section) else { return 0 }
+        
+        switch section {
+        case .header: return 1
+        case .apps: return data.count
+        }
     }
     
     func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-        guard data.count > indexPath.row else { return { ASCellNode() } }
-
-        let appModel = data[indexPath.row]
-        
-        let cellNodeBlock = { () -> ASCellNode in
-            let cellNode = AppCellNode(title: appModel.title, description: appModel.description, image: appModel.image)
-            return cellNode
+        return {
+            guard let section = Section.init(rawValue: indexPath.section) else { return ASCellNode() }
+            
+            switch section {
+            case .header:
+                let cellNode = HeaderCellNode()
+                
+                return cellNode
+            case .apps:
+                let appModel = self.data[indexPath.row]
+                let cellNode = AppCellNode(title: appModel.title, description: appModel.description, image: appModel.image)
+                
+                return cellNode
+            }
         }
-        
-        return cellNodeBlock
     }
 }

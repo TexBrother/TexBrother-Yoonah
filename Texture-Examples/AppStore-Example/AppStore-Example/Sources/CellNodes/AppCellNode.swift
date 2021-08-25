@@ -5,7 +5,6 @@
 //  Created by SHIN YOON AH on 2021/08/25.
 //
 
-import Foundation
 import AsyncDisplayKit
 
 class AppCellNode: ASCellNode {
