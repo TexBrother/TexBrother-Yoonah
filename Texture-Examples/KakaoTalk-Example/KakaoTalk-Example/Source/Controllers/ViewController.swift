@@ -6,6 +6,7 @@
 //
 
 import AsyncDisplayKit
+import Then
 
 final class ViewController: ASDKViewController<ASDisplayNode> {
     enum Section: Int, CaseIterable {
@@ -13,15 +14,13 @@ final class ViewController: ASDKViewController<ASDisplayNode> {
         case freinds
     }
     
-    private lazy var tableNode: ASTableNode = {
-        let node = ASTableNode(style: .plain)
-        node.delegate = self
-        node.dataSource = self
-        node.backgroundColor = .white
-        return node
-    }()
+    private lazy var tableNode = ASTableNode().then {
+        $0.delegate = self
+        $0.dataSource = self
+        $0.backgroundColor = .white
+    }
     
-    private lazy var headerNode = HeaderNode()
+    private var headerNode = HeaderNode()
     
     override init() {
         super.init(node: .init())
@@ -97,7 +96,7 @@ extension ViewController: ASTableDataSource {
         case .profile:
             return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 100))
         case .freinds:
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 50))
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
         }
     }
 

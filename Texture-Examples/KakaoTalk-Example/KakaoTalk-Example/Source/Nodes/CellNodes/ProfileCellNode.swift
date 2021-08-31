@@ -15,7 +15,7 @@ final class ProfileCellNode: ASCellNode {
         }
         
         static var freindsAttribute: [NSAttributedString.Key: Any] {
-            return [.font: UIFont.systemFont(ofSize: 12.0, weight: .semibold),
+            return [.font: UIFont.systemFont(ofSize: 14.0, weight: .semibold),
                     .foregroundColor: UIColor.black]
         }
         
@@ -49,7 +49,7 @@ final class ProfileCellNode: ASCellNode {
         super.init()
         self.automaticallyManagesSubnodes = true
         self.automaticallyRelayoutOnSafeAreaChanges = true
-        // profileImage
+
         if let image = model.imageName {
             profileImageNode.image = UIImage(named: image)
         } else {
@@ -59,21 +59,19 @@ final class ProfileCellNode: ASCellNode {
         let nameAttrs: [NSAttributedString.Key: Any]
         switch category {
         case .profile:
-            profileImageNode.style.preferredSize = CGSize(width: 59.0, height: 59.0)
+            profileImageNode.style.preferredSize = CGSize(width: 70.0, height: 70.0)
             nameAttrs = Const.userAttribute
             
         case .freinds:
-            profileImageNode.style.preferredSize = CGSize(width: 44.0, height: 44.0)
+            profileImageNode.style.preferredSize = CGSize(width: 60.0, height: 60.0)
             nameAttrs = Const.freindsAttribute
         }
         
-        // userName
         nameNode.attributedText = NSAttributedString(
             string: model.userName,
             attributes: nameAttrs
         )
-        
-        // statusMessage
+
         if let statusMessage = model.statusMessage {
             statusMessageNode.attributedText = NSAttributedString(
                 string: statusMessage,
@@ -114,7 +112,7 @@ final class ProfileCellNode: ASCellNode {
     private func labelStackLayoutSpec() -> ASLayoutSpec {
         return ASStackLayoutSpec (
             direction: .vertical,
-            spacing: 1.0,
+            spacing: 7.0,
             justifyContent: .spaceBetween,
             alignItems: .start,
             children: [nameNode, statusMessageNode]
