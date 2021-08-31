@@ -10,18 +10,18 @@ import Then
 
 final class HeaderNode: ASDisplayNode {
     // MARK: UI
-    private let titleTextNode = ASTextNode().then {
-        $0.attributedText = NSAttributedString(string: "친구", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: .semibold)])
-    }
+    private let titleTextNode = ASTextNode()
     private let settingButtonNode = ASButtonNode().then {
         $0.setImage(UIImage(named: "settingIcon"), for: .normal)
     }
     
     // MARK: Initializing
-    override init() {
+    init(title: String) {
         super.init()
         self.automaticallyManagesSubnodes = true
         self.automaticallyRelayoutOnSafeAreaChanges = true
+        
+        titleTextNode.attributedText = NSAttributedString(string: title, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: .semibold)])
     }
     
     // MARK: Node Life Cycle

@@ -20,7 +20,7 @@ final class ViewController: ASDKViewController<ASDisplayNode> {
         $0.backgroundColor = .white
     }
     
-    private var headerNode = HeaderNode()
+    private var headerNode = HeaderNode(title: "친구")
     
     override init() {
         super.init(node: .init())

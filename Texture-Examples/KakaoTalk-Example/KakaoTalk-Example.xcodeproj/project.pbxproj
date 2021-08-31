@@ -16,6 +16,8 @@
 		ED78846B26DE6206006D8787 /* HeaderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78846A26DE6206006D8787 /* HeaderNode.swift */; };
 		ED78846D26DE6E9D006D8787 /* ProfileCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78846C26DE6E9D006D8787 /* ProfileCellNode.swift */; };
 		ED78846F26DE6ED7006D8787 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78846E26DE6ED7006D8787 /* Friend.swift */; };
+		ED78847226DE75DF006D8787 /* MoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78847126DE75DF006D8787 /* MoreController.swift */; };
+		ED78847426DE7923006D8787 /* MoreCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78847326DE7923006D8787 /* MoreCellNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		ED78846A26DE6206006D8787 /* HeaderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderNode.swift; sourceTree = "<group>"; };
 		ED78846C26DE6E9D006D8787 /* ProfileCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellNode.swift; sourceTree = "<group>"; };
 		ED78846E26DE6ED7006D8787 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		ED78847126DE75DF006D8787 /* MoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreController.swift; sourceTree = "<group>"; };
+		ED78847326DE7923006D8787 /* MoreCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCellNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 			children = (
 				ED78844F26DE5E7F006D8787 /* ViewController.swift */,
 				ED78846726DE6178006D8787 /* TabbarController.swift */,
+				ED78847126DE75DF006D8787 /* MoreController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				ED78846C26DE6E9D006D8787 /* ProfileCellNode.swift */,
+				ED78847326DE7923006D8787 /* MoreCellNode.swift */,
 			);
 			path = CellNodes;
 			sourceTree = "<group>";
@@ -268,9 +274,11 @@
 			files = (
 				ED78845026DE5E7F006D8787 /* ViewController.swift in Sources */,
 				ED78846D26DE6E9D006D8787 /* ProfileCellNode.swift in Sources */,
+				ED78847226DE75DF006D8787 /* MoreController.swift in Sources */,
 				ED78846B26DE6206006D8787 /* HeaderNode.swift in Sources */,
 				ED78846F26DE6ED7006D8787 /* Friend.swift in Sources */,
 				ED78846826DE6178006D8787 /* TabbarController.swift in Sources */,
+				ED78847426DE7923006D8787 /* MoreCellNode.swift in Sources */,
 				ED78844C26DE5E7F006D8787 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

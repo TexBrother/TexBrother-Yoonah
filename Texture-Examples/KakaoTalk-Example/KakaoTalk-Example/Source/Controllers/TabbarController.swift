@@ -29,7 +29,7 @@ class TabbarController: UITabBarController {
         let shopTab = ViewController()
         shopTab.tabBarItem = UITabBarItem(title: "", image: UIImage(named:"shopTabIcon"), selectedImage: UIImage(named: "shopTabIconSelected"))
 
-        let moreTab = ViewController()
+        let moreTab = MoreController()
         moreTab.tabBarItem = UITabBarItem(title: "", image: UIImage(named:"detailTabIcon"), selectedImage: UIImage(named: "detailTabIconSelected"))
         
         let tabs =  [friendTab, chatTab, searchTab, shopTab, moreTab]
