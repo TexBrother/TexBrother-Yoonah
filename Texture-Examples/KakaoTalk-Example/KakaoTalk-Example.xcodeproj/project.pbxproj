@@ -13,7 +13,9 @@
 		ED78845526DE5E81006D8787 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED78845426DE5E81006D8787 /* Assets.xcassets */; };
 		ED78845826DE5E81006D8787 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED78845626DE5E81006D8787 /* LaunchScreen.storyboard */; };
 		ED78846826DE6178006D8787 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78846726DE6178006D8787 /* TabbarController.swift */; };
-		ED78846B26DE6206006D8787 /* FriendNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78846A26DE6206006D8787 /* FriendNode.swift */; };
+		ED78846B26DE6206006D8787 /* HeaderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78846A26DE6206006D8787 /* HeaderNode.swift */; };
+		ED78846D26DE6E9D006D8787 /* ProfileCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78846C26DE6E9D006D8787 /* ProfileCellNode.swift */; };
+		ED78846F26DE6ED7006D8787 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78846E26DE6ED7006D8787 /* Friend.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +29,9 @@
 		ED78845726DE5E81006D8787 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED78845926DE5E81006D8787 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED78846726DE6178006D8787 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
-		ED78846A26DE6206006D8787 /* FriendNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendNode.swift; sourceTree = "<group>"; };
+		ED78846A26DE6206006D8787 /* HeaderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderNode.swift; sourceTree = "<group>"; };
+		ED78846C26DE6E9D006D8787 /* ProfileCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellNode.swift; sourceTree = "<group>"; };
+		ED78846E26DE6ED7006D8787 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				ED78846526DE5F8F006D8787 /* CellNodes */,
-				ED78846A26DE6206006D8787 /* FriendNode.swift */,
+				ED78846A26DE6206006D8787 /* HeaderNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -136,6 +140,7 @@
 		ED78846426DE5F88006D8787 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ED78846E26DE6ED7006D8787 /* Friend.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 		ED78846526DE5F8F006D8787 /* CellNodes */ = {
 			isa = PBXGroup;
 			children = (
+				ED78846C26DE6E9D006D8787 /* ProfileCellNode.swift */,
 			);
 			path = CellNodes;
 			sourceTree = "<group>";
@@ -261,7 +267,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED78845026DE5E7F006D8787 /* ViewController.swift in Sources */,
-				ED78846B26DE6206006D8787 /* FriendNode.swift in Sources */,
+				ED78846D26DE6E9D006D8787 /* ProfileCellNode.swift in Sources */,
+				ED78846B26DE6206006D8787 /* HeaderNode.swift in Sources */,
+				ED78846F26DE6ED7006D8787 /* Friend.swift in Sources */,
 				ED78846826DE6178006D8787 /* TabbarController.swift in Sources */,
 				ED78844C26DE5E7F006D8787 /* AppDelegate.swift in Sources */,
 			);
