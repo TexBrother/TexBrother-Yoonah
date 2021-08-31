@@ -37,6 +37,7 @@ final class MoreController: ASDKViewController<ASDisplayNode> {
         
         self.node.onDidLoad({ [weak self] _ in
             self?.collectionNode.view.showsVerticalScrollIndicator = false
+            self?.collectionNode.view.isScrollEnabled = false
         })
     }
     
