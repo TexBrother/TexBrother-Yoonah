@@ -9,6 +9,13 @@ import AsyncDisplayKit
 import Then
 
 final class ViewController: ASDKViewController<ASDisplayNode> {
+    private struct Const {
+        static var nameAttribute: [NSAttributedString.Key: Any] {
+            return [.font: UIFont.systemFont(ofSize: 18.0, weight: .regular),
+                    .foregroundColor: UIColor.white]
+        }
+    }
+    
     enum Section: Int, CaseIterable {
         case profile
         case freinds
@@ -107,6 +114,16 @@ extension ViewController: ASTableDataSource {
 
 extension ViewController: ASTableDelegate {
     func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
-        print("클릭 \(indexPath.row)")
+        let vc = ProfileController()
+        switch indexPath.section {
+        case 0:
+            vc.nameTextNode.attributedText = NSAttributedString(string: "한라봉이 먹고 싶은 춘식이", attributes: Const.nameAttribute)
+            vc.profileImageNode.image = UIImage(named: "friendtabProfileImg")
+        default:
+            vc.nameTextNode.attributedText = NSAttributedString(string: FreindsData[indexPath.row].userName, attributes: Const.nameAttribute)
+            vc.profileImageNode.image = UIImage(named: FreindsData[indexPath.row].imageName ?? "friendtabProfileImg")
+        }
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
 }

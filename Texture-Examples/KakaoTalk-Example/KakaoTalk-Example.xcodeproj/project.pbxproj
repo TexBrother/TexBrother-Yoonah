@@ -18,6 +18,9 @@
 		ED78846F26DE6ED7006D8787 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78846E26DE6ED7006D8787 /* Friend.swift */; };
 		ED78847226DE75DF006D8787 /* MoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78847126DE75DF006D8787 /* MoreController.swift */; };
 		ED78847426DE7923006D8787 /* MoreCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78847326DE7923006D8787 /* MoreCellNode.swift */; };
+		ED78847626DE8050006D8787 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78847526DE8050006D8787 /* ProfileController.swift */; };
+		ED78847826DE85FD006D8787 /* ProfileMenuNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78847726DE85FD006D8787 /* ProfileMenuNode.swift */; };
+		ED78847A26DE8628006D8787 /* MenuNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED78847926DE8628006D8787 /* MenuNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		ED78846E26DE6ED7006D8787 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		ED78847126DE75DF006D8787 /* MoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreController.swift; sourceTree = "<group>"; };
 		ED78847326DE7923006D8787 /* MoreCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCellNode.swift; sourceTree = "<group>"; };
+		ED78847526DE8050006D8787 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		ED78847726DE85FD006D8787 /* ProfileMenuNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuNode.swift; sourceTree = "<group>"; };
+		ED78847926DE8628006D8787 /* MenuNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,7 @@
 				ED78844F26DE5E7F006D8787 /* ViewController.swift */,
 				ED78846726DE6178006D8787 /* TabbarController.swift */,
 				ED78847126DE75DF006D8787 /* MoreController.swift */,
+				ED78847526DE8050006D8787 /* ProfileController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -137,7 +144,9 @@
 			isa = PBXGroup;
 			children = (
 				ED78846526DE5F8F006D8787 /* CellNodes */,
+				ED78847926DE8628006D8787 /* MenuNode.swift */,
 				ED78846A26DE6206006D8787 /* HeaderNode.swift */,
+				ED78847726DE85FD006D8787 /* ProfileMenuNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -277,8 +286,11 @@
 				ED78847226DE75DF006D8787 /* MoreController.swift in Sources */,
 				ED78846B26DE6206006D8787 /* HeaderNode.swift in Sources */,
 				ED78846F26DE6ED7006D8787 /* Friend.swift in Sources */,
+				ED78847626DE8050006D8787 /* ProfileController.swift in Sources */,
 				ED78846826DE6178006D8787 /* TabbarController.swift in Sources */,
 				ED78847426DE7923006D8787 /* MoreCellNode.swift in Sources */,
+				ED78847826DE85FD006D8787 /* ProfileMenuNode.swift in Sources */,
+				ED78847A26DE8628006D8787 /* MenuNode.swift in Sources */,
 				ED78844C26DE5E7F006D8787 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
