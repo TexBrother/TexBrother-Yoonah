@@ -9,6 +9,7 @@ import AsyncDisplayKit
 import Then
 
 final class PayController: ASDKViewController<ASDisplayNode> {
+    // MARK: - Properties
     private struct Const {
         static var nameAttribute: [NSAttributedString.Key: Any] {
             return [.font: UIFont.systemFont(ofSize: 18.0, weight: .regular),
@@ -21,11 +22,18 @@ final class PayController: ASDKViewController<ASDisplayNode> {
         case advertise
     }
     
+    // MARK: - UI
     private lazy var tableNode = ASTableNode().then {
         $0.dataSource = self
         $0.backgroundColor = .white
     }
+    private lazy var detailButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "list.bullet"), for: .normal)
+        $0.setPreferredSymbolConfiguration(.init(pointSize: 17, weight: .regular, scale: .large), forImageIn: .normal)
+        $0.tintColor = .lightGray
+    }
     
+    // MARK: - Initalization
     override init() {
         super.init(node: .init())
         self.node.backgroundColor = .white
@@ -37,18 +45,25 @@ final class PayController: ASDKViewController<ASDisplayNode> {
         
         self.node.onDidLoad({ [weak self] _ in
             self?.tableNode.view.separatorStyle = .none
-            
-            self?.navigationController?.navigationBar.barTintColor = .white
-            self?.navigationController?.navigationBar.shadowImage = UIImage()
-            self?.navigationController?.navigationBar.layer.applyShadow(color: .gray, alpha: 0.3, x: 0, y: 0, blur: 12)
-            self?.navigationController?.navigationBar.prefersLargeTitles = true
-            self?.navigationItem.largeTitleDisplayMode = .automatic
-            self?.navigationItem.title = "Pay"
+            self?.setupNavigationController()
         })
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Custom Method
+    private func setupNavigationController() {
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.layer.applyShadow(color: .gray, alpha: 0.3, x: 0, y: 0, blur: 12)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+        navigationItem.title = "Pay"
+        
+        let barButton = UIBarButtonItem(customView: detailButton)
+        navigationItem.rightBarButtonItem = barButton
     }
     
     private func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
@@ -69,6 +84,7 @@ final class PayController: ASDKViewController<ASDisplayNode> {
     }
 }
 
+// MARK: - ASTableDataSource
 extension PayController: ASTableDataSource {
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
         return 2
