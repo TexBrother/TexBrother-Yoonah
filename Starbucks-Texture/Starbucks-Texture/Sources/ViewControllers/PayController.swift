@@ -99,7 +99,7 @@ extension PayController: ASTableDataSource {
     }
 
     func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
-        guard let section = Section.init(rawValue: indexPath.section) else { return ASSizeRange() }
+        guard let section = Section.init(rawValue: indexPath.row) else { return ASSizeRange() }
         switch section {
         case .card:
             return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 200))

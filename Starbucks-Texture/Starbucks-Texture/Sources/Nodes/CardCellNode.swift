@@ -17,13 +17,15 @@ final class CardCellNode: ASCellNode {
     private lazy var collectionNode = ASCollectionNode(collectionViewLayout: flowLayout).then {
         $0.dataSource = self
         $0.backgroundColor = .white
-        $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: 420)
+        $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: 500)
+        $0.isPagingEnabled = true
     }
     private var flowLayout = UICollectionViewFlowLayout().then {
-        $0.scrollDirection = .vertical
+        $0.scrollDirection = .horizontal
         $0.minimumInteritemSpacing = 3
         $0.minimumLineSpacing = 30
-        $0.itemSize = CGSize(width: UIScreen.main.bounds.size.width - 40, height: 200.0)
+        $0.sectionInset = .init(top: 20, left: 25, bottom: 50, right: 25)
+        $0.itemSize = CGSize(width: UIScreen.main.bounds.size.width - 50, height: 430)
         $0.headerReferenceSize = .zero
         $0.footerReferenceSize = .zero
     }
@@ -53,7 +55,7 @@ extension CardCellNode: ASCollectionDataSource {
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
         guard cards.count > 0 else { return 1 }
         
-        return cards.count
+        return 3
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
