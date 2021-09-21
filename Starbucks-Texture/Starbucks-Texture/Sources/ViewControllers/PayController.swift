@@ -26,7 +26,7 @@ final class PayController: ASDKViewController<ASDisplayNode> {
         $0.tintColor = .lightGray
     }
     
-    // MARK: - Initalization
+    // MARK: - Initializing
     override init() {
         super.init(node: .init())
         self.node.backgroundColor = .white
@@ -59,6 +59,7 @@ final class PayController: ASDKViewController<ASDisplayNode> {
         navigationItem.rightBarButtonItem = barButton
     }
     
+    // MARK: - Layout
     private func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
         let contentLayout = ASStackLayoutSpec (
             direction: .vertical,
