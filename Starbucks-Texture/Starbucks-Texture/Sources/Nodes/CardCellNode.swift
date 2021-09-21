@@ -11,19 +11,19 @@ import UIKit
 
 final class CardCellNode: ASCellNode {
     // MARK: - Properties
-    let cards: [String] = []
+    let cards: [String] = ["1", "2", "3"]
     
     // MARK: - UI
     private lazy var collectionNode = ASCollectionNode(collectionViewLayout: flowLayout).then {
         $0.dataSource = self
         $0.backgroundColor = .white
+        $0.showsHorizontalScrollIndicator = false
         $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: 500)
-        $0.isPagingEnabled = true
     }
     private var flowLayout = UICollectionViewFlowLayout().then {
         $0.scrollDirection = .horizontal
-        $0.minimumInteritemSpacing = 3
-        $0.minimumLineSpacing = 30
+        $0.minimumInteritemSpacing = 0
+        $0.minimumLineSpacing = 20
         $0.sectionInset = .init(top: 20, left: 25, bottom: 50, right: 25)
         $0.itemSize = CGSize(width: UIScreen.main.bounds.size.width - 50, height: 430)
         $0.headerReferenceSize = .zero
@@ -55,7 +55,7 @@ extension CardCellNode: ASCollectionDataSource {
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
         guard cards.count > 0 else { return 1 }
         
-        return 3
+        return cards.count
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
