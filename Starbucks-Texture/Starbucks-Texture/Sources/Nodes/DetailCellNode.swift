@@ -25,9 +25,6 @@ final class DetailCellNode: ASCellNode {
             return [.font: UIFont.systemFont(ofSize: 13.0, weight: .regular),
                     .foregroundColor: UIColor.gray, .paragraphStyle: paragraphStyle]
         }
-        
-        static let insets: UIEdgeInsets =
-            .init(top: 13.0, left: 18.0, bottom: 13.0, right: 13.0)
     }
     
     // MARK: - UI

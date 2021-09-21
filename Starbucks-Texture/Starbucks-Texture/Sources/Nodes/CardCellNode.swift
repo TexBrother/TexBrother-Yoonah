@@ -11,7 +11,7 @@ import UIKit
 
 final class CardCellNode: ASCellNode {
     // MARK: - Properties
-    let cards: [String] = ["1", "2", "3"]
+    let cards: [String] = []
     
     // MARK: - UI
     private lazy var collectionNode = ASCollectionNode(collectionViewLayout: flowLayout).then {
