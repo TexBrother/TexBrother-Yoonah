@@ -6,8 +6,7 @@
 //
 
 import AsyncDisplayKit
-import CoreGraphics
-import UIKit
+import Then 
 
 final class CardCellNode: ASCellNode {
     // MARK: - Properties

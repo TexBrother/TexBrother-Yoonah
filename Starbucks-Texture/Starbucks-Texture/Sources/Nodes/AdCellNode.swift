@@ -6,7 +6,7 @@
 //
 
 import AsyncDisplayKit
-import UIKit
+import Then
 
 final class AdCellNode: ASCellNode {
     // MARK: - UI

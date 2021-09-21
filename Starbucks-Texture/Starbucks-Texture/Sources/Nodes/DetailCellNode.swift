@@ -6,6 +6,7 @@
 //
 
 import AsyncDisplayKit
+import Then
 
 final class DetailCellNode: ASCellNode {
     // MARK: - Properties
