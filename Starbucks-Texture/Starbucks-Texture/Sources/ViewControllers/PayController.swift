@@ -102,7 +102,7 @@ extension PayController: ASTableDataSource {
         guard let section = Section.init(rawValue: indexPath.section) else { return ASSizeRange() }
         switch section {
         case .card:
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 100))
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 200))
         case .advertise:
             return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
         }
