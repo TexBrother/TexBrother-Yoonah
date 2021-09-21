@@ -9,15 +9,23 @@ import AsyncDisplayKit
 import Then
 
 final class PayController: ASDKViewController<ASDisplayNode> {
-    private var xmarkButtonNode = ASButtonNode().then {
-        $0.setImage(UIImage(systemName: "xmark"), for: .normal)
-        $0.tintColor = .white
-        $0.style.preferredSize = CGSize(width: 13, height: 14)
+    private struct Const {
+        static var nameAttribute: [NSAttributedString.Key: Any] {
+            return [.font: UIFont.systemFont(ofSize: 18.0, weight: .regular),
+                    .foregroundColor: UIColor.white]
+        }
     }
-    var profileImageNode = ASImageNode().then {
-        $0.style.preferredSize = CGSize(width: 97, height: 96)
+    
+    enum Section: Int, CaseIterable {
+        case card
+        case advertise
     }
-    var nameTextNode = ASTextNode()
+    
+    private lazy var tableNode = ASTableNode().then {
+        $0.delegate = self
+        $0.dataSource = self
+        $0.backgroundColor = .white
+    }
     
     override init() {
         super.init(node: .init())
@@ -28,51 +36,68 @@ final class PayController: ASDKViewController<ASDisplayNode> {
             return self?.layoutSpecThatFits(constraintedSize) ?? ASLayoutSpec()
         }
         
-        xmarkButtonNode.addTarget(self, action: #selector(pressedXmark), forControlEvents: .touchUpInside)
+        self.node.onDidLoad({ [weak self] _ in
+            self?.tableNode.view.separatorStyle = .none
+        })
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc
-    func pressedXmark() {
-        dismiss(animated: true, completion: nil)
-    }
-    
     private func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
-        return ASStackLayoutSpec(direction: .vertical,
-                                 spacing: 0.0,
-                                 justifyContent: .start,
-                                 alignItems: .stretch,
-                                 children: [xmarkLayout().styled {
-                                                $0.flexGrow = 1.0
-                                            },
-                                            profileLayout()])
+        let contentLayout = ASStackLayoutSpec (
+            direction: .vertical,
+            spacing: 0.0,
+            justifyContent: .start,
+            alignItems: .stretch,
+            children: [
+                tableNode.styled({
+                    $0.flexGrow = 1.0
+                })
+            ]
+        )
+        let safeAreaInset: UIEdgeInsets = self.view.safeAreaInsets
+        return ASInsetLayoutSpec (
+            insets: safeAreaInset, child: contentLayout)
+    }
+}
+
+extension PayController: ASTableDataSource {
+    func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
+        return 2
     }
     
-    func xmarkLayout() -> ASLayoutSpec {
-        let stackLayout = ASStackLayoutSpec(direction: .vertical,
-                                 spacing: 0,
-                                 justifyContent: .start,
-                                 alignItems: .start,
-                                 children: [xmarkButtonNode])
-        
-        return ASInsetLayoutSpec(insets: UIEdgeInsets(top: 58, left: 18, bottom: 0, right: 0), child: stackLayout)
+    func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
+        return {
+            guard let section = Section.init(rawValue: indexPath.row) else { return ASCellNode() }
+            
+            switch section {
+            case .card:
+                return CardCellNode()
+            case .advertise:
+                return AdCellNode()
+            }
+        }
     }
-    
-    func profileLayout() -> ASLayoutSpec {
-        let stackLayout = ASStackLayoutSpec(direction: .vertical,
-                                 spacing: 8,
-                                 justifyContent: .center,
-                                 alignItems: .center,
-                                 children: [profileImageNode,
-                                            nameTextNode])
-        
-        return ASStackLayoutSpec(direction: .vertical,
-                                 spacing: 0.0,
-                                 justifyContent: .start,
-                                 alignItems: .stretch,
-                                 children: [stackLayout])
+
+    func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
+        guard let section = Section.init(rawValue: indexPath.section) else { return ASSizeRange() }
+        switch section {
+        case .card:
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 100))
+        case .advertise:
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
+        }
+    }
+
+    func tableNode(_ tableNode: ASTableNode, willDisplayRowWith node: ASCellNode) {
+        node.backgroundColor = .white
+    }
+}
+
+extension PayController: ASTableDelegate {
+    func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
+
     }
 }

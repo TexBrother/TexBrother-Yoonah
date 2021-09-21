@@ -13,6 +13,8 @@
 		ED63853626FA0E84007F7F8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED63853426FA0E84007F7F8D /* LaunchScreen.storyboard */; };
 		ED63854426FA120F007F7F8D /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63854326FA120F007F7F8D /* TabbarController.swift */; };
 		ED63854626FA1263007F7F8D /* PayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63854526FA1263007F7F8D /* PayController.swift */; };
+		ED63854826FA1AB2007F7F8D /* CardCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63854726FA1AB2007F7F8D /* CardCellNode.swift */; };
+		ED63854A26FA1AC0007F7F8D /* AdCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63854926FA1AC0007F7F8D /* AdCellNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		ED63853726FA0E84007F7F8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED63854326FA120F007F7F8D /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		ED63854526FA1263007F7F8D /* PayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayController.swift; sourceTree = "<group>"; };
+		ED63854726FA1AB2007F7F8D /* CardCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellNode.swift; sourceTree = "<group>"; };
+		ED63854926FA1AC0007F7F8D /* AdCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdCellNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,8 @@
 		ED63854126FA10F1007F7F8D /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				ED63854726FA1AB2007F7F8D /* CardCellNode.swift */,
+				ED63854926FA1AC0007F7F8D /* AdCellNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -242,6 +248,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED63852A26FA0E83007F7F8D /* AppDelegate.swift in Sources */,
+				ED63854826FA1AB2007F7F8D /* CardCellNode.swift in Sources */,
+				ED63854A26FA1AC0007F7F8D /* AdCellNode.swift in Sources */,
 				ED63854426FA120F007F7F8D /* TabbarController.swift in Sources */,
 				ED63854626FA1263007F7F8D /* PayController.swift in Sources */,
 			);
