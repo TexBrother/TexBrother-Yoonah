@@ -10,13 +10,6 @@ import Then
 
 final class PayController: ASDKViewController<ASDisplayNode> {
     // MARK: - Properties
-    private struct Const {
-        static var nameAttribute: [NSAttributedString.Key: Any] {
-            return [.font: UIFont.systemFont(ofSize: 18.0, weight: .regular),
-                    .foregroundColor: UIColor.white]
-        }
-    }
-    
     enum Section: Int, CaseIterable {
         case card
         case advertise
