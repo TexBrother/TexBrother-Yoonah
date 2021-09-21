@@ -15,6 +15,7 @@
 		ED63854626FA1263007F7F8D /* PayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63854526FA1263007F7F8D /* PayController.swift */; };
 		ED63854826FA1AB2007F7F8D /* CardCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63854726FA1AB2007F7F8D /* CardCellNode.swift */; };
 		ED63854A26FA1AC0007F7F8D /* AdCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63854926FA1AC0007F7F8D /* AdCellNode.swift */; };
+		ED63854D26FA2298007F7F8D /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63854C26FA2298007F7F8D /* NavigationController+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		ED63854526FA1263007F7F8D /* PayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayController.swift; sourceTree = "<group>"; };
 		ED63854726FA1AB2007F7F8D /* CardCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellNode.swift; sourceTree = "<group>"; };
 		ED63854926FA1AC0007F7F8D /* AdCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdCellNode.swift; sourceTree = "<group>"; };
+		ED63854C26FA2298007F7F8D /* NavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		ED63853E26FA0F8F007F7F8D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				ED63854B26FA2277007F7F8D /* Extensions */,
 				ED63854126FA10F1007F7F8D /* Nodes */,
 				ED63854026FA10E3007F7F8D /* ViewControllers */,
 				ED63853F26FA10A3007F7F8D /* Supports */,
@@ -132,6 +135,14 @@
 				ED63854926FA1AC0007F7F8D /* AdCellNode.swift */,
 			);
 			path = Nodes;
+			sourceTree = "<group>";
+		};
+		ED63854B26FA2277007F7F8D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ED63854C26FA2298007F7F8D /* NavigationController+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +263,7 @@
 				ED63854A26FA1AC0007F7F8D /* AdCellNode.swift in Sources */,
 				ED63854426FA120F007F7F8D /* TabbarController.swift in Sources */,
 				ED63854626FA1263007F7F8D /* PayController.swift in Sources */,
+				ED63854D26FA2298007F7F8D /* NavigationController+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

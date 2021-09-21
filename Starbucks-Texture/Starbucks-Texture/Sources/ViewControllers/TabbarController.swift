@@ -26,7 +26,8 @@ class TabbarController: UITabBarController {
         let homeTab = PayController()
         homeTab.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
         
-        let payTab = PayController()
+        let payNavi = UINavigationController(rootViewController: PayController())
+        let payTab = payNavi
         payTab.tabBarItem = UITabBarItem(title: "Pay", image: UIImage(systemName: "creditcard.fill"), tag: 1)
         
         let orderTab = PayController()

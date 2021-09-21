@@ -22,7 +22,6 @@ final class PayController: ASDKViewController<ASDisplayNode> {
     }
     
     private lazy var tableNode = ASTableNode().then {
-        $0.delegate = self
         $0.dataSource = self
         $0.backgroundColor = .white
     }
@@ -38,6 +37,13 @@ final class PayController: ASDKViewController<ASDisplayNode> {
         
         self.node.onDidLoad({ [weak self] _ in
             self?.tableNode.view.separatorStyle = .none
+            
+            self?.navigationController?.navigationBar.barTintColor = .white
+            self?.navigationController?.navigationBar.shadowImage = UIImage()
+            self?.navigationController?.navigationBar.layer.applyShadow(color: .gray, alpha: 0.3, x: 0, y: 0, blur: 12)
+            self?.navigationController?.navigationBar.prefersLargeTitles = true
+            self?.navigationItem.largeTitleDisplayMode = .automatic
+            self?.navigationItem.title = "Pay"
         })
     }
     
@@ -93,11 +99,5 @@ extension PayController: ASTableDataSource {
 
     func tableNode(_ tableNode: ASTableNode, willDisplayRowWith node: ASCellNode) {
         node.backgroundColor = .white
-    }
-}
-
-extension PayController: ASTableDelegate {
-    func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
-
     }
 }
