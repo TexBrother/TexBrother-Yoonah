@@ -126,17 +126,9 @@
 		EDB91DE226C3B8C700F4562D /* Node */ = {
 			isa = PBXGroup;
 			children = (
-				EDB91DE326C3B8C900F4562D /* Display */,
 				EDB91DE426C3C41C00F4562D /* LoginNode.swift */,
 			);
 			path = Node;
-			sourceTree = "<group>";
-		};
-		EDB91DE326C3B8C900F4562D /* Display */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Display;
 			sourceTree = "<group>";
 		};
 		EDC00D6A26CD348A0075092B /* Extension */ = {
