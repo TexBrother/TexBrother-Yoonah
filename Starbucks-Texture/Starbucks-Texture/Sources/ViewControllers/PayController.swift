@@ -38,6 +38,7 @@ final class PayController: ASDKViewController<ASDisplayNode> {
         
         self.node.onDidLoad({ [weak self] _ in
             self?.tableNode.view.separatorStyle = .none
+            self?.tableNode.view.showsVerticalScrollIndicator = true
             self?.setupNavigationController()
         })
     }
