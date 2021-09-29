@@ -10,8 +10,13 @@ import Then
 
 final class EditableTextField: ASDisplayNode {
     struct Const {
-        static var titleAttribute: [NSAttributedString.Key: Any] {
+        static var textFieldAttribute: [NSAttributedString.Key: Any] {
             return [.font: UIFont.systemFont(ofSize: 15.0, weight: .regular),
+                    .foregroundColor: UIColor.black]
+        }
+        
+        static var titleAttribute: [NSAttributedString.Key: Any] {
+            return [.font: UIFont.systemFont(ofSize: 11.0, weight: .regular),
                     .foregroundColor: UIColor.black]
         }
         
@@ -20,9 +25,9 @@ final class EditableTextField: ASDisplayNode {
                     .foregroundColor: UIColor.gray]
         }
         
-        static var nameAttribute: [NSAttributedString.Key: Any] {
+        static var errorAttribute: [NSAttributedString.Key: Any] {
             return [.font: UIFont.systemFont(ofSize: 11.0, weight: .regular),
-                    .foregroundColor: UIColor.systemGreen]
+                    .foregroundColor: UIColor.systemRed]
         }
     }
     
@@ -38,14 +43,21 @@ final class EditableTextField: ASDisplayNode {
     }
     private lazy var infoNode = ASTextNode()
     
-    init(_ placeholder: String, _ info: String, _ title: String) {
+    private var isShow = false
+    private var info = ""
+    
+    init(_ placeholder: String, _ info: String, _ title: String, _ isShow: Bool = false) {
         super.init()
+        
+        self.isShow = isShow
+        self.info = info
         self.automaticallyManagesSubnodes = true
         self.automaticallyRelayoutOnSafeAreaChanges = true
         
-        textfieldNode.attributedPlaceholderText = NSAttributedString(string: placeholder, attributes: Const.titleAttribute)
+        textfieldNode.attributedPlaceholderText = NSAttributedString(string: placeholder, attributes: Const.textFieldAttribute)
         infoNode.attributedText = NSAttributedString(string: info, attributes: Const.descriptionAttribute)
-        titleTextNode.attributedText = NSAttributedString(string: title, attributes: Const.nameAttribute)
+        titleTextNode.attributedText = NSAttributedString(string: title, attributes: Const.titleAttribute)
+        infoNode.isHidden = !isShow
     }
     
     // MARK: Node Life Cycle
@@ -79,5 +91,18 @@ extension EditableTextField: ASEditableTextNodeDelegate {
     func editableTextNodeDidFinishEditing(_ editableTextNode: ASEditableTextNode) {
         print("bye")
         titleTextNode.isHidden = true
+    }
+    
+    func editableTextNode(_ editableTextNode: ASEditableTextNode, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if !isShow {
+            if text.isEmpty {
+                infoNode.isHidden = false
+                infoNode.attributedText = NSAttributedString(string: info, attributes: Const.errorAttribute)
+            } else {
+                infoNode.isHidden = true
+            }
+        }
+        
+        return true
     }
 }
