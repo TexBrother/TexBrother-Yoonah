@@ -18,6 +18,7 @@ final class AddCardController: ASDKViewController<ASDisplayNode> {
     // MARK: - UI
     private lazy var tableNode = ASTableNode().then {
         $0.dataSource = self
+        $0.delegate = self
         $0.backgroundColor = .white
     }
     private lazy var detailButton = ASButtonNode().then {
@@ -78,6 +79,12 @@ final class AddCardController: ASDKViewController<ASDisplayNode> {
         return ASInsetLayoutSpec (
             insets: safeAreaInset, child: contentLayout)
     }
+    
+//    private func headerASTableViewLayout() -> ASLayoutSpec {
+//        return ASLayoutSpec {
+//            VStackLayout
+//        }
+//    }
 }
 
 // MARK: - ASTableDataSource
@@ -109,7 +116,9 @@ extension AddCardController: ASTableDataSource {
             return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
         }
     }
+}
 
+extension AddCardController: ASTableDelegate {
     func tableNode(_ tableNode: ASTableNode, willDisplayRowWith node: ASCellNode) {
         node.backgroundColor = .white
     }

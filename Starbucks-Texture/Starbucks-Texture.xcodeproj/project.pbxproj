@@ -17,6 +17,7 @@
 		ED63854A26FA1AC0007F7F8D /* AdCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63854926FA1AC0007F7F8D /* AdCellNode.swift */; };
 		ED63854D26FA2298007F7F8D /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63854C26FA2298007F7F8D /* NavigationController+.swift */; };
 		ED71D7C527044127006347EC /* AddCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7C427044127006347EC /* AddCardController.swift */; };
+		ED71D7C92704497A006347EC /* AddCardHeaderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7C82704497A006347EC /* AddCardHeaderNode.swift */; };
 		EDB6BC8D26FA438A00A5F64C /* DetailCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB6BC8C26FA438A00A5F64C /* DetailCellNode.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		ED63854926FA1AC0007F7F8D /* AdCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdCellNode.swift; sourceTree = "<group>"; };
 		ED63854C26FA2298007F7F8D /* NavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+.swift"; sourceTree = "<group>"; };
 		ED71D7C427044127006347EC /* AddCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardController.swift; sourceTree = "<group>"; };
+		ED71D7C82704497A006347EC /* AddCardHeaderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardHeaderNode.swift; sourceTree = "<group>"; };
 		EDB6BC8C26FA438A00A5F64C /* DetailCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,9 +128,8 @@
 		ED63854026FA10E3007F7F8D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				ED71D7C727044959006347EC /* Pay */,
 				ED63854326FA120F007F7F8D /* TabbarController.swift */,
-				ED63854526FA1263007F7F8D /* PayController.swift */,
-				ED71D7C427044127006347EC /* AddCardController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -136,9 +137,7 @@
 		ED63854126FA10F1007F7F8D /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				ED63854726FA1AB2007F7F8D /* CardCellNode.swift */,
-				ED63854926FA1AC0007F7F8D /* AdCellNode.swift */,
-				EDB6BC8C26FA438A00A5F64C /* DetailCellNode.swift */,
+				ED71D7C627044928006347EC /* Pay */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -149,6 +148,26 @@
 				ED63854C26FA2298007F7F8D /* NavigationController+.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ED71D7C627044928006347EC /* Pay */ = {
+			isa = PBXGroup;
+			children = (
+				ED63854726FA1AB2007F7F8D /* CardCellNode.swift */,
+				ED63854926FA1AC0007F7F8D /* AdCellNode.swift */,
+				EDB6BC8C26FA438A00A5F64C /* DetailCellNode.swift */,
+				ED71D7C82704497A006347EC /* AddCardHeaderNode.swift */,
+			);
+			path = Pay;
+			sourceTree = "<group>";
+		};
+		ED71D7C727044959006347EC /* Pay */ = {
+			isa = PBXGroup;
+			children = (
+				ED63854526FA1263007F7F8D /* PayController.swift */,
+				ED71D7C427044127006347EC /* AddCardController.swift */,
+			);
+			path = Pay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED71D7C92704497A006347EC /* AddCardHeaderNode.swift in Sources */,
 				ED63852A26FA0E83007F7F8D /* AppDelegate.swift in Sources */,
 				ED71D7C527044127006347EC /* AddCardController.swift in Sources */,
 				EDB6BC8D26FA438A00A5F64C /* DetailCellNode.swift in Sources */,
