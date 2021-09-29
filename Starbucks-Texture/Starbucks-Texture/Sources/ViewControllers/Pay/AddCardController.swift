@@ -7,23 +7,19 @@
 
 import AsyncDisplayKit
 import Then
+import TextureSwiftSupport
 
 final class AddCardController: ASDKViewController<ASDisplayNode> {
     // MARK: - Properties
     enum Section: Int, CaseIterable {
-        case card
-        case advertise
+        case header
+        case addCard
     }
     
     // MARK: - UI
     private lazy var tableNode = ASTableNode().then {
         $0.dataSource = self
-        $0.delegate = self
         $0.backgroundColor = .white
-    }
-    private lazy var detailButton = ASButtonNode().then {
-        $0.setImage(UIImage(systemName: "list.bullet"), for: .normal)
-        $0.tintColor = .lightGray
     }
     
     // MARK: - Initializing
@@ -64,7 +60,7 @@ final class AddCardController: ASDKViewController<ASDisplayNode> {
     
     // MARK: - Layout
     private func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
-        let contentLayout = ASStackLayoutSpec (
+        let tableLayout = ASStackLayoutSpec (
             direction: .vertical,
             spacing: 0.0,
             justifyContent: .start,
@@ -75,16 +71,11 @@ final class AddCardController: ASDKViewController<ASDisplayNode> {
                 })
             ]
         )
+        
         let safeAreaInset: UIEdgeInsets = self.view.safeAreaInsets
         return ASInsetLayoutSpec (
-            insets: safeAreaInset, child: contentLayout)
+            insets: safeAreaInset, child: tableLayout)
     }
-    
-//    private func headerASTableViewLayout() -> ASLayoutSpec {
-//        return ASLayoutSpec {
-//            VStackLayout
-//        }
-//    }
 }
 
 // MARK: - ASTableDataSource
@@ -98,11 +89,10 @@ extension AddCardController: ASTableDataSource {
             guard let section = Section.init(rawValue: indexPath.row) else { return ASCellNode() }
             
             switch section {
-            case .card:
-                let cardCellNode = CardCellNode()
-                return cardCellNode
-            case .advertise:
-                return AdCellNode()
+            case .header:
+                return AddCardHeaderCellNode()
+            case .addCard:
+                return CardDetailCellNode()
             }
         }
     }
@@ -110,15 +100,13 @@ extension AddCardController: ASTableDataSource {
     func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
         guard let section = Section.init(rawValue: indexPath.row) else { return ASSizeRange() }
         switch section {
-        case .card:
+        case .header:
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 50))
+        case .addCard:
             return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 600))
-        case .advertise:
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
         }
     }
-}
-
-extension AddCardController: ASTableDelegate {
+    
     func tableNode(_ tableNode: ASTableNode, willDisplayRowWith node: ASCellNode) {
         node.backgroundColor = .white
     }
