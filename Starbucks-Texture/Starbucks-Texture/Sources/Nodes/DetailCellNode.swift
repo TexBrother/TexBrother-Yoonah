@@ -61,6 +61,13 @@ final class DetailCellNode: ASCellNode {
     
     override func didLoad() {
         super.didLoad()
+        addCardButtonNode.addTarget(self, action: #selector(didTappedAddCardButton), forControlEvents: .touchUpInside)
+    }
+    
+    // MARK: - @objc
+    @objc
+    func didTappedAddCardButton() {
+        print("addCard")
     }
     
     // MARK: Layout
