@@ -39,16 +39,21 @@ final class PayController: ASDKViewController<ASDisplayNode> {
         self.node.layoutSpecBlock = { [weak self] (node, constraintedSize) -> ASLayoutSpec in
             return self?.layoutSpecThatFits(constraintedSize) ?? ASLayoutSpec()
         }
-        
-        self.node.onDidLoad({ [weak self] _ in
-            self?.tableNode.view.separatorStyle = .none
-            self?.tableNode.view.showsVerticalScrollIndicator = true
-            self?.setupNavigationController()
-        })
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Life Cycle
+    override func viewDidLoad() {
+        tableNode.view.separatorStyle = .none
+        tableNode.view.showsVerticalScrollIndicator = true
+        setupNavigationController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupTabbar()
     }
     
     // MARK: - Custom Method
@@ -62,6 +67,10 @@ final class PayController: ASDKViewController<ASDisplayNode> {
         
         let barButton = UIBarButtonItem(customView: detailButton)
         navigationItem.rightBarButtonItem = barButton
+    }
+    
+    private func setupTabbar() {
+        tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - Layout

@@ -39,6 +39,7 @@ final class AddCardController: ASDKViewController<ASDisplayNode> {
             self?.tableNode.view.separatorStyle = .none
             self?.tableNode.view.showsVerticalScrollIndicator = true
             self?.setupNavigationController()
+            self?.setupTabbar()
         })
     }
     
@@ -54,6 +55,10 @@ final class AddCardController: ASDKViewController<ASDisplayNode> {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
         navigationItem.title = "카드 추가"
+    }
+    
+    private func setupTabbar() {
+        tabBarController?.tabBar.isHidden = true
     }
     
     // MARK: - Layout
