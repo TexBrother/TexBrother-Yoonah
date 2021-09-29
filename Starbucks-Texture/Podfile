@@ -8,5 +8,6 @@ target 'Starbucks-Texture' do
   # Pods for Starbucks-Texture
   pod "Texture"
   pod "Then"
+  pod 'TextureSwiftSupport'
 
 end
