@@ -1,18 +1,14 @@
 //
-//  PayController.swift
+//  AddCardController.swift
 //  Starbucks-Texture
 //
-//  Created by SHIN YOON AH on 2021/09/21.
+//  Created by SHIN YOON AH on 2021/09/29.
 //
 
 import AsyncDisplayKit
 import Then
 
-protocol AddCardDelegate: PayController {
-    func cardClickedToPresent(_ viewController: UIViewController)
-}
-
-final class PayController: ASDKViewController<ASDisplayNode> {
+final class AddCardController: ASDKViewController<ASDisplayNode> {
     // MARK: - Properties
     enum Section: Int, CaseIterable {
         case card
@@ -24,9 +20,8 @@ final class PayController: ASDKViewController<ASDisplayNode> {
         $0.dataSource = self
         $0.backgroundColor = .white
     }
-    private lazy var detailButton = UIButton().then {
+    private lazy var detailButton = ASButtonNode().then {
         $0.setImage(UIImage(systemName: "list.bullet"), for: .normal)
-        $0.setPreferredSymbolConfiguration(.init(pointSize: 17, weight: .regular, scale: .large), forImageIn: .normal)
         $0.tintColor = .lightGray
     }
     
@@ -54,14 +49,11 @@ final class PayController: ASDKViewController<ASDisplayNode> {
     // MARK: - Custom Method
     private func setupNavigationController() {
         navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.tintColor = .darkGray
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.layer.applyShadow(color: .gray, alpha: 0.3, x: 0, y: 0, blur: 12)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
-        navigationItem.title = "Pay"
-        
-        let barButton = UIBarButtonItem(customView: detailButton)
-        navigationItem.rightBarButtonItem = barButton
+        navigationItem.title = "카드 추가"
     }
     
     // MARK: - Layout
@@ -72,7 +64,7 @@ final class PayController: ASDKViewController<ASDisplayNode> {
             justifyContent: .start,
             alignItems: .stretch,
             children: [
-                tableNode.styled({
+                tableNode.styled ({
                     $0.flexGrow = 1.0
                 })
             ]
@@ -84,7 +76,7 @@ final class PayController: ASDKViewController<ASDisplayNode> {
 }
 
 // MARK: - ASTableDataSource
-extension PayController: ASTableDataSource {
+extension AddCardController: ASTableDataSource {
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
@@ -96,7 +88,6 @@ extension PayController: ASTableDataSource {
             switch section {
             case .card:
                 let cardCellNode = CardCellNode()
-                cardCellNode.delegate = self
                 return cardCellNode
             case .advertise:
                 return AdCellNode()
@@ -116,12 +107,5 @@ extension PayController: ASTableDataSource {
 
     func tableNode(_ tableNode: ASTableNode, willDisplayRowWith node: ASCellNode) {
         node.backgroundColor = .white
-    }
-}
-
-// MARK: - AddCardDelegate
-extension PayController: AddCardDelegate {
-    func cardClickedToPresent(_ viewController: UIViewController) {
-        navigationController?.pushViewController(viewController, animated: true)
     }
 }
