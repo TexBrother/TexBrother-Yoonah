@@ -26,9 +26,9 @@ final class CardDetailCellNode: ASCellNode {
     }
     
     // MARK: - UI
-    private let nameTextFieldNode = EditableTextField("카드명 최대 20자 (선택)", "카드명은 미입력 시 자동으로 부여됩니다.")
-    private let numberTextFieldNode = EditableTextField("스타벅스 카드번호 16자리 (필수)", "")
-    private let pinTextFieldNode = EditableTextField("Pin번호 8자리 (필수)", "")
+    private let nameTextFieldNode = EditableTextField("카드명 최대 20자 (선택)", "카드명은 미입력 시 자동으로 부여됩니다.", "카드명")
+    private let numberTextFieldNode = EditableTextField("스타벅스 카드번호 16자리 (필수)", "", "스타벅스 카드번호")
+    private let pinTextFieldNode = EditableTextField("Pin번호 8자리 (필수)", "", "Pin번호")
     
     override init() {
         super.init()
@@ -49,7 +49,7 @@ final class CardDetailCellNode: ASCellNode {
     private func contentLayoutSpec() -> ASLayoutSpec {
         return ASStackLayoutSpec(
             direction: .vertical,
-            spacing: 30.0,
+            spacing: 10.0,
             justifyContent: .start,
             alignItems: .stretch,
             children: [
@@ -63,8 +63,8 @@ final class CardDetailCellNode: ASCellNode {
     private func contentInsetLayoutSpec() -> ASLayoutSpec {
         var containerInsets: UIEdgeInsets = self.safeAreaInsets
         containerInsets.top = 20.0
-        containerInsets.left = 20.0
-        containerInsets.right = 20.0
+        containerInsets.left = 15.0
+        containerInsets.right = 15.0
         
         return ASInsetLayoutSpec(
             insets: containerInsets,

@@ -19,22 +19,33 @@ final class EditableTextField: ASDisplayNode {
             return [.font: UIFont.systemFont(ofSize: 11.0, weight: .regular),
                     .foregroundColor: UIColor.gray]
         }
+        
+        static var nameAttribute: [NSAttributedString.Key: Any] {
+            return [.font: UIFont.systemFont(ofSize: 11.0, weight: .regular),
+                    .foregroundColor: UIColor.systemGreen]
+        }
     }
     
-    private let textfieldNode = ASEditableTextNode().then {
+    private lazy var textfieldNode = ASEditableTextNode().then {
+        $0.textContainerInset = .init(top: 5, left: 0, bottom: 5, right: 0)
         $0.scrollEnabled = false
         $0.borderWidth = 0.5
-        $0.borderColor = UIColor.systemGray4.cgColor
+        $0.borderColor = UIColor.systemGray2.cgColor
+        $0.delegate = self
     }
-    private let infoNode = ASTextNode()
+    private lazy var titleTextNode = ASTextNode().then {
+        $0.isHidden = true
+    }
+    private lazy var infoNode = ASTextNode()
     
-    init(_ placeholder: String, _ info: String) {
+    init(_ placeholder: String, _ info: String, _ title: String) {
         super.init()
         self.automaticallyManagesSubnodes = true
         self.automaticallyRelayoutOnSafeAreaChanges = true
         
         textfieldNode.attributedPlaceholderText = NSAttributedString(string: placeholder, attributes: Const.titleAttribute)
         infoNode.attributedText = NSAttributedString(string: info, attributes: Const.descriptionAttribute)
+        titleTextNode.attributedText = NSAttributedString(string: title, attributes: Const.nameAttribute)
     }
     
     // MARK: Node Life Cycle
@@ -48,12 +59,25 @@ final class EditableTextField: ASDisplayNode {
                                             spacing: 8.0,
                                             justifyContent: .start,
                                             alignItems: .stretch,
-                                            children: [textfieldNode,
+                                            children: [titleTextNode,
+                                                       textfieldNode,
                                                        infoNode])
         
         return ASInsetLayoutSpec(
                 insets: UIEdgeInsets(top: 15, left: 14, bottom: 16, right: 15),
                 child: stackLayout
         )
+    }
+}
+
+extension EditableTextField: ASEditableTextNodeDelegate {
+    func editableTextNodeDidBeginEditing(_ editableTextNode: ASEditableTextNode) {
+        print("hi")
+        titleTextNode.isHidden = false
+    }
+    
+    func editableTextNodeDidFinishEditing(_ editableTextNode: ASEditableTextNode) {
+        print("bye")
+        titleTextNode.isHidden = true
     }
 }
