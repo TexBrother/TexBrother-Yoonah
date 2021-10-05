@@ -9,12 +9,27 @@ import AsyncDisplayKit
 import Then
 
 final class CouponCellNode: ASCellNode {
+    // MARK: - Const
+    struct Const {
+        static var titleAttribute: [NSAttributedString.Key: Any] {
+            return [.font: UIFont.systemFont(ofSize: 15.0, weight: .bold),
+                    .foregroundColor: UIColor.black]
+        }
+    }
+    
     // MARK: - UI
-    private var adImageNode = ASImageNode().then {
-        $0.clipsToBounds = true
-        $0.contentMode = .scaleAspectFill
-        $0.image = UIImage(named: "advertise")
-        $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: 70)
+    private var dividerNode = ASDisplayNode().then {
+        $0.backgroundColor = .lightGray
+        $0.styled {
+            $0.height = ASDimension(unit: .points, value: 10)
+            $0.width = ASDimension(unit: .points, value: 1)
+        }
+    }
+    private var couponTextNode = ASTextNode().then {
+        $0.attributedText = NSAttributedString(string: "Coupon", attributes: Const.titleAttribute)
+    }
+    private var giftTextNode = ASTextNode().then {
+        $0.attributedText = NSAttributedString(string: "e-Gift Item", attributes: Const.titleAttribute)
     }
     
     // MARK: - Initializing
@@ -31,9 +46,21 @@ final class CouponCellNode: ASCellNode {
     
     // MARK: - Layout
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
+        let stackLayout = ASStackLayoutSpec(
+            direction: .horizontal,
+            spacing: 71.0,
+            justifyContent: .center,
+            alignItems: .center,
+            children: [
+                couponTextNode,
+                dividerNode,
+                giftTextNode
+            ]
+        )
+        
         return ASInsetLayoutSpec (
-            insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
-            child: adImageNode
+            insets: UIEdgeInsets(top: 18, left: 0, bottom: 26, right: 0),
+            child: stackLayout
         )
     }
 }
