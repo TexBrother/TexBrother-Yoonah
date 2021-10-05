@@ -82,6 +82,8 @@ final class DetailCardCellNode: ASCellNode {
     private var nameTextNode = ASTextNode()
     private var balanceTextNode = ASTextNode()
     private var barcodeTextNode = ASTextNode()
+    private var autoChargeButtonNode = ChargeButton("auto", title: "자동 충전")
+    private var normalChargeButtonNode = ChargeButton("normal", title: "일반 충전")
     
     override init() {
         super.init()
@@ -169,6 +171,29 @@ final class DetailCardCellNode: ASCellNode {
         )
     }
     
+    private func chargeContentLayoutSpec() -> ASLayoutSpec {
+        let chargeLayout = ASStackLayoutSpec(
+            direction: .horizontal,
+            spacing: 79.0,
+            justifyContent: .start,
+            alignItems: .start,
+            children: [
+                autoChargeButtonNode,
+                normalChargeButtonNode
+            ]
+        )
+        return ASStackLayoutSpec(
+            direction: .vertical,
+            spacing: 31.0,
+            justifyContent: .start,
+            alignItems: .center,
+            children: [
+                contentLayoutSpec(),
+                chargeLayout
+            ]
+        )
+    }
+    
     private func contentInsetLayoutSpec() -> ASLayoutSpec {
         var containerInsets: UIEdgeInsets = self.safeAreaInsets
         containerInsets.top = 20.0
@@ -177,7 +202,7 @@ final class DetailCardCellNode: ASCellNode {
         
         return ASInsetLayoutSpec(
             insets: containerInsets,
-            child: contentLayoutSpec()
+            child: chargeContentLayoutSpec()
         )
     }
     

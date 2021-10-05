@@ -24,6 +24,7 @@
 		EDB6BC8D26FA438A00A5F64C /* DetailEmptyCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB6BC8C26FA438A00A5F64C /* DetailEmptyCellNode.swift */; };
 		EDF049F9270CC4B300C4B4B0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF049F8270CC4B300C4B4B0 /* Card.swift */; };
 		EDF049FB270CC7FF00C4B4B0 /* DetailCardCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF049FA270CC7FF00C4B4B0 /* DetailCardCellNode.swift */; };
+		EDF04A03270CD56300C4B4B0 /* ChargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF04A02270CD56300C4B4B0 /* ChargeButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		EDB6BC8C26FA438A00A5F64C /* DetailEmptyCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEmptyCellNode.swift; sourceTree = "<group>"; };
 		EDF049F8270CC4B300C4B4B0 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		EDF049FA270CC7FF00C4B4B0 /* DetailCardCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCardCellNode.swift; sourceTree = "<group>"; };
+		EDF04A02270CD56300C4B4B0 /* ChargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +123,8 @@
 			children = (
 				EDF049F7270CC4A500C4B4B0 /* Models */,
 				ED63854B26FA2277007F7F8D /* Extensions */,
-				ED63854126FA10F1007F7F8D /* Nodes */,
+				EDF049FF270CD52000C4B4B0 /* ComponentNodes */,
+				ED63854126FA10F1007F7F8D /* CellNodes */,
 				ED63854026FA10E3007F7F8D /* ViewControllers */,
 				ED63853F26FA10A3007F7F8D /* Supports */,
 			);
@@ -145,13 +148,12 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		ED63854126FA10F1007F7F8D /* Nodes */ = {
+		ED63854126FA10F1007F7F8D /* CellNodes */ = {
 			isa = PBXGroup;
 			children = (
-				ED71D7D027049326006347EC /* Shared */,
 				ED71D7C627044928006347EC /* Pay */,
 			);
-			path = Nodes;
+			path = CellNodes;
 			sourceTree = "<group>";
 		};
 		ED63854B26FA2277007F7F8D /* Extensions */ = {
@@ -223,6 +225,31 @@
 				ED63854326FA120F007F7F8D /* TabbarController.swift */,
 			);
 			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		EDF049FF270CD52000C4B4B0 /* ComponentNodes */ = {
+			isa = PBXGroup;
+			children = (
+				EDF04A00270CD53A00C4B4B0 /* Pay */,
+				ED71D7D027049326006347EC /* Shared */,
+			);
+			path = ComponentNodes;
+			sourceTree = "<group>";
+		};
+		EDF04A00270CD53A00C4B4B0 /* Pay */ = {
+			isa = PBXGroup;
+			children = (
+				EDF04A01270CD54200C4B4B0 /* Card */,
+			);
+			path = Pay;
+			sourceTree = "<group>";
+		};
+		EDF04A01270CD54200C4B4B0 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				EDF04A02270CD56300C4B4B0 /* ChargeButton.swift */,
+			);
+			path = Card;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,6 +367,7 @@
 			files = (
 				ED71D7C92704497A006347EC /* AddCardHeaderCellNode.swift in Sources */,
 				ED63852A26FA0E83007F7F8D /* AppDelegate.swift in Sources */,
+				EDF04A03270CD56300C4B4B0 /* ChargeButton.swift in Sources */,
 				ED71D7C527044127006347EC /* AddCardController.swift in Sources */,
 				EDB6BC8D26FA438A00A5F64C /* DetailEmptyCellNode.swift in Sources */,
 				EDF049F9270CC4B300C4B4B0 /* Card.swift in Sources */,
