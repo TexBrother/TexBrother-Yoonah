@@ -6,88 +6,63 @@
 //
 
 import AsyncDisplayKit
+import Then 
 
 final class CardCellNode: ASCellNode {
-    private struct Const {
-        static var userAttribute: [NSAttributedString.Key: Any] {
-            return [.font: UIFont.systemFont(ofSize: 16.0, weight: .semibold),
-                    .foregroundColor: UIColor.black]
-        }
-        
-        static var freindsAttribute: [NSAttributedString.Key: Any] {
-            return [.font: UIFont.systemFont(ofSize: 14.0, weight: .semibold),
-                    .foregroundColor: UIColor.black]
-        }
-        
-        static var descAttribute: [NSAttributedString.Key: Any] {
-            return [.font: UIFont.systemFont(ofSize: 11.0, weight: .bold),
-                    .foregroundColor: UIColor.gray]
-        }
+    // MARK: - Properties
+    let cards: [String] = []
+    
+    // MARK: - UI
+    private lazy var collectionNode = ASCollectionNode(collectionViewLayout: flowLayout).then {
+        $0.dataSource = self
+        $0.backgroundColor = .white
+        $0.showsHorizontalScrollIndicator = false
+        $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: 500)
+    }
+    private var flowLayout = UICollectionViewFlowLayout().then {
+        $0.scrollDirection = .horizontal
+        $0.minimumInteritemSpacing = 0
+        $0.minimumLineSpacing = 20
+        $0.sectionInset = .init(top: 20, left: 25, bottom: 50, right: 25)
+        $0.itemSize = CGSize(width: UIScreen.main.bounds.size.width - 50, height: 430)
+        $0.headerReferenceSize = .zero
+        $0.footerReferenceSize = .zero
     }
     
-    private lazy var profileImageNode: ASImageNode = {
-        let node = ASImageNode()
-        node.clipsToBounds = true
-        node.contentMode = .scaleAspectFit
-        return node
-    }()
-    
-    private lazy var nameNode: ASTextNode = {
-        let node = ASTextNode()
-        node.maximumNumberOfLines = 1
-        return node
-    }()
-    
-    private lazy var statusMessageNode: ASTextNode = {
-        let node = ASTextNode()
-        node.maximumNumberOfLines = 1
-        return node
-    }()
-    
-    // MARK: Initializing
+    // MARK: - Initalizing
     override init() {
         super.init()
         self.automaticallyManagesSubnodes = true
         self.automaticallyRelayoutOnSafeAreaChanges = true
-        
-        setNeedsLayout()
+        self.selectionStyle = .none
     }
     
-    // MARK: Node Life Cycle
-    override func layout() {
-        super.layout()
+    override func didLoad() {
+        super.didLoad()
     }
     
-    
-    // MARK: Layout
-    override func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
+    // MARK: - Layout
+    override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         return ASInsetLayoutSpec (
-            insets: UIEdgeInsets(top: 4, left: 15, bottom: 5, right: 0),
-            child: contentLayoutSpec()
-        )
-    }
-    
-    private func contentLayoutSpec() -> ASLayoutSpec {
-        return ASStackLayoutSpec (
-            direction: .horizontal,
-            spacing: 11.0,
-            justifyContent: .start,
-            alignItems: .center,
-            children: [
-                profileImageNode,
-                labelStackLayoutSpec()
-            ]
-        )
-    }
-    
-    private func labelStackLayoutSpec() -> ASLayoutSpec {
-        return ASStackLayoutSpec (
-            direction: .vertical,
-            spacing: 7.0,
-            justifyContent: .spaceBetween,
-            alignItems: .start,
-            children: [nameNode, statusMessageNode]
+            insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
+            child: collectionNode
         )
     }
 }
 
+extension CardCellNode: ASCollectionDataSource {
+    func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
+        guard cards.count > 0 else { return 1 }
+        
+        return cards.count
+    }
+    
+    func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
+        let cellNodeBlock = { () -> ASCellNode in
+            let cellNode = DetailCellNode(name: "골드", balance: "1,000")
+            return cellNode
+        }
+        
+        return cellNodeBlock
+    }
+}

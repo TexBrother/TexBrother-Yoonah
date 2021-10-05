@@ -6,87 +6,34 @@
 //
 
 import AsyncDisplayKit
+import Then
 
 final class AdCellNode: ASCellNode {
-    private struct Const {
-        static var userAttribute: [NSAttributedString.Key: Any] {
-            return [.font: UIFont.systemFont(ofSize: 16.0, weight: .semibold),
-                    .foregroundColor: UIColor.black]
-        }
-        
-        static var freindsAttribute: [NSAttributedString.Key: Any] {
-            return [.font: UIFont.systemFont(ofSize: 14.0, weight: .semibold),
-                    .foregroundColor: UIColor.black]
-        }
-        
-        static var descAttribute: [NSAttributedString.Key: Any] {
-            return [.font: UIFont.systemFont(ofSize: 11.0, weight: .bold),
-                    .foregroundColor: UIColor.gray]
-        }
+    // MARK: - UI
+    private var adImageNode = ASImageNode().then {
+        $0.clipsToBounds = true
+        $0.contentMode = .scaleAspectFill
+        $0.image = UIImage(named: "advertise")
+        $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: 70)
     }
     
-    private lazy var profileImageNode: ASImageNode = {
-        let node = ASImageNode()
-        node.clipsToBounds = true
-        node.contentMode = .scaleAspectFit
-        return node
-    }()
-    
-    private lazy var nameNode: ASTextNode = {
-        let node = ASTextNode()
-        node.maximumNumberOfLines = 1
-        return node
-    }()
-    
-    private lazy var statusMessageNode: ASTextNode = {
-        let node = ASTextNode()
-        node.maximumNumberOfLines = 1
-        return node
-    }()
-    
-    // MARK: Initializing
+    // MARK: - Initializing
     override init() {
         super.init()
         self.automaticallyManagesSubnodes = true
         self.automaticallyRelayoutOnSafeAreaChanges = true
-        
-        setNeedsLayout()
+        self.selectionStyle = .none
     }
     
-    // MARK: Node Life Cycle
-    override func layout() {
-        super.layout()
+    override func didLoad() {
+        super.didLoad()
     }
     
-    
-    // MARK: Layout
-    override func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
+    // MARK: - Layout
+    override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         return ASInsetLayoutSpec (
-            insets: UIEdgeInsets(top: 4, left: 15, bottom: 5, right: 0),
-            child: contentLayoutSpec()
-        )
-    }
-    
-    private func contentLayoutSpec() -> ASLayoutSpec {
-        return ASStackLayoutSpec (
-            direction: .horizontal,
-            spacing: 11.0,
-            justifyContent: .start,
-            alignItems: .center,
-            children: [
-                profileImageNode,
-                labelStackLayoutSpec()
-            ]
-        )
-    }
-    
-    private func labelStackLayoutSpec() -> ASLayoutSpec {
-        return ASStackLayoutSpec (
-            direction: .vertical,
-            spacing: 7.0,
-            justifyContent: .spaceBetween,
-            alignItems: .start,
-            children: [nameNode, statusMessageNode]
+            insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
+            child: adImageNode
         )
     }
 }

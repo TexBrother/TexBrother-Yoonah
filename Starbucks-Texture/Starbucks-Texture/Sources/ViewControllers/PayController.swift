@@ -10,13 +10,6 @@ import Then
 
 final class PayController: ASDKViewController<ASDisplayNode> {
     // MARK: - Properties
-    private struct Const {
-        static var nameAttribute: [NSAttributedString.Key: Any] {
-            return [.font: UIFont.systemFont(ofSize: 18.0, weight: .regular),
-                    .foregroundColor: UIColor.white]
-        }
-    }
-    
     enum Section: Int, CaseIterable {
         case card
         case advertise
@@ -33,7 +26,7 @@ final class PayController: ASDKViewController<ASDisplayNode> {
         $0.tintColor = .lightGray
     }
     
-    // MARK: - Initalization
+    // MARK: - Initializing
     override init() {
         super.init(node: .init())
         self.node.backgroundColor = .white
@@ -45,6 +38,7 @@ final class PayController: ASDKViewController<ASDisplayNode> {
         
         self.node.onDidLoad({ [weak self] _ in
             self?.tableNode.view.separatorStyle = .none
+            self?.tableNode.view.showsVerticalScrollIndicator = true
             self?.setupNavigationController()
         })
     }
@@ -66,6 +60,7 @@ final class PayController: ASDKViewController<ASDisplayNode> {
         navigationItem.rightBarButtonItem = barButton
     }
     
+    // MARK: - Layout
     private func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
         let contentLayout = ASStackLayoutSpec (
             direction: .vertical,
@@ -104,10 +99,10 @@ extension PayController: ASTableDataSource {
     }
 
     func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
-        guard let section = Section.init(rawValue: indexPath.section) else { return ASSizeRange() }
+        guard let section = Section.init(rawValue: indexPath.row) else { return ASSizeRange() }
         switch section {
         case .card:
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 100))
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 600))
         case .advertise:
             return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
         }

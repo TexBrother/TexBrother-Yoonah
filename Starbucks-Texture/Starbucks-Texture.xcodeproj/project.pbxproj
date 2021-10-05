@@ -16,6 +16,7 @@
 		ED63854826FA1AB2007F7F8D /* CardCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63854726FA1AB2007F7F8D /* CardCellNode.swift */; };
 		ED63854A26FA1AC0007F7F8D /* AdCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63854926FA1AC0007F7F8D /* AdCellNode.swift */; };
 		ED63854D26FA2298007F7F8D /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63854C26FA2298007F7F8D /* NavigationController+.swift */; };
+		EDB6BC8D26FA438A00A5F64C /* DetailCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB6BC8C26FA438A00A5F64C /* DetailCellNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		ED63854726FA1AB2007F7F8D /* CardCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellNode.swift; sourceTree = "<group>"; };
 		ED63854926FA1AC0007F7F8D /* AdCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdCellNode.swift; sourceTree = "<group>"; };
 		ED63854C26FA2298007F7F8D /* NavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+.swift"; sourceTree = "<group>"; };
+		EDB6BC8C26FA438A00A5F64C /* DetailCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			children = (
 				ED63854726FA1AB2007F7F8D /* CardCellNode.swift */,
 				ED63854926FA1AC0007F7F8D /* AdCellNode.swift */,
+				EDB6BC8C26FA438A00A5F64C /* DetailCellNode.swift */,
 			);
 			path = Nodes;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED63852A26FA0E83007F7F8D /* AppDelegate.swift in Sources */,
+				EDB6BC8D26FA438A00A5F64C /* DetailCellNode.swift in Sources */,
 				ED63854826FA1AB2007F7F8D /* CardCellNode.swift in Sources */,
 				ED63854A26FA1AC0007F7F8D /* AdCellNode.swift in Sources */,
 				ED63854426FA120F007F7F8D /* TabbarController.swift in Sources */,
