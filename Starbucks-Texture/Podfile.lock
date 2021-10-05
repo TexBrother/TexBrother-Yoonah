@@ -34,10 +34,26 @@ PODS:
     - Texture/Core
   - Texture/Video (3.0.0):
     - Texture/Core
+  - TextureSwiftSupport (3.12.0):
+    - Texture/Core (>= 3)
+    - TextureSwiftSupport/Components (= 3.12.0)
+    - TextureSwiftSupport/Experiments (= 3.12.0)
+    - TextureSwiftSupport/Extensions (= 3.12.0)
+    - TextureSwiftSupport/LayoutSpecBuilders (= 3.12.0)
+  - TextureSwiftSupport/Components (3.12.0):
+    - Texture/Core (>= 3)
+    - TextureSwiftSupport/LayoutSpecBuilders
+  - TextureSwiftSupport/Experiments (3.12.0):
+    - Texture/Core (>= 3)
+  - TextureSwiftSupport/Extensions (3.12.0):
+    - Texture/Core (>= 3)
+  - TextureSwiftSupport/LayoutSpecBuilders (3.12.0):
+    - Texture/Core (>= 3)
   - Then (2.7.0)
 
 DEPENDENCIES:
   - Texture
+  - TextureSwiftSupport
   - Then
 
 SPEC REPOS:
@@ -46,6 +62,7 @@ SPEC REPOS:
     - PINOperation
     - PINRemoteImage
     - Texture
+    - TextureSwiftSupport
     - Then
 
 SPEC CHECKSUMS:
@@ -53,8 +70,9 @@ SPEC CHECKSUMS:
   PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
+  TextureSwiftSupport: bab3c5e811edf9dc32eb28db447723b9eee30b61
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 0b4b9160d45d3b705989382cc097795a1dfb440e
+PODFILE CHECKSUM: ea9f212e471e47dcc9d5def85347eddb0506221d
 
 COCOAPODS: 1.11.0.rc.1

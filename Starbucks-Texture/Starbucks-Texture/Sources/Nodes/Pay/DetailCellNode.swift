@@ -32,7 +32,6 @@ final class DetailCellNode: ASCellNode {
     private lazy var backview = ASDisplayNode().then {
         $0.backgroundColor = .white
     }
-    
     private lazy var addCardButtonNode = ASButtonNode().then {
         $0.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width - 100, height: 180)
@@ -46,6 +45,8 @@ final class DetailCellNode: ASCellNode {
     private lazy var descriptionTextNode = ASTextNode().then {
         $0.attributedText = NSAttributedString(string: "매장과 사이렌오더에서 쉽게 편리하게\n사용할 수 있고, 별도 적립할 수 있습니다.", attributes: Const.descriptionAttribute)
     }
+    
+    var delegate: AddCardDelegate?
     
     init(name: String, balance: String) {
         super.init()
@@ -61,6 +62,14 @@ final class DetailCellNode: ASCellNode {
     
     override func didLoad() {
         super.didLoad()
+        addCardButtonNode.addTarget(self, action: #selector(didTappedAddCardButton), forControlEvents: .touchUpInside)
+    }
+    
+    // MARK: - @objc
+    @objc
+    func didTappedAddCardButton() {
+        let vc = AddCardController()
+        delegate?.cardClickedToPresent(vc)
     }
     
     // MARK: Layout

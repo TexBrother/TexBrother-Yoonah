@@ -8,6 +8,10 @@
 import AsyncDisplayKit
 import Then
 
+protocol AddCardDelegate: PayController {
+    func cardClickedToPresent(_ viewController: UIViewController)
+}
+
 final class PayController: ASDKViewController<ASDisplayNode> {
     // MARK: - Properties
     enum Section: Int, CaseIterable {
@@ -35,16 +39,21 @@ final class PayController: ASDKViewController<ASDisplayNode> {
         self.node.layoutSpecBlock = { [weak self] (node, constraintedSize) -> ASLayoutSpec in
             return self?.layoutSpecThatFits(constraintedSize) ?? ASLayoutSpec()
         }
-        
-        self.node.onDidLoad({ [weak self] _ in
-            self?.tableNode.view.separatorStyle = .none
-            self?.tableNode.view.showsVerticalScrollIndicator = true
-            self?.setupNavigationController()
-        })
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Life Cycle
+    override func viewDidLoad() {
+        tableNode.view.separatorStyle = .none
+        tableNode.view.showsVerticalScrollIndicator = true
+        setupNavigationController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupTabbar()
     }
     
     // MARK: - Custom Method
@@ -58,6 +67,10 @@ final class PayController: ASDKViewController<ASDisplayNode> {
         
         let barButton = UIBarButtonItem(customView: detailButton)
         navigationItem.rightBarButtonItem = barButton
+    }
+    
+    private func setupTabbar() {
+        tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - Layout
@@ -91,7 +104,9 @@ extension PayController: ASTableDataSource {
             
             switch section {
             case .card:
-                return CardCellNode()
+                let cardCellNode = CardCellNode()
+                cardCellNode.delegate = self
+                return cardCellNode
             case .advertise:
                 return AdCellNode()
             }
@@ -110,5 +125,12 @@ extension PayController: ASTableDataSource {
 
     func tableNode(_ tableNode: ASTableNode, willDisplayRowWith node: ASCellNode) {
         node.backgroundColor = .white
+    }
+}
+
+// MARK: - AddCardDelegate
+extension PayController: AddCardDelegate {
+    func cardClickedToPresent(_ viewController: UIViewController) {
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
