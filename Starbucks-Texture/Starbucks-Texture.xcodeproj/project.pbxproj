@@ -25,6 +25,7 @@
 		EDF049F9270CC4B300C4B4B0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF049F8270CC4B300C4B4B0 /* Card.swift */; };
 		EDF049FB270CC7FF00C4B4B0 /* DetailCardCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF049FA270CC7FF00C4B4B0 /* DetailCardCellNode.swift */; };
 		EDF04A03270CD56300C4B4B0 /* ChargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF04A02270CD56300C4B4B0 /* ChargeButton.swift */; };
+		EDF04A05270CDA4300C4B4B0 /* CouponCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF04A04270CDA4300C4B4B0 /* CouponCellNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		EDF049F8270CC4B300C4B4B0 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		EDF049FA270CC7FF00C4B4B0 /* DetailCardCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCardCellNode.swift; sourceTree = "<group>"; };
 		EDF04A02270CD56300C4B4B0 /* ChargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeButton.swift; sourceTree = "<group>"; };
+		EDF04A04270CDA4300C4B4B0 /* CouponCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponCellNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 				EDB6BC8C26FA438A00A5F64C /* DetailEmptyCellNode.swift */,
 				ED63854926FA1AC0007F7F8D /* AdCellNode.swift */,
 				ED63854726FA1AB2007F7F8D /* CardCellNode.swift */,
+				EDF04A04270CDA4300C4B4B0 /* CouponCellNode.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				ED63854826FA1AB2007F7F8D /* CardCellNode.swift in Sources */,
 				ED71D7CF27049325006347EC /* EditableTextField.swift in Sources */,
 				ED71D7CB27048D63006347EC /* AddCardCellNode.swift in Sources */,
+				EDF04A05270CDA4300C4B4B0 /* CouponCellNode.swift in Sources */,
 				ED63854A26FA1AC0007F7F8D /* AdCellNode.swift in Sources */,
 				ED63854426FA120F007F7F8D /* TabbarController.swift in Sources */,
 				ED71D7CD2704918A006347EC /* CardDetailCellNode.swift in Sources */,

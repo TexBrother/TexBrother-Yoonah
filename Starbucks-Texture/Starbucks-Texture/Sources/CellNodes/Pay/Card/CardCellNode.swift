@@ -10,7 +10,7 @@ import Then
 
 final class CardCellNode: ASCellNode {
     // MARK: - Properties
-    let cards: [Card] = [Card(cardImage: "thankyou", name: "Thank You 카드", balance: "2,300원", code: "****-****-**36-6582"), Card(cardImage: "limited", name: "Limited 카드", balance: "102,300원", code: "****-****-**70-7431")]
+    static let cards: [Card] = [Card(cardImage: "thankyou", name: "Thank You 카드", balance: "2,300원", code: "****-****-**36-6582"), Card(cardImage: "limited", name: "Limited 카드", balance: "102,300원", code: "****-****-**70-7431")]
     
     // MARK: - UI
     private lazy var collectionNode = ASCollectionNode(collectionViewLayout: flowLayout).then {
@@ -24,7 +24,7 @@ final class CardCellNode: ASCellNode {
         $0.minimumInteritemSpacing = 0
         $0.minimumLineSpacing = 20
         $0.sectionInset = .init(top: 20, left: 25, bottom: 10, right: 25)
-        $0.itemSize = CGSize(width: UIScreen.main.bounds.size.width - 50, height: (cards.count > 0 ? 475 : 430))
+        $0.itemSize = CGSize(width: UIScreen.main.bounds.size.width - 50, height: (CardCellNode.cards.count > 0 ? 475 : 430))
         $0.headerReferenceSize = .zero
         $0.footerReferenceSize = .zero
     }
@@ -54,20 +54,20 @@ final class CardCellNode: ASCellNode {
 
 extension CardCellNode: ASCollectionDataSource {
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
-        guard cards.count > 0 else { return 1 }
+        guard CardCellNode.cards.count > 0 else { return 1 }
         
-        return cards.count
+        return CardCellNode.cards.count
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
         let cellNodeBlock = { () -> ASCellNode in
-            guard self.cards.count > 0 else {
+            guard CardCellNode.cards.count > 0 else {
                 let cellNode = DetailEmptyCellNode()
                 cellNode.delegate = self.delegate
                 return cellNode
             }
             
-            let cellNode = DetailCardCellNode(card: self.cards[indexPath.item])
+            let cellNode = DetailCardCellNode(card: CardCellNode.cards[indexPath.item])
             return cellNode
         }
         

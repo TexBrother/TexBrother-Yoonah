@@ -16,6 +16,7 @@ final class PayController: ASDKViewController<ASDisplayNode> {
     // MARK: - Properties
     enum Section: Int, CaseIterable {
         case card
+        case coupon
         case advertise
     }
     
@@ -95,7 +96,7 @@ final class PayController: ASDKViewController<ASDisplayNode> {
 // MARK: - ASTableDataSource
 extension PayController: ASTableDataSource {
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
@@ -107,6 +108,10 @@ extension PayController: ASTableDataSource {
                 let cardCellNode = CardCellNode()
                 cardCellNode.delegate = self
                 return cardCellNode
+            case .coupon:
+                guard CardCellNode.cards.count > 0 else { return ASCellNode() }
+                
+                return CouponCellNode()
             case .advertise:
                 return AdCellNode()
             }
@@ -118,6 +123,10 @@ extension PayController: ASTableDataSource {
         switch section {
         case .card:
             return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 600))
+        case .coupon:
+            guard CardCellNode.cards.count > 0 else { return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 0)) }
+            
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
         case .advertise:
             return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
         }
