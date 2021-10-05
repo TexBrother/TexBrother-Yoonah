@@ -10,26 +10,26 @@ import Then
 
 final class CardCellNode: ASCellNode {
     // MARK: - Properties
-    let cards: [String] = []
+    let cards: [Card] = [Card(cardImage: "thankyou", name: "Thank You 카드", balance: "2,300원", code: "****-****-**36-6582"), Card(cardImage: "limited", name: "Limited 카드", balance: "102,300원", code: "****-****-**70-7431")]
     
     // MARK: - UI
     private lazy var collectionNode = ASCollectionNode(collectionViewLayout: flowLayout).then {
         $0.dataSource = self
         $0.backgroundColor = .white
         $0.showsHorizontalScrollIndicator = false
-        $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: 500)
+        $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: 550)
     }
-    private var flowLayout = UICollectionViewFlowLayout().then {
+    private lazy var flowLayout = UICollectionViewFlowLayout().then {
         $0.scrollDirection = .horizontal
         $0.minimumInteritemSpacing = 0
         $0.minimumLineSpacing = 20
         $0.sectionInset = .init(top: 20, left: 25, bottom: 50, right: 25)
-        $0.itemSize = CGSize(width: UIScreen.main.bounds.size.width - 50, height: 430)
+        $0.itemSize = CGSize(width: UIScreen.main.bounds.size.width - 50, height: (cards.count > 0 ? 475 : 430))
         $0.headerReferenceSize = .zero
         $0.footerReferenceSize = .zero
     }
     
-    var delegate: AddCardDelegate?
+    weak var delegate: AddCardDelegate?
     
     // MARK: - Initalizing
     override init() {
@@ -61,8 +61,13 @@ extension CardCellNode: ASCollectionDataSource {
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
         let cellNodeBlock = { () -> ASCellNode in
-            let cellNode = DetailCellNode(name: "골드", balance: "1,000")
-            cellNode.delegate = self.delegate
+            guard self.cards.count > 0 else {
+                let cellNode = DetailEmptyCellNode()
+                cellNode.delegate = self.delegate
+                return cellNode
+            }
+            
+            let cellNode = DetailCardCellNode(card: self.cards[indexPath.item])
             return cellNode
         }
         

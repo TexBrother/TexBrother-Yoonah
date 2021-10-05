@@ -57,7 +57,7 @@ extension AddCardCellNode: ASCollectionDataSource {
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
         let cellNodeBlock = { () -> ASCellNode in
-            let cellNode = DetailCellNode(name: "골드", balance: "1,000")
+            let cellNode = DetailEmptyCellNode()
             cellNode.delegate = self.delegate
             return cellNode
         }
