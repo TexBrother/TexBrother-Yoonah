@@ -31,6 +31,11 @@ final class DetailCellNode: ASCellNode {
     // MARK: - UI
     private lazy var backview = ASDisplayNode().then {
         $0.backgroundColor = .white
+        $0.cornerRadius = 15
+        $0.shadowOffset = CGSize(width: 2, height: 2)
+        $0.shadowColor = UIColor.gray.cgColor
+        $0.shadowRadius = 7
+        $0.shadowOpacity = 0.4
     }
     private lazy var addCardButtonNode = ASButtonNode().then {
         $0.setImage(UIImage(systemName: "plus.circle"), for: .normal)
@@ -53,10 +58,7 @@ final class DetailCellNode: ASCellNode {
         self.automaticallyManagesSubnodes = true
         self.automaticallyRelayoutOnSafeAreaChanges = true
         self.selectionStyle = .none
-        self.shadowOffset = CGSize(width: 2, height: 2)
-        self.shadowColor = UIColor.gray.cgColor
-        self.shadowRadius = 7
-        self.shadowOpacity = 0.4
+        self.cornerRadius = 15
         self.clipsToBounds = false
     }
     
