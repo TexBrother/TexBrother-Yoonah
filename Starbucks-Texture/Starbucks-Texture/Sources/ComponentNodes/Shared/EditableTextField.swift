@@ -9,6 +9,7 @@ import AsyncDisplayKit
 import Then
 
 final class EditableTextField: ASDisplayNode {
+    // MARK: - Const
     struct Const {
         static var textFieldAttribute: [NSAttributedString.Key: Any] {
             return [.font: UIFont.systemFont(ofSize: 15.0, weight: .regular),
@@ -31,6 +32,7 @@ final class EditableTextField: ASDisplayNode {
         }
     }
     
+    // MARK: - UI
     private lazy var textfieldNode = ASEditableTextNode().then {
         $0.textContainerInset = .init(top: 5, left: 0, bottom: 5, right: 0)
         $0.scrollEnabled = false
@@ -40,7 +42,9 @@ final class EditableTextField: ASDisplayNode {
         $0.isHidden = true
     }
     private lazy var infoNode = ASTextNode()
+    private var border = CALayer()
     
+    // MARK: - Properties
     private var isShow = false
     private var info = ""
     
@@ -60,8 +64,7 @@ final class EditableTextField: ASDisplayNode {
     
     // MARK: Node Life Cycle
     override func didLoad() {
-        let border = CALayer()
-        border.backgroundColor = UIColor.gray.cgColor
+        border.backgroundColor = UIColor.lightGray.cgColor
         border.frame = CGRect(x: 0, y: 28, width: UIScreen.main.bounds.size.width - 40, height: 1)
         textfieldNode.layer.addSublayer(border)
         textfieldNode.layer.masksToBounds = false
@@ -87,13 +90,18 @@ final class EditableTextField: ASDisplayNode {
 
 extension EditableTextField: ASEditableTextNodeDelegate {
     func editableTextNodeDidBeginEditing(_ editableTextNode: ASEditableTextNode) {
-        print("hi")
         titleTextNode.isHidden = false
+        border.backgroundColor = UIColor.systemGreen.cgColor
     }
     
     func editableTextNodeDidFinishEditing(_ editableTextNode: ASEditableTextNode) {
-        print("bye")
         titleTextNode.isHidden = true
+        
+        if let text = editableTextNode.textView.text {
+            if !text.isEmpty {
+                border.backgroundColor = UIColor.lightGray.cgColor
+            }
+        }
     }
     
     func editableTextNode(_ editableTextNode: ASEditableTextNode, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -101,8 +109,10 @@ extension EditableTextField: ASEditableTextNodeDelegate {
             if text.isEmpty {
                 infoNode.isHidden = false
                 infoNode.attributedText = NSAttributedString(string: info, attributes: Const.errorAttribute)
+                border.backgroundColor = UIColor.systemRed.cgColor
             } else {
                 infoNode.isHidden = true
+                border.backgroundColor = UIColor.systemGreen.cgColor
             }
         }
         
