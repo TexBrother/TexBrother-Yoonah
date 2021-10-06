@@ -39,7 +39,15 @@ final class AddCardController: ASDKViewController<ASScrollNode> {
         $0.headerReferenceSize = .zero
         $0.footerReferenceSize = .zero
     }
+    private lazy var addButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+        $0.setPreferredSymbolConfiguration(.init(pointSize: 17, weight: .regular, scale: .large), forImageIn: .normal)
+        $0.tintColor = .lightGray
+    }
     private let headerNode = AddCardHeaderNode()
+    
+    // MARK: - Properties
+    var addCard: (() -> ())?
     
     // MARK: - Initializing
     override init() {
@@ -54,6 +62,7 @@ final class AddCardController: ASDKViewController<ASScrollNode> {
         self.node.onDidLoad({ [weak self] _ in
             self?.setupNavigationController()
             self?.setupTabbar()
+            self?.addButton.addTarget(self, action: #selector(self?.touchUpAddCard), for: .touchUpInside)
         })
     }
     
@@ -69,10 +78,20 @@ final class AddCardController: ASDKViewController<ASScrollNode> {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
         navigationItem.title = "카드 추가"
+        
+        let barButton = UIBarButtonItem(customView: addButton)
+        navigationItem.rightBarButtonItem = barButton
     }
     
     private func setupTabbar() {
         tabBarController?.tabBar.isHidden = true
+    }
+    
+    // MARK: - @objc
+    @objc
+    private func touchUpAddCard() {
+        addCard?()
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Layout

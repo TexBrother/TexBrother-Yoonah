@@ -9,7 +9,7 @@ import AsyncDisplayKit
 import Then
 
 protocol AddCardDelegate: PayController {
-    func cardClickedToPresent(_ viewController: UIViewController)
+    func cardClickedToPresent(_ viewController: AddCardController)
 }
 
 final class PayController: ASDKViewController<ASDisplayNode> {
@@ -139,7 +139,14 @@ extension PayController: ASTableDataSource {
 
 // MARK: - AddCardDelegate
 extension PayController: AddCardDelegate {
-    func cardClickedToPresent(_ viewController: UIViewController) {
+    func cardClickedToPresent(_ viewController: AddCardController) {
+        viewController.addCard = {
+            CardCellNode.cards.append(contentsOf: [
+                Card(cardImage: "thankyou", name: "Thank You 카드", balance: "2,300원", code: "****-****-**36-6582"),
+                Card(cardImage: "limited", name: "Limited 카드", balance: "102,300원", code: "****-****-**70-7431")]
+            )
+            self.tableNode.reloadData()
+        }
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

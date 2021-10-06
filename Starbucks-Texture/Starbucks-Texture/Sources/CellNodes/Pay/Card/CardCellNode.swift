@@ -10,7 +10,7 @@ import Then
 
 final class CardCellNode: ASCellNode {
     // MARK: - Properties
-    static let cards: [Card] = []
+    static var cards: [Card] = []
     
     // MARK: - UI
     private lazy var collectionNode = ASCollectionNode(collectionViewLayout: flowLayout).then {
