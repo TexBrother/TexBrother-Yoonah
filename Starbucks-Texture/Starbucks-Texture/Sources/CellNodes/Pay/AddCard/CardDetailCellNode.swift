@@ -32,7 +32,7 @@ final class CardDetailCellNode: ASCellNode {
     
     // MARK: - UI
     private let infoNode = ASDisplayNode().then {
-        $0.backgroundColor = .systemGray4.withAlphaComponent(0.5)
+        $0.backgroundColor = .systemGray4.withAlphaComponent(0.2)
         $0.styled {
             $0.height = ASDimension(unit: .points, value: 100)
         }
@@ -89,7 +89,7 @@ final class CardDetailCellNode: ASCellNode {
     
     private func contentInsetLayoutSpec() -> ASLayoutSpec {
         var containerInsets: UIEdgeInsets = self.safeAreaInsets
-        containerInsets.top = 20.0
+        containerInsets.top = 8.0
         containerInsets.left = 20.0
         containerInsets.right = 20.0
         

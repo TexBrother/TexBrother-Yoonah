@@ -28,14 +28,14 @@ final class AddCardController: ASDKViewController<ASScrollNode> {
         $0.backgroundColor = .white
         $0.showsHorizontalScrollIndicator = false
         $0.isPagingEnabled = true
-        $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 300)
+        $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 200)
     }
     private lazy var flowLayout = UICollectionViewFlowLayout().then {
         $0.scrollDirection = .horizontal
         $0.minimumInteritemSpacing = 0
         $0.minimumLineSpacing = 0
         $0.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)
-        $0.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 300)
+        $0.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 200)
         $0.headerReferenceSize = .zero
         $0.footerReferenceSize = .zero
     }
