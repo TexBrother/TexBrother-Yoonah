@@ -10,6 +10,12 @@ import Then
 import TextureSwiftSupport
 
 final class AddCardController: ASDKViewController<ASScrollNode> {
+    // MARK: - Section
+    enum Section: Int, CaseIterable {
+        case card
+        case voucher
+    }
+    
     // MARK: - UI
     private let rootScrollNode = ASScrollNode().then {
             $0.automaticallyManagesSubnodes = true
@@ -87,13 +93,23 @@ final class AddCardController: ASDKViewController<ASScrollNode> {
 // MARK: - ASCollectionDataSource
 extension AddCardController: ASCollectionDataSource {
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return Section.allCases.count
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
+        let section = Section.init(rawValue: indexPath.row)
+        
         let cellNodeBlock = { () -> ASCellNode in
-            let cellNode = CardDetailCellNode()
-            return cellNode
+            switch section {
+            case .card:
+                let cellNode = CardDetailCellNode()
+                return cellNode
+            case .voucher:
+                let cellNode = VoucherDetailCellNode()
+                return cellNode
+            case .none:
+                return ASCellNode()
+            }
         }
         
         return cellNodeBlock

@@ -18,7 +18,7 @@
 		ED63854D26FA2298007F7F8D /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63854C26FA2298007F7F8D /* NavigationController+.swift */; };
 		ED71D7C527044127006347EC /* AddCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7C427044127006347EC /* AddCardController.swift */; };
 		ED71D7C92704497A006347EC /* AddCardHeaderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7C82704497A006347EC /* AddCardHeaderNode.swift */; };
-		ED71D7CB27048D63006347EC /* AddCardCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CA27048D63006347EC /* AddCardCellNode.swift */; };
+		ED71D7CB27048D63006347EC /* VoucherDetailCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CA27048D63006347EC /* VoucherDetailCellNode.swift */; };
 		ED71D7CD2704918A006347EC /* CardDetailCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */; };
 		ED71D7CF27049325006347EC /* EditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CE27049325006347EC /* EditableTextField.swift */; };
 		EDB6BC8D26FA438A00A5F64C /* DetailEmptyCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB6BC8C26FA438A00A5F64C /* DetailEmptyCellNode.swift */; };
@@ -45,7 +45,7 @@
 		ED63854C26FA2298007F7F8D /* NavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+.swift"; sourceTree = "<group>"; };
 		ED71D7C427044127006347EC /* AddCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardController.swift; sourceTree = "<group>"; };
 		ED71D7C82704497A006347EC /* AddCardHeaderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardHeaderNode.swift; sourceTree = "<group>"; };
-		ED71D7CA27048D63006347EC /* AddCardCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardCellNode.swift; sourceTree = "<group>"; };
+		ED71D7CA27048D63006347EC /* VoucherDetailCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoucherDetailCellNode.swift; sourceTree = "<group>"; };
 		ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailCellNode.swift; sourceTree = "<group>"; };
 		ED71D7CE27049325006347EC /* EditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTextField.swift; sourceTree = "<group>"; };
 		EDB6BC8C26FA438A00A5F64C /* DetailEmptyCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEmptyCellNode.swift; sourceTree = "<group>"; };
@@ -211,7 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */,
-				ED71D7CA27048D63006347EC /* AddCardCellNode.swift */,
+				ED71D7CA27048D63006347EC /* VoucherDetailCellNode.swift */,
 				ED71D7C82704497A006347EC /* AddCardHeaderNode.swift */,
 			);
 			path = AddCard;
@@ -380,7 +380,7 @@
 				EDF04A27270D6A1400C4B4B0 /* ASCellNode+.swift in Sources */,
 				ED63854826FA1AB2007F7F8D /* CardCellNode.swift in Sources */,
 				ED71D7CF27049325006347EC /* EditableTextField.swift in Sources */,
-				ED71D7CB27048D63006347EC /* AddCardCellNode.swift in Sources */,
+				ED71D7CB27048D63006347EC /* VoucherDetailCellNode.swift in Sources */,
 				EDF04A05270CDA4300C4B4B0 /* CouponCellNode.swift in Sources */,
 				ED63854A26FA1AC0007F7F8D /* AdCellNode.swift in Sources */,
 				ED63854426FA120F007F7F8D /* TabbarController.swift in Sources */,
