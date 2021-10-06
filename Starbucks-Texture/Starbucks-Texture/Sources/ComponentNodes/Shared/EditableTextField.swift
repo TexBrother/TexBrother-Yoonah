@@ -34,8 +34,6 @@ final class EditableTextField: ASDisplayNode {
     private lazy var textfieldNode = ASEditableTextNode().then {
         $0.textContainerInset = .init(top: 5, left: 0, bottom: 5, right: 0)
         $0.scrollEnabled = false
-        $0.borderWidth = 0.5
-        $0.borderColor = UIColor.systemGray2.cgColor
         $0.delegate = self
     }
     private lazy var titleTextNode = ASTextNode().then {
@@ -61,11 +59,19 @@ final class EditableTextField: ASDisplayNode {
     }
     
     // MARK: Node Life Cycle
+    override func didLoad() {
+        let border = CALayer()
+        border.backgroundColor = UIColor.gray.cgColor
+        border.frame = CGRect(x: 0, y: 28, width: UIScreen.main.bounds.size.width - 40, height: 1)
+        textfieldNode.layer.addSublayer(border)
+        textfieldNode.layer.masksToBounds = false
+    }
+    
+    // MARK: Layout
     override func layout() {
         super.layout()
     }
     
-    // MARK: Layout
     override func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
         let stackLayout = ASStackLayoutSpec(direction: .vertical,
                                             spacing: 8.0,
@@ -75,10 +81,7 @@ final class EditableTextField: ASDisplayNode {
                                                        textfieldNode,
                                                        infoNode])
         
-        return ASInsetLayoutSpec(
-                insets: UIEdgeInsets(top: 15, left: 14, bottom: 16, right: 15),
-                child: stackLayout
-        )
+        return stackLayout
     }
 }
 

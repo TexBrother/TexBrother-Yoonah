@@ -10,7 +10,7 @@ import Then
 
 final class CardCellNode: ASCellNode {
     // MARK: - Properties
-    static let cards: [Card] = [Card(cardImage: "thankyou", name: "Thank You 카드", balance: "2,300원", code: "****-****-**36-6582"), Card(cardImage: "limited", name: "Limited 카드", balance: "102,300원", code: "****-****-**70-7431")]
+    static let cards: [Card] = []
     
     // MARK: - UI
     private lazy var collectionNode = ASCollectionNode(collectionViewLayout: flowLayout).then {

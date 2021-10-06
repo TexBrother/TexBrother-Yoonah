@@ -49,7 +49,7 @@ final class CardDetailCellNode: ASCellNode {
     private func contentLayoutSpec() -> ASLayoutSpec {
         return ASStackLayoutSpec(
             direction: .vertical,
-            spacing: 10.0,
+            spacing: 8.0,
             justifyContent: .start,
             alignItems: .stretch,
             children: [
@@ -63,8 +63,8 @@ final class CardDetailCellNode: ASCellNode {
     private func contentInsetLayoutSpec() -> ASLayoutSpec {
         var containerInsets: UIEdgeInsets = self.safeAreaInsets
         containerInsets.top = 20.0
-        containerInsets.left = 15.0
-        containerInsets.right = 15.0
+        containerInsets.left = 20.0
+        containerInsets.right = 20.0
         
         return ASInsetLayoutSpec(
             insets: containerInsets,

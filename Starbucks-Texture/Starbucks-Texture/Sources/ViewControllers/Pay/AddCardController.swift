@@ -9,22 +9,35 @@ import AsyncDisplayKit
 import Then
 import TextureSwiftSupport
 
-final class AddCardController: ASDKViewController<ASDisplayNode> {
-    // MARK: - Properties
-    enum Section: Int, CaseIterable {
-        case header
-        case addCard
-    }
-    
+final class AddCardController: ASDKViewController<ASScrollNode> {
     // MARK: - UI
-    private lazy var tableNode = ASTableNode().then {
+    private let rootScrollNode = ASScrollNode().then {
+            $0.automaticallyManagesSubnodes = true
+            $0.automaticallyManagesContentSize = true
+            $0.automaticallyRelayoutOnSafeAreaChanges = true
+            $0.backgroundColor = .blue
+    }
+    private lazy var collectionNode = ASCollectionNode(collectionViewLayout: flowLayout).then {
         $0.dataSource = self
         $0.backgroundColor = .white
+        $0.showsHorizontalScrollIndicator = false
+        $0.isPagingEnabled = true
+        $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 300)
     }
+    private lazy var flowLayout = UICollectionViewFlowLayout().then {
+        $0.scrollDirection = .horizontal
+        $0.minimumInteritemSpacing = 0
+        $0.minimumLineSpacing = 0
+        $0.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)
+        $0.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 300)
+        $0.headerReferenceSize = .zero
+        $0.footerReferenceSize = .zero
+    }
+    private let headerNode = AddCardHeaderNode()
     
     // MARK: - Initializing
     override init() {
-        super.init(node: .init())
+        super.init(node: rootScrollNode)
         self.node.backgroundColor = .white
         self.node.automaticallyManagesSubnodes = true
         self.node.automaticallyRelayoutOnSafeAreaChanges = true
@@ -33,8 +46,6 @@ final class AddCardController: ASDKViewController<ASDisplayNode> {
         }
         
         self.node.onDidLoad({ [weak self] _ in
-            self?.tableNode.view.separatorStyle = .none
-            self?.tableNode.view.showsVerticalScrollIndicator = true
             self?.setupNavigationController()
             self?.setupTabbar()
         })
@@ -43,7 +54,7 @@ final class AddCardController: ASDKViewController<ASDisplayNode> {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Custom Method
     private func setupNavigationController() {
         navigationController?.navigationBar.barTintColor = .white
@@ -60,54 +71,31 @@ final class AddCardController: ASDKViewController<ASDisplayNode> {
     
     // MARK: - Layout
     private func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
-        let tableLayout = ASStackLayoutSpec (
+        return ASStackLayoutSpec (
             direction: .vertical,
             spacing: 0.0,
             justifyContent: .start,
             alignItems: .stretch,
             children: [
-                tableNode.styled ({
-                    $0.flexGrow = 1.0
-                })
+                headerNode,
+                collectionNode
             ]
         )
-        
-        let safeAreaInset: UIEdgeInsets = self.view.safeAreaInsets
-        return ASInsetLayoutSpec (
-            insets: safeAreaInset, child: tableLayout)
     }
 }
 
-// MARK: - ASTableDataSource
-extension AddCardController: ASTableDataSource {
-    func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
+// MARK: - ASCollectionDataSource
+extension AddCardController: ASCollectionDataSource {
+    func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
     
-    func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
-        return {
-            guard let section = Section.init(rawValue: indexPath.row) else { return ASCellNode() }
-            
-            switch section {
-            case .header:
-                return AddCardHeaderCellNode()
-            case .addCard:
-                return CardDetailCellNode()
-            }
+    func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
+        let cellNodeBlock = { () -> ASCellNode in
+            let cellNode = CardDetailCellNode()
+            return cellNode
         }
-    }
-
-    func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
-        guard let section = Section.init(rawValue: indexPath.row) else { return ASSizeRange() }
-        switch section {
-        case .header:
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 50))
-        case .addCard:
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 600))
-        }
-    }
-    
-    func tableNode(_ tableNode: ASTableNode, willDisplayRowWith node: ASCellNode) {
-        node.backgroundColor = .white
+        
+        return cellNodeBlock
     }
 }
