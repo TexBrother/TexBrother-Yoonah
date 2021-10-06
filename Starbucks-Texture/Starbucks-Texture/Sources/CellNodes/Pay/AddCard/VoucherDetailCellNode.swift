@@ -34,6 +34,12 @@ final class VoucherDetailCellNode: ASCellNode {
     private let voucherInfoNode = ASDisplayNode().then {
         $0.backgroundColor = .systemGray4.withAlphaComponent(0.2)
     }
+    private let voucherTitleTextNode = ASTextNode().then {
+        $0.attributedText = NSAttributedString(string: "모바일 카드 교환권이란?", attributes: Const.titleAttribute)
+    }
+    private let voucherInfoTextNode = ASTextNode().then {
+        $0.attributedText = NSAttributedString(string: "카카오톡 선물하기 등 타사에서 발행하는 모바일 상품권으로, 스타벅스 카드로 교환하여 사용하실 수 있습니다.\n\n교환권을 등록하면 상품권에 표시된 금액이 충전된 스타벅스 카드가 신규 발급됩니다.\n\n카드 교환권 등록 취소는 카드 미사용 시에 한하여 7일 이내에 가능합니다.", attributes: Const.infoAttribute)
+    }
     private let voucherImageNode = VoucherMenu("photo", title: "교환권 이미지 불러오기")
     private let barcodeImageNode = VoucherMenu("barcode", title: "바코드 인식하기")
     private let numberImageNode = VoucherMenu("ellipsis.rectangle", title: "교환권 번호 입력하기")
@@ -59,7 +65,7 @@ final class VoucherDetailCellNode: ASCellNode {
             alignItems: .stretch,
             children: [
                 contentInsetLayoutSpec(),
-                voucherInfoNode.styled {
+                voucherInfoOverlayLayoutSpec().styled {
                     $0.flexGrow = 1.0
                 }
             ]
@@ -76,6 +82,30 @@ final class VoucherDetailCellNode: ASCellNode {
     private func infoOverlayLayoutSpec() -> ASLayoutSpec {
         return ASOverlayLayoutSpec(child: infoNode, overlay: infoInsetLayoutSpec())
     }
+    
+    private func voucherInfoInsetLayoutSpec() -> ASLayoutSpec {
+        let infoStackLayout = ASStackLayoutSpec(
+            direction: .vertical,
+            spacing: 20.0,
+            justifyContent: .start,
+            alignItems: .stretch,
+            children: [
+                voucherTitleTextNode,
+                voucherInfoTextNode
+            ]
+        )
+        
+        return ASInsetLayoutSpec(
+            insets: UIEdgeInsets(top: 30, left: 20, bottom: 0, right: 20),
+            child: infoStackLayout
+        )
+    }
+    
+    private func voucherInfoOverlayLayoutSpec() -> ASLayoutSpec {
+        return ASOverlayLayoutSpec(child: voucherInfoNode, overlay: voucherInfoInsetLayoutSpec())
+    }
+    
+    
     
     private func contentLayoutSpec() -> ASLayoutSpec {
         let voucherLayout = ASStackLayoutSpec(
