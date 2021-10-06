@@ -11,7 +11,7 @@ import Then
 final class EditableTextField: ASDisplayNode {
     // MARK: - Const
     struct Const {
-        static var textFieldAttribute: [NSAttributedString.Key: Any] {
+        static var placeholderAttribute: [NSAttributedString.Key: Any] {
             return [.font: UIFont.systemFont(ofSize: 15.0, weight: .regular),
                     .foregroundColor: UIColor.black]
         }
@@ -56,7 +56,7 @@ final class EditableTextField: ASDisplayNode {
         self.automaticallyManagesSubnodes = true
         self.automaticallyRelayoutOnSafeAreaChanges = true
         
-        textfieldNode.attributedPlaceholderText = NSAttributedString(string: placeholder, attributes: Const.textFieldAttribute)
+        textfieldNode.attributedPlaceholderText = NSAttributedString(string: placeholder, attributes: Const.placeholderAttribute)
         infoNode.attributedText = NSAttributedString(string: info, attributes: Const.descriptionAttribute)
         titleTextNode.attributedText = NSAttributedString(string: title, attributes: Const.titleAttribute)
         infoNode.isHidden = !isShow
@@ -68,6 +68,8 @@ final class EditableTextField: ASDisplayNode {
         border.frame = CGRect(x: 0, y: 28, width: UIScreen.main.bounds.size.width - 40, height: 1)
         textfieldNode.layer.addSublayer(border)
         textfieldNode.layer.masksToBounds = false
+        textfieldNode.textView.textContainer.maximumNumberOfLines = 1
+        textfieldNode.textView.typingAttributes = Const.placeholderAttribute
     }
     
     // MARK: Layout
@@ -95,11 +97,12 @@ extension EditableTextField: ASEditableTextNodeDelegate {
     }
     
     func editableTextNodeDidFinishEditing(_ editableTextNode: ASEditableTextNode) {
-        titleTextNode.isHidden = true
-        
         if let text = editableTextNode.textView.text {
             if !text.isEmpty {
                 border.backgroundColor = UIColor.lightGray.cgColor
+                titleTextNode.isHidden = false
+            } else {
+                titleTextNode.isHidden = true
             }
         }
     }

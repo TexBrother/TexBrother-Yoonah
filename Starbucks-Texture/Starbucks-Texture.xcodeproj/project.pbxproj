@@ -26,6 +26,7 @@
 		EDF049FB270CC7FF00C4B4B0 /* DetailCardCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF049FA270CC7FF00C4B4B0 /* DetailCardCellNode.swift */; };
 		EDF04A03270CD56300C4B4B0 /* ChargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF04A02270CD56300C4B4B0 /* ChargeButton.swift */; };
 		EDF04A05270CDA4300C4B4B0 /* CouponCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF04A04270CDA4300C4B4B0 /* CouponCellNode.swift */; };
+		EDF04A27270D6A1400C4B4B0 /* ASDKViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF04A26270D6A1400C4B4B0 /* ASDKViewController+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		EDF049FA270CC7FF00C4B4B0 /* DetailCardCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCardCellNode.swift; sourceTree = "<group>"; };
 		EDF04A02270CD56300C4B4B0 /* ChargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChargeButton.swift; sourceTree = "<group>"; };
 		EDF04A04270CDA4300C4B4B0 /* CouponCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponCellNode.swift; sourceTree = "<group>"; };
+		EDF04A26270D6A1400C4B4B0 /* ASDKViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASDKViewController+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				ED63854C26FA2298007F7F8D /* NavigationController+.swift */,
+				EDF04A26270D6A1400C4B4B0 /* ASDKViewController+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				ED71D7C527044127006347EC /* AddCardController.swift in Sources */,
 				EDB6BC8D26FA438A00A5F64C /* DetailEmptyCellNode.swift in Sources */,
 				EDF049F9270CC4B300C4B4B0 /* Card.swift in Sources */,
+				EDF04A27270D6A1400C4B4B0 /* ASDKViewController+.swift in Sources */,
 				ED63854826FA1AB2007F7F8D /* CardCellNode.swift in Sources */,
 				ED71D7CF27049325006347EC /* EditableTextField.swift in Sources */,
 				ED71D7CB27048D63006347EC /* AddCardCellNode.swift in Sources */,

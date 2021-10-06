@@ -39,6 +39,7 @@ final class CardDetailCellNode: ASCellNode {
     
     override func didLoad() {
         super.didLoad()
+        hideKeyboardWhenTappedAround()
     }
     
     // MARK: Layout
