@@ -1,5 +1,5 @@
 //
-//  CardListController.swift
+//  DetailCardController.swift
 //  Starbucks-Texture
 //
 //  Created by SHIN YOON AH on 2021/10/13.
@@ -8,7 +8,7 @@
 import AsyncDisplayKit
 import Then
 
-final class CardListController: ASDKViewController<ASDisplayNode> {
+final class DetailCardController: ASDKViewController<ASDisplayNode> {
     // MARK: - Properties
     enum Section: Int, CaseIterable {
         case advertise
@@ -20,7 +20,6 @@ final class CardListController: ASDKViewController<ASDisplayNode> {
     private lazy var tableNode = ASTableNode().then {
         $0.view.showsVerticalScrollIndicator = true
         $0.dataSource = self
-        $0.delegate = self
         $0.backgroundColor = .white
     }
     private lazy var addButton = UIButton().then {
@@ -95,7 +94,7 @@ final class CardListController: ASDKViewController<ASDisplayNode> {
 }
 
 // MARK: - ASTableDataSource
-extension CardListController: ASTableDataSource {
+extension DetailCardController: ASTableDataSource {
     func numberOfSections(in tableNode: ASTableNode) -> Int {
         return 3
     }
@@ -152,11 +151,11 @@ extension CardListController: ASTableDataSource {
         case .favorite:
             guard CardCellNode.cards.count > 0 else { return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 0)) }
             
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 120))
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 100))
         case .basic:
             guard CardCellNode.cards.count > 1 else { return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 0)) }
             
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 90))
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
         }
     }
 
@@ -165,18 +164,3 @@ extension CardListController: ASTableDataSource {
     }
 }
 
-// MARK: - ASTableDelegate
-extension CardListController: ASTableDelegate {
-    func tableNode(_ tableNode: ASTableNode, didSelectRowAt indexPath: IndexPath) {
-        guard let section = Section.init(rawValue: indexPath.section) else { return }
-        
-        switch section {
-        case .favorite,
-                .basic:
-            let vc = DetailCardController()
-            navigationController?.pushViewController(vc, animated: true)
-        default:
-            break
-        }
-    }
-}

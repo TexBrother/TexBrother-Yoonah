@@ -10,6 +10,7 @@
 		DE8981D6ACEC26085DFFE403 /* Pods_Starbucks_Texture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865F22D02A6012ACF820531A /* Pods_Starbucks_Texture.framework */; };
 		ED20D6A12716741500005770 /* CardListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED20D6A02716741500005770 /* CardListController.swift */; };
 		ED20D6A427167B4D00005770 /* CardListCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED20D6A327167B4D00005770 /* CardListCellNode.swift */; };
+		ED20D6A7271693CA00005770 /* DetailCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED20D6A6271693CA00005770 /* DetailCardController.swift */; };
 		ED63852A26FA0E83007F7F8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63852926FA0E83007F7F8D /* AppDelegate.swift */; };
 		ED63853326FA0E84007F7F8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED63853226FA0E84007F7F8D /* Assets.xcassets */; };
 		ED63853626FA0E84007F7F8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED63853426FA0E84007F7F8D /* LaunchScreen.storyboard */; };
@@ -38,6 +39,7 @@
 		8F80F0F41E0A46FC65B2AA2C /* Pods-Starbucks-Texture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Starbucks-Texture.release.xcconfig"; path = "Target Support Files/Pods-Starbucks-Texture/Pods-Starbucks-Texture.release.xcconfig"; sourceTree = "<group>"; };
 		ED20D6A02716741500005770 /* CardListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListController.swift; sourceTree = "<group>"; };
 		ED20D6A327167B4D00005770 /* CardListCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCellNode.swift; sourceTree = "<group>"; };
+		ED20D6A6271693CA00005770 /* DetailCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCardController.swift; sourceTree = "<group>"; };
 		ED63852626FA0E83007F7F8D /* Starbucks-Texture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Starbucks-Texture.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED63852926FA0E83007F7F8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED63853226FA0E84007F7F8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				ED63854526FA1263007F7F8D /* PayController.swift */,
 				ED71D7C427044127006347EC /* AddCardController.swift */,
 				ED20D6A02716741500005770 /* CardListController.swift */,
+				ED20D6A6271693CA00005770 /* DetailCardController.swift */,
 			);
 			path = Pay;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				ED63854A26FA1AC0007F7F8D /* AdCellNode.swift in Sources */,
 				ED63854426FA120F007F7F8D /* TabbarController.swift in Sources */,
 				ED71D7CD2704918A006347EC /* CardDetailCellNode.swift in Sources */,
+				ED20D6A7271693CA00005770 /* DetailCardController.swift in Sources */,
 				ED63854626FA1263007F7F8D /* PayController.swift in Sources */,
 				EDF049FB270CC7FF00C4B4B0 /* DetailCardCellNode.swift in Sources */,
 				ED63854D26FA2298007F7F8D /* NavigationController+.swift in Sources */,

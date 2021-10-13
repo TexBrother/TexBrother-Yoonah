@@ -10,7 +10,7 @@ import Then
 
 protocol CardDelegate: PayController {
     func emptyCardClickedToPresent(_ viewController: AddCardController)
-    func cardClickedToPresent(_ viewController: AddCardController)
+    func cardClickedToPresent(_ viewController: DetailCardController)
 }
 
 final class PayController: ASDKViewController<ASDisplayNode> {
@@ -148,7 +148,7 @@ extension PayController: ASTableDataSource {
 
 // MARK: - AddCardDelegate
 extension PayController: CardDelegate {
-    func cardClickedToPresent(_ viewController: AddCardController) {
+    func cardClickedToPresent(_ viewController: DetailCardController) {
         navigationController?.pushViewController(viewController, animated: true)
     }
     

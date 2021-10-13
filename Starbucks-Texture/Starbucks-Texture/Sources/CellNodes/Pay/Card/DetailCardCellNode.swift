@@ -112,7 +112,7 @@ final class DetailCardCellNode: ASCellNode {
     // MARK: - @objc
     @objc
     func didTappedCardDetailButton() {
-        let vc = AddCardController()
+        let vc = DetailCardController()
         delegate?.cardClickedToPresent(vc)
     }
     
