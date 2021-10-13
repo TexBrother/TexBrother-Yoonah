@@ -72,9 +72,6 @@ final class AddCardController: ASDKViewController<ASScrollNode> {
 
     // MARK: - Custom Method
     private func setupNavigationController() {
-        navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.tintColor = .darkGray
-        navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
         navigationItem.title = "카드 추가"

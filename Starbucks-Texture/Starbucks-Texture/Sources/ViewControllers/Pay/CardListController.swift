@@ -1,32 +1,29 @@
 //
-//  PayController.swift
+//  CardListController.swift
 //  Starbucks-Texture
 //
-//  Created by SHIN YOON AH on 2021/09/21.
+//  Created by SHIN YOON AH on 2021/10/13.
 //
 
 import AsyncDisplayKit
 import Then
 
-protocol AddCardDelegate: PayController {
-    func cardClickedToPresent(_ viewController: AddCardController)
-}
-
-final class PayController: ASDKViewController<ASDisplayNode> {
+final class CardListController: ASDKViewController<ASDisplayNode> {
     // MARK: - Properties
     enum Section: Int, CaseIterable {
-        case card
-        case coupon
         case advertise
+        case favorite
+        case basic
     }
     
     // MARK: - UI
     private lazy var tableNode = ASTableNode().then {
+        $0.view.showsVerticalScrollIndicator = true
         $0.dataSource = self
         $0.backgroundColor = .white
     }
-    private lazy var detailButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "list.bullet"), for: .normal)
+    private lazy var addButton = UIButton().then {
+        $0.setImage(UIImage(systemName: "plus.circle"), for: .normal)
         $0.setPreferredSymbolConfiguration(.init(pointSize: 17, weight: .regular, scale: .large), forImageIn: .normal)
         $0.tintColor = .lightGray
     }
@@ -48,9 +45,7 @@ final class PayController: ASDKViewController<ASDisplayNode> {
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
-        tableNode.view.separatorStyle = .none
-        tableNode.view.showsVerticalScrollIndicator = true
-        detailButton.addTarget(self, action: #selector(touchUpCardList), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(touchUpAddCard), for: .touchUpInside)
         setupNavigationController()
     }
     
@@ -60,25 +55,22 @@ final class PayController: ASDKViewController<ASDisplayNode> {
     
     // MARK: - Custom Method
     private func setupNavigationController() {
-        navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.layer.applyShadow(color: .gray, alpha: 0.3, x: 0, y: 0, blur: 12)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
-        navigationItem.title = "Pay"
+        navigationItem.title = "카드(\(CardCellNode.cards.count))"
         
-        let barButton = UIBarButtonItem(customView: detailButton)
+        let barButton = UIBarButtonItem(customView: addButton)
         navigationItem.rightBarButtonItem = barButton
     }
     
     private func setupTabbar() {
-        tabBarController?.tabBar.isHidden = false
+        tabBarController?.tabBar.isHidden = true
     }
     
     // MARK: - @objc
     @objc
-    private func touchUpCardList() {
-        let vc = CardListController()
+    private func touchUpAddCard() {
+        let vc = AddCardController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -102,59 +94,72 @@ final class PayController: ASDKViewController<ASDisplayNode> {
 }
 
 // MARK: - ASTableDataSource
-extension PayController: ASTableDataSource {
-    func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
+extension CardListController: ASTableDataSource {
+    func numberOfSections(in tableNode: ASTableNode) -> Int {
         return 3
+    }
+    
+    func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
+        guard let section = Section.init(rawValue: section) else { return 0 }
+        
+        switch section {
+        case .advertise:
+            return 1
+        case .favorite:
+            guard CardCellNode.cards.count > 0 else { return 0 }
+            return 1
+        case .basic:
+            guard CardCellNode.cards.count > 1 else { return 0 }
+            return CardCellNode.cards.count - 1
+        }
     }
     
     func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         return {
-            guard let section = Section.init(rawValue: indexPath.row) else { return ASCellNode() }
+            guard let section = Section.init(rawValue: indexPath.section) else { return ASCellNode() }
             
             switch section {
-            case .card:
-                let cardCellNode = CardCellNode()
-                cardCellNode.delegate = self
-                return cardCellNode
-            case .coupon:
-                guard CardCellNode.cards.count > 0 else { return ASCellNode() }
-                
-                return CouponCellNode()
             case .advertise:
                 return AdCellNode()
+            case .favorite:
+                guard CardCellNode.cards.count > 0 else { return ASCellNode() }
+                
+                let card = CardCellNode.cards[0]
+                let cardCellNode = CardListCellNode(isBasic: false,
+                                                    card.cardImage,
+                                                    card.name,
+                                                    card.balance)
+                return cardCellNode
+            case .basic:
+                guard CardCellNode.cards.count > 1 else { return ASCellNode() }
+                
+                let card = CardCellNode.cards[indexPath.row + 1]
+                let cardCellNode = CardListCellNode(isBasic: true,
+                                                    card.cardImage,
+                                                    card.name,
+                                                    card.balance)
+                return cardCellNode
             }
         }
     }
 
     func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
-        guard let section = Section.init(rawValue: indexPath.row) else { return ASSizeRange() }
+        guard let section = Section.init(rawValue: indexPath.section) else { return ASSizeRange() }
         switch section {
-        case .card:
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 600))
-        case .coupon:
+        case .advertise:
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
+        case .favorite:
             guard CardCellNode.cards.count > 0 else { return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 0)) }
             
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
-        case .advertise:
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 100))
+        case .basic:
+            guard CardCellNode.cards.count > 1 else { return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 0)) }
+            
             return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
         }
     }
 
     func tableNode(_ tableNode: ASTableNode, willDisplayRowWith node: ASCellNode) {
         node.backgroundColor = .white
-    }
-}
-
-// MARK: - AddCardDelegate
-extension PayController: AddCardDelegate {
-    func cardClickedToPresent(_ viewController: AddCardController) {
-        viewController.addCard = {
-            CardCellNode.cards.append(contentsOf: [
-                Card(cardImage: "thankyou", name: "Thank You 카드", balance: "2,300원", code: "****-****-**36-6582"),
-                Card(cardImage: "limited", name: "Limited 카드", balance: "102,300원", code: "****-****-**70-7431")]
-            )
-            self.tableNode.reloadData()
-        }
-        navigationController?.pushViewController(viewController, animated: true)
     }
 }
