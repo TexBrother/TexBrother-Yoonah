@@ -9,18 +9,12 @@ import AsyncDisplayKit
 import Then
 
 final class DetailCardController: ASDKViewController<ASDisplayNode> {
-    // MARK: - Properties
-    enum Section: Int, CaseIterable {
-        case advertise
-        case favorite
-        case basic
-    }
     
     // MARK: - UI
     private lazy var tableNode = ASTableNode().then {
         $0.view.showsVerticalScrollIndicator = true
         $0.dataSource = self
-        $0.backgroundColor = .white
+        $0.backgroundColor = .lightGray
     }
     private lazy var addButton = UIButton().then {
         $0.setImage(UIImage(systemName: "plus.circle"), for: .normal)
@@ -95,72 +89,27 @@ final class DetailCardController: ASDKViewController<ASDisplayNode> {
 
 // MARK: - ASTableDataSource
 extension DetailCardController: ASTableDataSource {
-    func numberOfSections(in tableNode: ASTableNode) -> Int {
-        return 3
-    }
-    
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
-        guard let section = Section.init(rawValue: section) else { return 0 }
-        
-        switch section {
-        case .advertise:
-            return 1
-        case .favorite:
-            guard CardCellNode.cards.count > 0 else { return 0 }
-            return 1
-        case .basic:
-            guard CardCellNode.cards.count > 1 else { return 0 }
-            return CardCellNode.cards.count - 1
-        }
+        return 4
     }
     
     func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         return {
-            guard let section = Section.init(rawValue: indexPath.section) else { return ASCellNode() }
-            
-            switch section {
-            case .advertise:
-                return AdCellNode()
-            case .favorite:
-                guard CardCellNode.cards.count > 0 else { return ASCellNode() }
-                
-                let card = CardCellNode.cards[0]
-                let cardCellNode = CardListCellNode(isBasic: false,
-                                                    card.cardImage,
-                                                    card.name,
-                                                    card.balance)
-                return cardCellNode
-            case .basic:
-                guard CardCellNode.cards.count > 1 else { return ASCellNode() }
-                
-                let card = CardCellNode.cards[indexPath.row + 1]
-                let cardCellNode = CardListCellNode(isBasic: true,
-                                                    card.cardImage,
-                                                    card.name,
-                                                    card.balance)
-                return cardCellNode
-            }
+            let card = CardCellNode.cards[0]
+            let cardCellNode = CardListCellNode(isBasic: true,
+                                                card.cardImage,
+                                                card.name,
+                                                card.balance)
+            return cardCellNode
         }
     }
 
     func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
-        guard let section = Section.init(rawValue: indexPath.section) else { return ASSizeRange() }
-        switch section {
-        case .advertise:
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
-        case .favorite:
-            guard CardCellNode.cards.count > 0 else { return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 0)) }
-            
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 100))
-        case .basic:
-            guard CardCellNode.cards.count > 1 else { return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 0)) }
-            
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
-        }
+        return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
     }
 
     func tableNode(_ tableNode: ASTableNode, willDisplayRowWith node: ASCellNode) {
-        node.backgroundColor = .white
+        node.backgroundColor = .clear
     }
 }
 
