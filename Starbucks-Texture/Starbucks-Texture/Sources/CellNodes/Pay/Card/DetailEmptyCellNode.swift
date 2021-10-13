@@ -1,5 +1,5 @@
 //
-//  DetailCellNode.swift
+//  DetailEmptyCellNode.swift
 //  Starbucks-Texture
 //
 //  Created by SHIN YOON AH on 2021/09/22.
@@ -8,7 +8,7 @@
 import AsyncDisplayKit
 import Then
 
-final class DetailCellNode: ASCellNode {
+final class DetailEmptyCellNode: ASCellNode {
     // MARK: - Properties
     struct Const {
         static var titleAttribute: [NSAttributedString.Key: Any] {
@@ -31,6 +31,11 @@ final class DetailCellNode: ASCellNode {
     // MARK: - UI
     private lazy var backview = ASDisplayNode().then {
         $0.backgroundColor = .white
+        $0.cornerRadius = 8
+        $0.shadowOffset = CGSize(width: 2, height: 2)
+        $0.shadowColor = UIColor.gray.cgColor
+        $0.shadowRadius = 7
+        $0.shadowOpacity = 0.4
     }
     private lazy var addCardButtonNode = ASButtonNode().then {
         $0.setImage(UIImage(systemName: "plus.circle"), for: .normal)
@@ -48,15 +53,12 @@ final class DetailCellNode: ASCellNode {
     
     var delegate: AddCardDelegate?
     
-    init(name: String, balance: String) {
+    override init() {
         super.init()
         self.automaticallyManagesSubnodes = true
         self.automaticallyRelayoutOnSafeAreaChanges = true
         self.selectionStyle = .none
-        self.shadowOffset = CGSize(width: 2, height: 2)
-        self.shadowColor = UIColor.gray.cgColor
-        self.shadowRadius = 7
-        self.shadowOpacity = 0.4
+        self.cornerRadius = 8
         self.clipsToBounds = false
     }
     
@@ -80,7 +82,7 @@ final class DetailCellNode: ASCellNode {
     private func contentLayoutSpec() -> ASLayoutSpec {
         let topLayout = ASStackLayoutSpec(
             direction: .vertical,
-            spacing: 30.0,
+            spacing: 28.0,
             justifyContent: .start,
             alignItems: .center,
             children: [
@@ -91,7 +93,7 @@ final class DetailCellNode: ASCellNode {
         
         return ASStackLayoutSpec(
             direction: .vertical,
-            spacing: 10.0,
+            spacing: 11.0,
             justifyContent: .start,
             alignItems: .center,
             children: [
