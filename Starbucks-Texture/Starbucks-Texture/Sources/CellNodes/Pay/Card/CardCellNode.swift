@@ -29,7 +29,7 @@ final class CardCellNode: ASCellNode {
         $0.footerReferenceSize = .zero
     }
     
-    weak var delegate: AddCardDelegate?
+    weak var delegate: CardDelegate?
     
     // MARK: - Initalizing
     override init() {
@@ -68,6 +68,7 @@ extension CardCellNode: ASCollectionDataSource {
             }
             
             let cellNode = DetailCardCellNode(card: CardCellNode.cards[indexPath.item])
+            cellNode.delegate = self.delegate
             return cellNode
         }
         

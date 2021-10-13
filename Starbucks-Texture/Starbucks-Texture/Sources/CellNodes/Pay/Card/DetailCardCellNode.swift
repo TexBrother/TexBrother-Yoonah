@@ -42,6 +42,8 @@ final class DetailCardCellNode: ASCellNode {
         }
     }
     
+    weak var delegate: CardDelegate?
+    
     // MARK: - UI
     private var backview = ASDisplayNode().then {
         $0.backgroundColor = .white
@@ -100,6 +102,18 @@ final class DetailCardCellNode: ASCellNode {
         nameTextNode.attributedText = NSAttributedString(string: card.name, attributes: Const.nameAttribute)
         balanceTextNode.attributedText = NSAttributedString(string: card.balance, attributes: Const.balanceAttribute)
         barcodeTextNode.attributedText = NSAttributedString(string: card.code, attributes: Const.barcodeAttribute)
+    }
+    
+    override func didLoad() {
+        super.didLoad()
+        cardButtonNode.addTarget(self, action: #selector(didTappedCardDetailButton), forControlEvents: .touchUpInside)
+    }
+    
+    // MARK: - @objc
+    @objc
+    func didTappedCardDetailButton() {
+        let vc = AddCardController()
+        delegate?.cardClickedToPresent(vc)
     }
     
     // MARK: Layout

@@ -51,7 +51,7 @@ final class DetailEmptyCellNode: ASCellNode {
         $0.attributedText = NSAttributedString(string: "매장과 사이렌오더에서 쉽게 편리하게\n사용할 수 있고, 별도 적립할 수 있습니다.", attributes: Const.descriptionAttribute)
     }
     
-    var delegate: AddCardDelegate?
+    weak var delegate: CardDelegate?
     
     override init() {
         super.init()
@@ -71,7 +71,7 @@ final class DetailEmptyCellNode: ASCellNode {
     @objc
     func didTappedAddCardButton() {
         let vc = AddCardController()
-        delegate?.cardClickedToPresent(vc)
+        delegate?.emptyCardClickedToPresent(vc)
     }
     
     // MARK: Layout

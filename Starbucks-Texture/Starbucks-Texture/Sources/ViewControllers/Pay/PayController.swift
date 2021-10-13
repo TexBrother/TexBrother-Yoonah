@@ -8,7 +8,8 @@
 import AsyncDisplayKit
 import Then
 
-protocol AddCardDelegate: PayController {
+protocol CardDelegate: PayController {
+    func emptyCardClickedToPresent(_ viewController: AddCardController)
     func cardClickedToPresent(_ viewController: AddCardController)
 }
 
@@ -146,8 +147,12 @@ extension PayController: ASTableDataSource {
 }
 
 // MARK: - AddCardDelegate
-extension PayController: AddCardDelegate {
+extension PayController: CardDelegate {
     func cardClickedToPresent(_ viewController: AddCardController) {
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func emptyCardClickedToPresent(_ viewController: AddCardController) {
         viewController.addCard = {
             CardCellNode.cards.append(contentsOf: [
                 Card(cardImage: "thankyou", name: "Thank You 카드", balance: "2,300원", code: "****-****-**36-6582"),
