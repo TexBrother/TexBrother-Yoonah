@@ -24,6 +24,7 @@
 		ED71D7CB27048D63006347EC /* VoucherDetailCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CA27048D63006347EC /* VoucherDetailCellNode.swift */; };
 		ED71D7CD2704918A006347EC /* CardDetailCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */; };
 		ED71D7CF27049325006347EC /* EditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CE27049325006347EC /* EditableTextField.swift */; };
+		EDB20AE52717D8A7001D647E /* CardMenuCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB20AE42717D8A7001D647E /* CardMenuCellNode.swift */; };
 		EDB6BC8D26FA438A00A5F64C /* DetailEmptyCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB6BC8C26FA438A00A5F64C /* DetailEmptyCellNode.swift */; };
 		EDF049F9270CC4B300C4B4B0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF049F8270CC4B300C4B4B0 /* Card.swift */; };
 		EDF049FB270CC7FF00C4B4B0 /* DetailCardCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF049FA270CC7FF00C4B4B0 /* DetailCardCellNode.swift */; };
@@ -55,6 +56,7 @@
 		ED71D7CA27048D63006347EC /* VoucherDetailCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoucherDetailCellNode.swift; sourceTree = "<group>"; };
 		ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailCellNode.swift; sourceTree = "<group>"; };
 		ED71D7CE27049325006347EC /* EditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTextField.swift; sourceTree = "<group>"; };
+		EDB20AE42717D8A7001D647E /* CardMenuCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMenuCellNode.swift; sourceTree = "<group>"; };
 		EDB6BC8C26FA438A00A5F64C /* DetailEmptyCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEmptyCellNode.swift; sourceTree = "<group>"; };
 		EDF049F8270CC4B300C4B4B0 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		EDF049FA270CC7FF00C4B4B0 /* DetailCardCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCardCellNode.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 		ED71D7C627044928006347EC /* Pay */ = {
 			isa = PBXGroup;
 			children = (
+				EDB20AE32717D89C001D647E /* CardDetail */,
 				ED20D6A227167B3800005770 /* CardList */,
 				EDF049FD270CC8D900C4B4B0 /* AddCard */,
 				EDF049FC270CC8C600C4B4B0 /* Card */,
@@ -204,6 +207,14 @@
 				ED20D6A6271693CA00005770 /* DetailCardController.swift */,
 			);
 			path = Pay;
+			sourceTree = "<group>";
+		};
+		EDB20AE32717D89C001D647E /* CardDetail */ = {
+			isa = PBXGroup;
+			children = (
+				EDB20AE42717D8A7001D647E /* CardMenuCellNode.swift */,
+			);
+			path = CardDetail;
 			sourceTree = "<group>";
 		};
 		EDF049F7270CC4A500C4B4B0 /* Models */ = {
@@ -399,6 +410,7 @@
 				ED20D6A427167B4D00005770 /* CardListCellNode.swift in Sources */,
 				EDF049F9270CC4B300C4B4B0 /* Card.swift in Sources */,
 				EDF04A27270D6A1400C4B4B0 /* ASCellNode+.swift in Sources */,
+				EDB20AE52717D8A7001D647E /* CardMenuCellNode.swift in Sources */,
 				ED63854826FA1AB2007F7F8D /* CardCellNode.swift in Sources */,
 				ED20D6A12716741500005770 /* CardListController.swift in Sources */,
 				ED71D7CF27049325006347EC /* EditableTextField.swift in Sources */,

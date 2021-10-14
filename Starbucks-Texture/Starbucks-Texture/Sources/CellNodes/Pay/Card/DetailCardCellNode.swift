@@ -42,6 +42,7 @@ final class DetailCardCellNode: ASCellNode {
         }
     }
     
+    private var index: Int?
     weak var delegate: CardDelegate?
     
     // MARK: - UI
@@ -96,12 +97,14 @@ final class DetailCardCellNode: ASCellNode {
         self.clipsToBounds = false
     }
     
-    convenience init(card: Card) {
+    convenience init(card: Card, index: Int) {
         self.init()
         cardButtonNode.setImage(UIImage(named: card.cardImage), for: .normal)
         nameTextNode.attributedText = NSAttributedString(string: card.name, attributes: Const.nameAttribute)
         balanceTextNode.attributedText = NSAttributedString(string: card.balance, attributes: Const.balanceAttribute)
         barcodeTextNode.attributedText = NSAttributedString(string: card.code, attributes: Const.barcodeAttribute)
+        
+        self.index = index
     }
     
     override func didLoad() {
@@ -112,7 +115,7 @@ final class DetailCardCellNode: ASCellNode {
     // MARK: - @objc
     @objc
     func didTappedCardDetailButton() {
-        let vc = DetailCardController()
+        let vc = DetailCardController(index: index ?? -1)
         delegate?.cardClickedToPresent(vc)
     }
     

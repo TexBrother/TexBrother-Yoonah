@@ -67,7 +67,7 @@ extension CardCellNode: ASCollectionDataSource {
                 return cellNode
             }
             
-            let cellNode = DetailCardCellNode(card: CardCellNode.cards[indexPath.item])
+            let cellNode = DetailCardCellNode(card: CardCellNode.cards[indexPath.item], index: indexPath.row)
             cellNode.delegate = self.delegate
             return cellNode
         }

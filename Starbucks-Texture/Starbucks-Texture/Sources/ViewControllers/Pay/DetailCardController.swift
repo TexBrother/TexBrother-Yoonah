@@ -9,18 +9,68 @@ import AsyncDisplayKit
 import Then
 
 final class DetailCardController: ASDKViewController<ASDisplayNode> {
+    // MARK: - Properties
+    struct Const {
+        static var titleAttribute: [NSAttributedString.Key: Any] {
+            return [.font: UIFont.systemFont(ofSize: 28.0, weight: .semibold),
+                    .foregroundColor: UIColor.black]
+        }
+        
+        static var barcodeAttribute: [NSAttributedString.Key: Any] {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            
+            return [.font: UIFont.systemFont(ofSize: 13.0, weight: .semibold),
+                    .foregroundColor: UIColor.black, .paragraphStyle: paragraphStyle]
+        }
+        
+        static var balanceTitleAttribute: [NSAttributedString.Key: Any] {
+            return [.font: UIFont.systemFont(ofSize: 13.0, weight: .regular),
+                    .foregroundColor: UIColor.black]
+        }
+        
+        static var balanceAttribute: [NSAttributedString.Key: Any] {
+            return [.font: UIFont.systemFont(ofSize: 25.0, weight: .bold),
+                    .foregroundColor: UIColor.black]
+        }
+    }
+    
+    let lists: [String: String] = ["list.bullet.rectangle": "이용내역", "bolt.badge.a.fill": "자동 충전", "bolt.badge.a": "일반 충전", "arrow.left.arrow.right": "분실 신고 및 잔액 이전"]
     
     // MARK: - UI
     private lazy var tableNode = ASTableNode().then {
         $0.view.showsVerticalScrollIndicator = true
         $0.dataSource = self
-        $0.backgroundColor = .lightGray
+        $0.backgroundColor = .systemGray4
     }
-    private lazy var addButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "plus.circle"), for: .normal)
-        $0.setPreferredSymbolConfiguration(.init(pointSize: 17, weight: .regular, scale: .large), forImageIn: .normal)
-        $0.tintColor = .lightGray
+    private var cardImageNode = ASImageNode().then {
+        $0.contentMode = .scaleAspectFit
+        $0.styled {
+            $0.height = ASDimension(unit: .points, value: 80)
+            $0.width = ASDimension(unit: .points, value: 150)
+        }
     }
+    private var barcodeImageNode = ASImageNode().then {
+        $0.image = UIImage(named: "barcode")
+        $0.contentMode = .scaleAspectFit
+        $0.styled {
+            $0.height = ASDimension(unit: .points, value: 60)
+            $0.width = ASDimension(unit: .points, value: 250)
+        }
+    }
+    private var balanceTitleTextNode = ASTextNode().then {
+        $0.attributedText = NSAttributedString(string: "카드 잔액", attributes: Const.balanceTitleAttribute)
+    }
+    private var codeTimeTitleTextNode = ASTextNode().then {
+        $0.attributedText = NSAttributedString(string: "바코드 유효시간", attributes: Const.barcodeAttribute)
+    }
+    private var codeTimeTextNode = ASTextNode().then {
+        $0.attributedText = NSAttributedString(string: "09:15", attributes: Const.barcodeAttribute)
+    }
+    private var titleTextNode = ASTextNode()
+    private var balanceTextNode = ASTextNode()
+    private var barcodeTextNode = ASTextNode()
+    
     
     // MARK: - Initializing
     override init() {
@@ -33,39 +83,33 @@ final class DetailCardController: ASDKViewController<ASDisplayNode> {
         }
     }
     
+    convenience init(index: Int) {
+        self.init()
+        
+        titleTextNode.attributedText = NSAttributedString(string: CardCellNode.cards[index].name, attributes: Const.titleAttribute)
+        cardImageNode.image = UIImage(named: CardCellNode.cards[index].cardImage)
+        balanceTextNode.attributedText = NSAttributedString(string: CardCellNode.cards[index].balance, attributes: Const.balanceAttribute)
+        barcodeTextNode.attributedText = NSAttributedString(string: CardCellNode.cards[index].code, attributes: Const.barcodeAttribute)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Life Cycle
-    override func viewDidLoad() {
-        addButton.addTarget(self, action: #selector(touchUpAddCard), for: .touchUpInside)
-        setupNavigationController()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         setupTabbar()
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     // MARK: - Custom Method
-    private func setupNavigationController() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .automatic
-        navigationItem.title = "카드(\(CardCellNode.cards.count))"
-        
-        let barButton = UIBarButtonItem(customView: addButton)
-        navigationItem.rightBarButtonItem = barButton
-    }
     
     private func setupTabbar() {
         tabBarController?.tabBar.isHidden = true
-    }
-    
-    // MARK: - @objc
-    @objc
-    private func touchUpAddCard() {
-        let vc = AddCardController()
-        navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - Layout
@@ -76,14 +120,96 @@ final class DetailCardController: ASDKViewController<ASDisplayNode> {
             justifyContent: .start,
             alignItems: .stretch,
             children: [
+                contentLayoutSpec(),
                 tableNode.styled({
                     $0.flexGrow = 1.0
                 })
             ]
         )
-        let safeAreaInset: UIEdgeInsets = self.view.safeAreaInsets
+        
+        var containerInsets: UIEdgeInsets = self.view.safeAreaInsets
+        containerInsets.bottom = -20.0
         return ASInsetLayoutSpec (
-            insets: safeAreaInset, child: contentLayout)
+            insets: containerInsets, child: contentLayout)
+    }
+    
+    private func cardLayoutSpec() -> ASLayoutSpec {
+        let titleLayout = ASStackLayoutSpec(
+            direction: .vertical,
+            spacing: 3.0,
+            justifyContent: .start,
+            alignItems: .start,
+            children: [
+                balanceTitleTextNode,
+                balanceTextNode
+            ]
+        )
+        return ASStackLayoutSpec(
+            direction: .horizontal,
+            spacing: 8.0,
+            justifyContent: .start,
+            alignItems: .start,
+            children: [
+                cardImageNode,
+                titleLayout
+            ]
+        )
+    }
+    
+    private func barcodeLayoutSpec() -> ASLayoutSpec {
+        let codeTimeLayout = ASStackLayoutSpec(
+            direction: .horizontal,
+            spacing: 3.0,
+            justifyContent: .start,
+            alignItems: .start,
+            children: [
+                codeTimeTitleTextNode,
+                codeTimeTextNode
+            ]
+        )
+        let codeLayout = ASStackLayoutSpec(
+            direction: .vertical,
+            spacing: 6.0,
+            justifyContent: .start,
+            alignItems: .center,
+            children: [
+                barcodeImageNode,
+                barcodeTextNode,
+                codeTimeLayout
+            ]
+        )
+        
+        return ASCenterLayoutSpec(
+            centeringOptions: .X,
+            sizingOptions: [],
+            child: codeLayout
+        )
+    }
+    
+    private func contentLayoutSpec() -> ASLayoutSpec {
+        let topLayout = ASStackLayoutSpec(
+            direction: .vertical,
+            spacing: 50.0,
+            justifyContent: .start,
+            alignItems: .start,
+            children: [
+                titleTextNode,
+                cardLayoutSpec()
+            ]
+        )
+        let totalLayout = ASStackLayoutSpec(
+            direction: .vertical,
+            spacing: 30.0,
+            justifyContent: .start,
+            alignItems: .start,
+            children: [
+                topLayout,
+                barcodeLayoutSpec()
+            ]
+        )
+        
+        return ASInsetLayoutSpec (
+            insets: UIEdgeInsets(top: 10, left: 15, bottom: 15, right: 15), child: totalLayout)
     }
 }
 
@@ -95,11 +221,9 @@ extension DetailCardController: ASTableDataSource {
     
     func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
         return {
-            let card = CardCellNode.cards[0]
-            let cardCellNode = CardListCellNode(isBasic: true,
-                                                card.cardImage,
-                                                card.name,
-                                                card.balance)
+            let index = Array(self.lists.keys)[indexPath.row]
+            let cardCellNode = CardMenuCellNode(index, title: self.lists[index] ?? "")
+            cardCellNode.backgroundColor = .systemGray4
             return cardCellNode
         }
     }
