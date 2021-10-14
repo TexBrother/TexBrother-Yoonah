@@ -9,12 +9,14 @@ import UIKit
 
 class TabbarController: UITabBarController {
 
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configUI()
         setupTabs()
     }
     
+    // MARK: - Custom Method
     private func configUI() {
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()

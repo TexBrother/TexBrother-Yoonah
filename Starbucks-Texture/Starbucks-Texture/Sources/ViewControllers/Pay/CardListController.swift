@@ -9,7 +9,7 @@ import AsyncDisplayKit
 import Then
 
 final class CardListController: ASDKViewController<ASDisplayNode> {
-    // MARK: - Properties
+    // MARK: - Section
     enum Section: Int, CaseIterable {
         case advertise
         case favorite

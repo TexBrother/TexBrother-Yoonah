@@ -9,7 +9,7 @@ import AsyncDisplayKit
 import Then
 
 final class CardDetailCellNode: ASCellNode {
-    // MARK: - Properties
+    // MARK: - Const
     struct Const {
         static var titleAttribute: [NSAttributedString.Key: Any] {
             let paragraphStyle = NSMutableParagraphStyle()
@@ -44,6 +44,7 @@ final class CardDetailCellNode: ASCellNode {
     private let numberTextFieldNode = EditableTextField("스타벅스 카드번호 16자리 (필수)", "스타벅스 카드번호를 입력해 주세요.", "스타벅스 카드번호")
     private let pinTextFieldNode = EditableTextField("Pin번호 8자리 (필수)", "Pin번호를 입력해 주세요.", "Pin번호")
     
+    // MARK: - Initalizing
     override init() {
         super.init()
         self.automaticallyManagesSubnodes = true
@@ -51,12 +52,13 @@ final class CardDetailCellNode: ASCellNode {
         self.selectionStyle = .none
     }
     
+    // MARK: - Node Life Cycle
     override func didLoad() {
         super.didLoad()
         hideKeyboardWhenTappedAround()
     }
     
-    // MARK: Layout
+    // MARK: - Layout
     override func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
         return contentInsetLayoutSpec()
     }

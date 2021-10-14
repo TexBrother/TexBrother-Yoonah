@@ -9,9 +9,6 @@ import AsyncDisplayKit
 import Then 
 
 final class CardCellNode: ASCellNode {
-    // MARK: - Properties
-    static var cards: [Card] = []
-    
     // MARK: - UI
     private lazy var collectionNode = ASCollectionNode(collectionViewLayout: flowLayout).then {
         $0.dataSource = self
@@ -29,6 +26,8 @@ final class CardCellNode: ASCellNode {
         $0.footerReferenceSize = .zero
     }
     
+    // MARK: - Properties
+    static var cards: [Card] = []
     weak var delegate: CardDelegate?
     
     // MARK: - Initalizing
@@ -39,6 +38,7 @@ final class CardCellNode: ASCellNode {
         self.selectionStyle = .none
     }
     
+    // MARK: - Node Life Cycle
     override func didLoad() {
         super.didLoad()
     }
@@ -52,6 +52,7 @@ final class CardCellNode: ASCellNode {
     }
 }
 
+// MARK: - ASCollectionDataSource
 extension CardCellNode: ASCollectionDataSource {
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
         guard CardCellNode.cards.count > 0 else { return 1 }

@@ -9,7 +9,7 @@ import AsyncDisplayKit
 import Then
 
 final class DetailCardController: ASDKViewController<ASDisplayNode> {
-    // MARK: - Properties
+    // MARK: - Const
     struct Const {
         static var titleAttribute: [NSAttributedString.Key: Any] {
             return [.font: UIFont.systemFont(ofSize: 28.0, weight: .semibold),
@@ -35,6 +35,7 @@ final class DetailCardController: ASDKViewController<ASDisplayNode> {
         }
     }
     
+    // MARK: - Properties
     let lists: [String: String] = ["list.bullet.rectangle": "이용내역", "bolt.badge.a.fill": "자동 충전", "bolt.badge.a": "일반 충전", "arrow.left.arrow.right": "분실 신고 및 잔액 이전"]
     
     // MARK: - UI
@@ -107,7 +108,6 @@ final class DetailCardController: ASDKViewController<ASDisplayNode> {
     }
     
     // MARK: - Custom Method
-    
     private func setupTabbar() {
         tabBarController?.tabBar.isHidden = true
     }

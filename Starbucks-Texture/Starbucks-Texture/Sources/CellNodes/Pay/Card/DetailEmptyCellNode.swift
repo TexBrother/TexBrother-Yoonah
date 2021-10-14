@@ -9,7 +9,7 @@ import AsyncDisplayKit
 import Then
 
 final class DetailEmptyCellNode: ASCellNode {
-    // MARK: - Properties
+    // MARK: - Const
     struct Const {
         static var titleAttribute: [NSAttributedString.Key: Any] {
             let paragraphStyle = NSMutableParagraphStyle()
@@ -51,8 +51,10 @@ final class DetailEmptyCellNode: ASCellNode {
         $0.attributedText = NSAttributedString(string: "매장과 사이렌오더에서 쉽게 편리하게\n사용할 수 있고, 별도 적립할 수 있습니다.", attributes: Const.descriptionAttribute)
     }
     
+    // MARK: - Properties
     weak var delegate: CardDelegate?
     
+    // MARK: - Initalizing
     override init() {
         super.init()
         self.automaticallyManagesSubnodes = true
@@ -62,6 +64,7 @@ final class DetailEmptyCellNode: ASCellNode {
         self.clipsToBounds = false
     }
     
+    // MARK: - Node Life Cycle
     override func didLoad() {
         super.didLoad()
         addCardButtonNode.addTarget(self, action: #selector(didTappedAddCardButton), forControlEvents: .touchUpInside)

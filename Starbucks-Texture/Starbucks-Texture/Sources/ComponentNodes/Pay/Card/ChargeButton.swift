@@ -48,12 +48,11 @@ final class ChargeButton: ASDisplayNode {
         titleTextNode.attributedText = NSAttributedString(string: title, attributes: Const.titleAttribute)
     }
     
-    // MARK: Node Life Cycle
+    // MARK: - Layout
     override func layout() {
         super.layout()
     }
     
-    // MARK: Layout
     override func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
         return ASOverlayLayoutSpec(child: buttonNode, overlay: contentInsetLayoutSpec())
     }

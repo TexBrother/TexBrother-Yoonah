@@ -5,12 +5,13 @@
 //  Created by SHIN YOON AH on 2021/10/06.
 //
 
-import AsyncDisplayKit
-import Then
 import UIKit
 
+import AsyncDisplayKit
+import Then
+
 final class DetailCardCellNode: ASCellNode {
-    // MARK: - Properties
+    // MARK: - Const
     struct Const {
         static var nameAttribute: [NSAttributedString.Key: Any] {
             let paragraphStyle = NSMutableParagraphStyle()
@@ -41,9 +42,6 @@ final class DetailCardCellNode: ASCellNode {
                     .foregroundColor: UIColor.systemGreen]
         }
     }
-    
-    private var index: Int?
-    weak var delegate: CardDelegate?
     
     // MARK: - UI
     private var backview = ASDisplayNode().then {
@@ -88,6 +86,11 @@ final class DetailCardCellNode: ASCellNode {
     private var autoChargeButtonNode = ChargeButton("auto", title: "자동 충전")
     private var normalChargeButtonNode = ChargeButton("normal", title: "일반 충전")
     
+    // MARK: - Properties
+    private var index: Int?
+    weak var delegate: CardDelegate?
+    
+    // MARK: - Initalizing
     override init() {
         super.init()
         self.automaticallyManagesSubnodes = true
@@ -107,6 +110,7 @@ final class DetailCardCellNode: ASCellNode {
         self.index = index
     }
     
+    // MARK: - Node Life Cycle
     override func didLoad() {
         super.didLoad()
         cardButtonNode.addTarget(self, action: #selector(didTappedCardDetailButton), forControlEvents: .touchUpInside)

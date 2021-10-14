@@ -48,6 +48,7 @@ final class EditableTextField: ASDisplayNode {
     private var isShow = false
     private var info = ""
     
+    // MARK: - Initalizing
     init(_ placeholder: String, _ info: String, _ title: String, _ isShow: Bool = false) {
         super.init()
         
@@ -62,7 +63,7 @@ final class EditableTextField: ASDisplayNode {
         infoNode.isHidden = !isShow
     }
     
-    // MARK: Node Life Cycle
+    // MARK: - Node Life Cycle
     override func didLoad() {
         border.backgroundColor = UIColor.lightGray.cgColor
         border.frame = CGRect(x: 0, y: 28, width: UIScreen.main.bounds.size.width - 40, height: 1)
@@ -72,7 +73,7 @@ final class EditableTextField: ASDisplayNode {
         textfieldNode.textView.typingAttributes = Const.placeholderAttribute
     }
     
-    // MARK: Layout
+    // MARK: - Layout
     override func layout() {
         super.layout()
     }
@@ -90,6 +91,7 @@ final class EditableTextField: ASDisplayNode {
     }
 }
 
+// MARK: - ASEditableTextNodeDelegate
 extension EditableTextField: ASEditableTextNodeDelegate {
     func editableTextNodeDidBeginEditing(_ editableTextNode: ASEditableTextNode) {
         titleTextNode.isHidden = false

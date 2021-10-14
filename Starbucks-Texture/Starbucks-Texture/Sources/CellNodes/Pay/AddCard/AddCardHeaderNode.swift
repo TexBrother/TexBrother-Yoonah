@@ -22,18 +22,18 @@ final class AddCardHeaderNode: ASDisplayNode {
         $0.view.layer.applyShadow(color: .black, alpha: 1, x: 0, y: 2, blur: 5)
     }
     
+    // MARK: - Initalizing
     override init() {
         super.init()
         self.automaticallyManagesSubnodes = true
         self.automaticallyRelayoutOnSafeAreaChanges = true
     }
     
-    // MARK: Node Life Cycle
+    // MARK: - Layout
     override func layout() {
         super.layout()
     }
     
-    // MARK: Layout
     override func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
         return contentLayoutSpec()
     }

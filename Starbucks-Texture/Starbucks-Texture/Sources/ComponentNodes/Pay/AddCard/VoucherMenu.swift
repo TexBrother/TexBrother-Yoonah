@@ -59,7 +59,7 @@ final class VoucherMenu: ASDisplayNode {
         titleTextNode.attributedText = NSAttributedString(string: title, attributes: Const.titleAttribute)
     }
     
-    // MARK: Layout
+    // MARK: - Layout
     override func layout() {
         super.layout()
     }

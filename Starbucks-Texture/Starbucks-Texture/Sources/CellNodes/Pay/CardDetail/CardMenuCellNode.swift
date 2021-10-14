@@ -5,9 +5,10 @@
 //  Created by SHIN YOON AH on 2021/10/13.
 //
 
+import UIKit
+
 import AsyncDisplayKit
 import Then
-import UIKit
 
 final class CardMenuCellNode: ASCellNode {
     // MARK: - Const
@@ -36,6 +37,7 @@ final class CardMenuCellNode: ASCellNode {
     }
     private var titleTextNode = ASTextNode()
     
+    // MARK: - Initalizing
     override init() {
         super.init()
         self.automaticallyManagesSubnodes = true
@@ -49,11 +51,12 @@ final class CardMenuCellNode: ASCellNode {
         titleTextNode.attributedText = NSAttributedString(string: title, attributes: Const.titleAttribute)
     }
     
+    // MARK: - Node Life Cycle
     override func didLoad() {
         super.didLoad()
     }
     
-    // MARK: Layout
+    // MARK: - Layout
     override func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
         let flexLayout = ASStackLayoutSpec(
             direction: .vertical,

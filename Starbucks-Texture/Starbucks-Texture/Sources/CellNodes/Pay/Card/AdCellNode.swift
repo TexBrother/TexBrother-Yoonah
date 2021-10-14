@@ -25,6 +25,7 @@ final class AdCellNode: ASCellNode {
         self.selectionStyle = .none
     }
     
+    // MARK: - Node Life Cycle
     override func didLoad() {
         super.didLoad()
     }

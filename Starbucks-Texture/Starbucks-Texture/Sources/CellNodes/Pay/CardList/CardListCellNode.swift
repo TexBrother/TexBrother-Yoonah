@@ -5,12 +5,13 @@
 //  Created by SHIN YOON AH on 2021/10/13.
 //
 
-import AsyncDisplayKit
-import Then
 import UIKit
 
+import AsyncDisplayKit
+import Then
+
 final class CardListCellNode: ASCellNode {
-    // MARK: - Properties
+    // MARK: - Const
     struct Const {
         static var titleAttribute: [NSAttributedString.Key: Any] {
             return [.font: UIFont.systemFont(ofSize: 15.0, weight: .regular),
@@ -33,8 +34,6 @@ final class CardListCellNode: ASCellNode {
         }
     }
     
-    private var isBasic = false
-    
     // MARK: - UI
     private lazy var cardImageNode = ASImageNode().then {
         $0.contentMode = .scaleAspectFit
@@ -53,6 +52,10 @@ final class CardListCellNode: ASCellNode {
     private let titleTextNode = ASTextNode()
     private let balanceTextNode = ASTextNode()
     
+    // MARK: - Properties
+    private var isBasic = false
+    
+    // MARK: - Initalizing
     override init() {
         super.init()
         self.automaticallyManagesSubnodes = true
@@ -71,12 +74,13 @@ final class CardListCellNode: ASCellNode {
                                                             Const.subBalanceAttribute : Const.balanceAttribute)
     }
     
+    // MARK: - Node Life Cycle
     override func didLoad() {
         super.didLoad()
         hideKeyboardWhenTappedAround()
     }
     
-    // MARK: Layout
+    // MARK: - Layout
     override func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
         return contentInsetLayoutSpec()
     }

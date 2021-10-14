@@ -8,13 +8,14 @@
 import AsyncDisplayKit
 import Then
 
+// MARK: - Protocol CardDelegate
 protocol CardDelegate: PayController {
     func emptyCardClickedToPresent(_ viewController: AddCardController)
     func cardClickedToPresent(_ viewController: DetailCardController)
 }
 
 final class PayController: ASDKViewController<ASDisplayNode> {
-    // MARK: - Properties
+    // MARK: - Section
     enum Section: Int, CaseIterable {
         case card
         case coupon
@@ -146,7 +147,7 @@ extension PayController: ASTableDataSource {
     }
 }
 
-// MARK: - AddCardDelegate
+// MARK: - CardDelegate
 extension PayController: CardDelegate {
     func cardClickedToPresent(_ viewController: DetailCardController) {
         navigationController?.pushViewController(viewController, animated: true)
