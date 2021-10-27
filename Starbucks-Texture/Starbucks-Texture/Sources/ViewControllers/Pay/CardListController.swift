@@ -171,9 +171,11 @@ extension CardListController: ASTableDelegate {
         guard let section = Section.init(rawValue: indexPath.section) else { return }
         
         switch section {
-        case .favorite,
-                .basic:
-            let vc = DetailCardController()
+        case .favorite:
+            let vc = DetailCardController(index: indexPath.row)
+            navigationController?.pushViewController(vc, animated: true)
+        case .basic:
+            let vc = DetailCardController(index: indexPath.row + 1)
             navigationController?.pushViewController(vc, animated: true)
         default:
             break
