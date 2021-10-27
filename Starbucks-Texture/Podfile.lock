@@ -14,6 +14,12 @@ PODS:
   - PINRemoteImage/PINCache (3.0.3):
     - PINCache (~> 3.0.3)
     - PINRemoteImage/Core
+  - RxCocoa (6.2.0):
+    - RxRelay (= 6.2.0)
+    - RxSwift (= 6.2.0)
+  - RxRelay (6.2.0):
+    - RxSwift (= 6.2.0)
+  - RxSwift (6.2.0)
   - Texture (3.0.0):
     - Texture/AssetsLibrary (= 3.0.0)
     - Texture/Core (= 3.0.0)
@@ -52,6 +58,8 @@ PODS:
   - Then (2.7.0)
 
 DEPENDENCIES:
+  - RxCocoa (= 6.2.0)
+  - RxSwift (= 6.2.0)
   - Texture
   - TextureSwiftSupport
   - Then
@@ -61,6 +69,9 @@ SPEC REPOS:
     - PINCache
     - PINOperation
     - PINRemoteImage
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - Texture
     - TextureSwiftSupport
     - Then
@@ -69,10 +80,13 @@ SPEC CHECKSUMS:
   PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
   PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
+  RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
+  RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
+  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
   TextureSwiftSupport: bab3c5e811edf9dc32eb28db447723b9eee30b61
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: ea9f212e471e47dcc9d5def85347eddb0506221d
+PODFILE CHECKSUM: 50e97d17453551c805cf127715afb7de40f845c1
 
 COCOAPODS: 1.11.0.rc.1
