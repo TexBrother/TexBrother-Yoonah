@@ -8,12 +8,14 @@
 import AsyncDisplayKit
 import Then
 
-protocol AddCardDelegate: PayController {
-    func cardClickedToPresent(_ viewController: AddCardController)
+// MARK: - Protocol CardDelegate
+protocol CardDelegate: PayController {
+    func emptyCardClickedToPresent(_ viewController: AddCardController)
+    func cardClickedToPresent(_ viewController: DetailCardController)
 }
 
 final class PayController: ASDKViewController<ASDisplayNode> {
-    // MARK: - Properties
+    // MARK: - Section
     enum Section: Int, CaseIterable {
         case card
         case coupon
@@ -50,6 +52,7 @@ final class PayController: ASDKViewController<ASDisplayNode> {
     override func viewDidLoad() {
         tableNode.view.separatorStyle = .none
         tableNode.view.showsVerticalScrollIndicator = true
+        detailButton.addTarget(self, action: #selector(touchUpCardList), for: .touchUpInside)
         setupNavigationController()
     }
     
@@ -72,6 +75,13 @@ final class PayController: ASDKViewController<ASDisplayNode> {
     
     private func setupTabbar() {
         tabBarController?.tabBar.isHidden = false
+    }
+    
+    // MARK: - @objc
+    @objc
+    private func touchUpCardList() {
+        let vc = CardListController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - Layout
@@ -137,9 +147,13 @@ extension PayController: ASTableDataSource {
     }
 }
 
-// MARK: - AddCardDelegate
-extension PayController: AddCardDelegate {
-    func cardClickedToPresent(_ viewController: AddCardController) {
+// MARK: - CardDelegate
+extension PayController: CardDelegate {
+    func cardClickedToPresent(_ viewController: DetailCardController) {
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func emptyCardClickedToPresent(_ viewController: AddCardController) {
         viewController.addCard = {
             CardCellNode.cards.append(contentsOf: [
                 Card(cardImage: "thankyou", name: "Thank You 카드", balance: "2,300원", code: "****-****-**36-6582"),

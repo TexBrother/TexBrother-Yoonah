@@ -9,7 +9,7 @@ import AsyncDisplayKit
 import Then
 
 final class VoucherDetailCellNode: ASCellNode {
-    // MARK: - Properties
+    // MARK: - Const
     struct Const {
         static var titleAttribute: [NSAttributedString.Key: Any] {
             return [.font: UIFont.systemFont(ofSize: 17.0, weight: .bold),
@@ -52,6 +52,7 @@ final class VoucherDetailCellNode: ASCellNode {
         self.selectionStyle = .none
     }
     
+    // MARK: - Node Life Cycle
     override func didLoad() {
         super.didLoad()
     }
@@ -104,8 +105,6 @@ final class VoucherDetailCellNode: ASCellNode {
     private func voucherInfoOverlayLayoutSpec() -> ASLayoutSpec {
         return ASOverlayLayoutSpec(child: voucherInfoNode, overlay: voucherInfoInsetLayoutSpec())
     }
-    
-    
     
     private func contentLayoutSpec() -> ASLayoutSpec {
         let voucherLayout = ASStackLayoutSpec(

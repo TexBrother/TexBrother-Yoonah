@@ -1,14 +1,16 @@
 //
-//  VoucherMenu.swift
+//  CardMenuCellNode.swift
 //  Starbucks-Texture
 //
-//  Created by SHIN YOON AH on 2021/10/06.
+//  Created by SHIN YOON AH on 2021/10/13.
 //
+
+import UIKit
 
 import AsyncDisplayKit
 import Then
 
-final class VoucherMenu: ASDisplayNode {
+final class CardMenuCellNode: ASCellNode {
     // MARK: - Const
     struct Const {
         static var titleAttribute: [NSAttributedString.Key: Any] {
@@ -33,13 +35,6 @@ final class VoucherMenu: ASDisplayNode {
             $0.width = ASDimension(unit: .points, value: 20)
         }
     }
-    private let dividerNode = ASDisplayNode().then {
-        $0.backgroundColor = .systemGray4.withAlphaComponent(0.3)
-        $0.styled {
-            $0.height = ASDimension(unit: .points, value: 1)
-            $0.width = ASDimension(unit: .points, value: UIScreen.main.bounds.size.width - 40)
-        }
-    }
     private var titleTextNode = ASTextNode()
     
     // MARK: - Initalizing
@@ -47,10 +42,7 @@ final class VoucherMenu: ASDisplayNode {
         super.init()
         self.automaticallyManagesSubnodes = true
         self.automaticallyRelayoutOnSafeAreaChanges = true
-        
-        self.styled {
-            $0.height = ASDimension(unit: .points, value: 80)
-        }
+        self.selectionStyle = .none
     }
     
     convenience init(_ image: String, title: String) {
@@ -59,13 +51,14 @@ final class VoucherMenu: ASDisplayNode {
         titleTextNode.attributedText = NSAttributedString(string: title, attributes: Const.titleAttribute)
     }
     
-    // MARK: - Layout
-    override func layout() {
-        super.layout()
+    // MARK: - Node Life Cycle
+    override func didLoad() {
+        super.didLoad()
     }
     
+    // MARK: - Layout
     override func layoutSpecThatFits(_ constraintedSize: ASSizeRange) -> ASLayoutSpec {
-        return ASStackLayoutSpec(
+        let flexLayout = ASStackLayoutSpec(
             direction: .vertical,
             spacing: 0.0,
             justifyContent: .start,
@@ -73,10 +66,12 @@ final class VoucherMenu: ASDisplayNode {
             children: [
                 centerLayoutSpec().styled {
                     $0.flexGrow = 1.0
-                },
-                dividerNode
+                }
             ]
         )
+        
+        return ASInsetLayoutSpec (
+            insets: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20), child: flexLayout)
     }
     
     private func contentLayoutSpec() -> ASLayoutSpec {
