@@ -9,6 +9,7 @@ import UIKit
 
 import AsyncDisplayKit
 import Then
+import RxSwift
 
 final class DetailCardCellNode: ASCellNode {
     // MARK: - Const
@@ -38,7 +39,7 @@ final class DetailCardCellNode: ASCellNode {
         }
         
         static var timeAttribute: [NSAttributedString.Key: Any] {
-            return [.font: UIFont.systemFont(ofSize: 12.0, weight: .medium),
+            return [.font: UIFont.systemFont(ofSize: 12.0, weight: .semibold),
                     .foregroundColor: UIColor.systemGreen]
         }
     }
@@ -77,9 +78,7 @@ final class DetailCardCellNode: ASCellNode {
     private var codeTimeTitleTextNode = ASTextNode().then {
         $0.attributedText = NSAttributedString(string: "바코드 유효시간", attributes: Const.nameAttribute)
     }
-    private var codeTimeTextNode = ASTextNode().then {
-        $0.attributedText = NSAttributedString(string: "09:15", attributes: Const.nameAttribute)
-    }
+    private var codeTimeTextNode = ASTextNode()
     private var nameTextNode = ASTextNode()
     private var balanceTextNode = ASTextNode()
     private var barcodeTextNode = ASTextNode()
@@ -89,6 +88,8 @@ final class DetailCardCellNode: ASCellNode {
     // MARK: - Properties
     private var index: Int?
     weak var delegate: CardDelegate?
+    private var countdown = 600
+    private let bag = DisposeBag()
     
     // MARK: - Initalizing
     override init() {
@@ -114,6 +115,29 @@ final class DetailCardCellNode: ASCellNode {
     override func didLoad() {
         super.didLoad()
         cardButtonNode.addTarget(self, action: #selector(didTappedCardDetailButton), forControlEvents: .touchUpInside)
+        bindAction()
+    }
+    
+    // MARK: - Custom Method
+    private func bindAction() {
+        let observable = Observable<Int>
+                        .interval(.seconds(1), scheduler: MainScheduler.instance)
+                        .map { self.countdown - $0 }
+                        .take(until: { $0 == 0 }, behavior: .inclusive)
+        
+        observable
+            .subscribe(onNext: { [weak self] sec in
+                guard let self = self else { return }
+                
+                let minute: Int = sec / 60
+                let second: Int = sec % 60
+                
+                let minToString = (minute < 10) ? "0\(minute)" : "\(minute)"
+                let secToString = (second < 10) ? "0\(second)" : "\(second)"
+                
+                self.codeTimeTextNode.attributedText = NSAttributedString(string: "\(minToString):\(secToString)", attributes: Const.timeAttribute)
+            })
+            .disposed(by: bag)
     }
     
     // MARK: - @objc

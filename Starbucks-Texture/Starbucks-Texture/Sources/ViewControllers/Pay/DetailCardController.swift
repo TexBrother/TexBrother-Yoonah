@@ -7,6 +7,7 @@
 
 import AsyncDisplayKit
 import Then
+import RxSwift
 
 final class DetailCardController: ASDKViewController<ASDisplayNode> {
     // MARK: - Const
@@ -33,9 +34,16 @@ final class DetailCardController: ASDKViewController<ASDisplayNode> {
             return [.font: UIFont.systemFont(ofSize: 25.0, weight: .bold),
                     .foregroundColor: UIColor.black]
         }
+        
+        static var timeAttribute: [NSAttributedString.Key: Any] {
+            return [.font: UIFont.systemFont(ofSize: 12.0, weight: .semibold),
+                    .foregroundColor: UIColor.systemGreen]
+        }
     }
     
     // MARK: - Properties
+    private var countdown = 600
+    private let bag = DisposeBag()
     let lists: [String: String] = ["list.bullet.rectangle": "이용내역", "bolt.badge.a.fill": "자동 충전", "bolt.badge.a": "일반 충전", "arrow.left.arrow.right": "분실 신고 및 잔액 이전"]
     
     // MARK: - UI
@@ -65,9 +73,7 @@ final class DetailCardController: ASDKViewController<ASDisplayNode> {
     private var codeTimeTitleTextNode = ASTextNode().then {
         $0.attributedText = NSAttributedString(string: "바코드 유효시간", attributes: Const.barcodeAttribute)
     }
-    private var codeTimeTextNode = ASTextNode().then {
-        $0.attributedText = NSAttributedString(string: "09:15", attributes: Const.barcodeAttribute)
-    }
+    private var codeTimeTextNode = ASTextNode()
     private var titleTextNode = ASTextNode()
     private var balanceTextNode = ASTextNode()
     private var barcodeTextNode = ASTextNode()
@@ -100,6 +106,7 @@ final class DetailCardController: ASDKViewController<ASDisplayNode> {
     // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         setupTabbar()
+        bindAction()
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
@@ -110,6 +117,27 @@ final class DetailCardController: ASDKViewController<ASDisplayNode> {
     // MARK: - Custom Method
     private func setupTabbar() {
         tabBarController?.tabBar.isHidden = true
+    }
+
+    private func bindAction() {
+        let observable = Observable<Int>
+                        .interval(.seconds(1), scheduler: MainScheduler.instance)
+                        .map { self.countdown - $0 }
+                        .take(until: { $0 == 0 }, behavior: .inclusive)
+        
+        observable
+            .subscribe(onNext: { [weak self] sec in
+                guard let self = self else { return }
+                
+                let minute: Int = sec / 60
+                let second: Int = sec % 60
+                
+                let minToString = (minute < 10) ? "0\(minute)" : "\(minute)"
+                let secToString = (second < 10) ? "0\(second)" : "\(second)"
+                
+                self.codeTimeTextNode.attributedText = NSAttributedString(string: "\(minToString):\(secToString)", attributes: Const.timeAttribute)
+            })
+            .disposed(by: bag)
     }
     
     // MARK: - Layout
