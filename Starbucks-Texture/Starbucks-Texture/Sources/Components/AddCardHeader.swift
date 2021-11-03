@@ -34,6 +34,7 @@ class AddCardHeader: UIView {
         super.init(frame: frame)
         backgroundColor = .white
         setupLayout()
+        self.layer.applyShadow()
     }
     
     required init?(coder: NSCoder) {
@@ -54,7 +55,7 @@ class AddCardHeader: UIView {
             voucherButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             voucherButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
             
-            bottomView.topAnchor.constraint(equalTo: cardButton.bottomAnchor, constant: 5),
+            bottomView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
             bottomView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
             bottomView.widthAnchor.constraint(equalToConstant: 120),
             bottomView.heightAnchor.constraint(equalToConstant: 3)
