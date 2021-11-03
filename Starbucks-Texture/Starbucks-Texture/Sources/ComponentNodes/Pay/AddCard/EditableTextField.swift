@@ -33,11 +33,6 @@ final class EditableTextField: ASDisplayNode {
     }
     
     // MARK: - UI
-    private lazy var wrappingTextField = ASDisplayNode(viewBlock: { () -> UITextField in
-        let textField = UITextField()
-        textField.placeholder = "placeholder"
-        return textField
-    })
     private lazy var textfieldNode = ASEditableTextNode().then {
         $0.textContainerInset = .init(top: 5, left: 0, bottom: 5, right: 0)
         $0.scrollEnabled = false
