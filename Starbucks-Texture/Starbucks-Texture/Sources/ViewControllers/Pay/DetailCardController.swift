@@ -105,7 +105,6 @@ final class DetailCardController: ASDKViewController<ASDisplayNode> {
     
     // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
-        setupTabbar()
         bindAction()
         navigationController?.navigationBar.prefersLargeTitles = false
     }
@@ -115,10 +114,6 @@ final class DetailCardController: ASDKViewController<ASDisplayNode> {
     }
     
     // MARK: - Custom Method
-    private func setupTabbar() {
-        tabBarController?.tabBar.isHidden = true
-    }
-
     private func bindAction() {
         let observable = Observable<Int>
                         .interval(.seconds(1), scheduler: MainScheduler.instance)

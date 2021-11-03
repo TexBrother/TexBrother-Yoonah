@@ -27,14 +27,14 @@ final class AddCardController: ASDKViewController<ASScrollNode> {
         $0.backgroundColor = .white
         $0.showsHorizontalScrollIndicator = false
         $0.isPagingEnabled = true
-        $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 200)
+        $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 100)
     }
     private lazy var flowLayout = UICollectionViewFlowLayout().then {
         $0.scrollDirection = .horizontal
         $0.minimumInteritemSpacing = 0
         $0.minimumLineSpacing = 0
         $0.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)
-        $0.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 200)
+        $0.itemSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 100)
         $0.headerReferenceSize = .zero
         $0.footerReferenceSize = .zero
     }
@@ -59,9 +59,11 @@ final class AddCardController: ASDKViewController<ASScrollNode> {
         }
         
         self.node.onDidLoad({ [weak self] _ in
-            self?.setupNavigationController()
-            self?.setupTabbar()
-            self?.addButton.addTarget(self, action: #selector(self?.touchUpAddCard), for: .touchUpInside)
+            guard let self = self else { return }
+            
+            self.setupNavigationController()
+            self.edgesForExtendedLayout = []
+            self.addButton.addTarget(self, action: #selector(self.touchUpAddCard), for: .touchUpInside)
         })
     }
     
@@ -71,16 +73,13 @@ final class AddCardController: ASDKViewController<ASScrollNode> {
 
     // MARK: - Custom Method
     private func setupNavigationController() {
+        navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
         navigationItem.title = "카드 추가"
         
         let barButton = UIBarButtonItem(customView: addButton)
         navigationItem.rightBarButtonItem = barButton
-    }
-    
-    private func setupTabbar() {
-        tabBarController?.tabBar.isHidden = true
     }
     
     // MARK: - @objc

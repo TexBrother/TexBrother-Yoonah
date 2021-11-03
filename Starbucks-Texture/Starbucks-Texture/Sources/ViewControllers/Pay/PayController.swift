@@ -81,6 +81,7 @@ final class PayController: ASDKViewController<ASDisplayNode> {
     @objc
     private func touchUpCardList() {
         let vc = CardListController()
+        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -150,6 +151,7 @@ extension PayController: ASTableDataSource {
 // MARK: - CardDelegate
 extension PayController: CardDelegate {
     func cardClickedToPresent(_ viewController: DetailCardController) {
+        viewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -161,6 +163,7 @@ extension PayController: CardDelegate {
             )
             self.tableNode.reloadData()
         }
+        viewController.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
