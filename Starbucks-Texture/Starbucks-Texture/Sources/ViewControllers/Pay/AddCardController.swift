@@ -129,4 +129,8 @@ extension AddCardController: ASCollectionDataSource {
         
         return cellNodeBlock
     }
+    
+    func collectionNode(_ collectionNode: ASCollectionNode, supplementaryElementKindsInSection section: Int) -> [String] {
+        return [UICollectionView.elementKindSectionHeader]
+    }
 }
