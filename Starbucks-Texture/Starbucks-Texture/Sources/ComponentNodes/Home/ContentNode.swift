@@ -8,6 +8,12 @@
 import AsyncDisplayKit
 import Then
 
+private extension CGFloat {
+    static let topHeight: CGFloat = 230
+    static let scrollIdentity: CGFloat = 0
+    static let scrollOffset: CGFloat = -47
+}
+
 final class ContentNode: ASDisplayNode {
     
     // MARK: - Section
@@ -28,13 +34,14 @@ final class ContentNode: ASDisplayNode {
     private var topNode = TopView().then {
         $0.backgroundColor = .systemBlue
         $0.styled {
-            $0.height = ASDimension(unit: .points, value: 230)
+            $0.height = ASDimension(unit: .points, value: .topHeight)
         }
     }
     
     // MARK: - Properties
     
     private var didScroll: Bool = false
+    private var scrollToTop: Bool = false
     private var ratio: CGFloat = 0.3
     
     // MARK: - Initalizing
@@ -50,13 +57,13 @@ final class ContentNode: ASDisplayNode {
         
         let afterFrame = context.finalFrame(for: topNode)
         topNode.frame = beforeFrame
-        topNode.alpha = 1.0
-        UIView.animate(withDuration: 0.0,
+        topNode.alpha = scrollToTop ? 1.0 : 0.0
+        UIView.animate(withDuration: scrollToTop ? 0.0 : 0.2,
                        delay: 0.0,
                        options: .allowAnimatedContent,
                        animations: {
             self.topNode.frame = afterFrame
-            self.topNode.alpha = 0.0
+            self.topNode.alpha = self.scrollToTop ? 0.0 : 1.0
         }, completion: {
             context.completeTransition($0)
         })
@@ -141,23 +148,47 @@ extension ContentNode: ASTableDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y
         
-        if offset > 0 && !didScroll {
+        // scroll up, when topView appear
+        if offset > .scrollIdentity && !didScroll && !scrollToTop {
             didScroll = true
+            scrollToTop = true
             UIView.animate(withDuration: 0.2,
                            delay: 0.0,
-                           options: .curveEaseOut,
+                           options: .curveLinear,
                            animations: {
-                self.topNode.transform = CATransform3DTranslate(self.topNode.transform, 0, -230, 0)
-                self.tableNode.transform = CATransform3DTranslate(self.topNode.transform, 0, -230, 0)
+                self.topNode.transform = CATransform3DTranslate(self.topNode.transform, 0, -.topHeight, 0)
             }, completion: { _ in
                 self.setRatio(0.0)
             })
         }
         
-        if offset == 0 {
+        // scroll up, when topView disappear
+        if offset == .scrollOffset && scrollToTop {
             didScroll = false
         }
         
-//        if offset < 0 && !didScroll
+        // scroll down, when topView appear
+        if offset == .scrollIdentity && !scrollToTop {
+            didScroll = false
+        }
+        
+        // scorll down, when topView disappear
+        if offset < .scrollOffset && !didScroll && scrollToTop {
+            didScroll = true
+            scrollToTop = false
+            self.topNode.transform = CATransform3DTranslate(self.topNode.transform, 0, .topHeight, 0)
+            self.tableNode.transform = CATransform3DTranslate(self.tableNode.transform, 0, .topHeight, 0)
+            UIView.animate(withDuration: 0.0,
+                           delay: 0.0,
+                           options: .curveEaseOut,
+                           animations: {
+                self.setRatio(0.3)
+                self.topNode.transform = CATransform3DTranslate(self.topNode.transform, 0, 0, 0)
+                self.tableNode.transform = CATransform3DTranslate(self.tableNode.transform, 0, 0, 0)
+            }, completion: nil)
+        }
+        
+        print("didscroll: \(didScroll)")
+        print("scrollToTop: \(scrollToTop)")
     }
 }
