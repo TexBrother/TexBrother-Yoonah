@@ -50,10 +50,6 @@ final class CardListController: ASDKViewController<ASDisplayNode> {
         setupNavigationController()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        setupTabbar()
-    }
-    
     // MARK: - Custom Method
     private func setupNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -64,14 +60,11 @@ final class CardListController: ASDKViewController<ASDisplayNode> {
         navigationItem.rightBarButtonItem = barButton
     }
     
-    private func setupTabbar() {
-        tabBarController?.tabBar.isHidden = true
-    }
-    
     // MARK: - @objc
     @objc
     private func touchUpAddCard() {
         let vc = AddCardController()
+        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -173,9 +166,11 @@ extension CardListController: ASTableDelegate {
         switch section {
         case .favorite:
             let vc = DetailCardController(index: indexPath.row)
+            vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
         case .basic:
             let vc = DetailCardController(index: indexPath.row + 1)
+            vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
         default:
             break

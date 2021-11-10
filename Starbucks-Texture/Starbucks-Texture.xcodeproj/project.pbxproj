@@ -11,6 +11,8 @@
 		ED20D6A12716741500005770 /* CardListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED20D6A02716741500005770 /* CardListController.swift */; };
 		ED20D6A427167B4D00005770 /* CardListCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED20D6A327167B4D00005770 /* CardListCellNode.swift */; };
 		ED20D6A7271693CA00005770 /* DetailCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED20D6A6271693CA00005770 /* DetailCardController.swift */; };
+		ED5440CB27323259000804DA /* CollectionCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5440CA27323259000804DA /* CollectionCellNode.swift */; };
+		ED5440CE2732371F000804DA /* AddCardHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5440CD2732371F000804DA /* AddCardHeader.swift */; };
 		ED63852A26FA0E83007F7F8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63852926FA0E83007F7F8D /* AppDelegate.swift */; };
 		ED63853326FA0E84007F7F8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED63853226FA0E84007F7F8D /* Assets.xcassets */; };
 		ED63853626FA0E84007F7F8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED63853426FA0E84007F7F8D /* LaunchScreen.storyboard */; };
@@ -20,7 +22,6 @@
 		ED63854A26FA1AC0007F7F8D /* AdCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63854926FA1AC0007F7F8D /* AdCellNode.swift */; };
 		ED63854D26FA2298007F7F8D /* NavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63854C26FA2298007F7F8D /* NavigationController+.swift */; };
 		ED71D7C527044127006347EC /* AddCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7C427044127006347EC /* AddCardController.swift */; };
-		ED71D7C92704497A006347EC /* AddCardHeaderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7C82704497A006347EC /* AddCardHeaderNode.swift */; };
 		ED71D7CB27048D63006347EC /* VoucherDetailCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CA27048D63006347EC /* VoucherDetailCellNode.swift */; };
 		ED71D7CD2704918A006347EC /* CardDetailCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */; };
 		ED71D7CF27049325006347EC /* EditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CE27049325006347EC /* EditableTextField.swift */; };
@@ -41,6 +42,8 @@
 		ED20D6A02716741500005770 /* CardListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListController.swift; sourceTree = "<group>"; };
 		ED20D6A327167B4D00005770 /* CardListCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCellNode.swift; sourceTree = "<group>"; };
 		ED20D6A6271693CA00005770 /* DetailCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCardController.swift; sourceTree = "<group>"; };
+		ED5440CA27323259000804DA /* CollectionCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellNode.swift; sourceTree = "<group>"; };
+		ED5440CD2732371F000804DA /* AddCardHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardHeader.swift; sourceTree = "<group>"; };
 		ED63852626FA0E83007F7F8D /* Starbucks-Texture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Starbucks-Texture.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED63852926FA0E83007F7F8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED63853226FA0E84007F7F8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,7 +55,6 @@
 		ED63854926FA1AC0007F7F8D /* AdCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdCellNode.swift; sourceTree = "<group>"; };
 		ED63854C26FA2298007F7F8D /* NavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+.swift"; sourceTree = "<group>"; };
 		ED71D7C427044127006347EC /* AddCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardController.swift; sourceTree = "<group>"; };
-		ED71D7C82704497A006347EC /* AddCardHeaderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardHeaderNode.swift; sourceTree = "<group>"; };
 		ED71D7CA27048D63006347EC /* VoucherDetailCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoucherDetailCellNode.swift; sourceTree = "<group>"; };
 		ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailCellNode.swift; sourceTree = "<group>"; };
 		ED71D7CE27049325006347EC /* EditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTextField.swift; sourceTree = "<group>"; };
@@ -103,6 +105,14 @@
 			path = CardList;
 			sourceTree = "<group>";
 		};
+		ED5440CC273236FD000804DA /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				ED5440CD2732371F000804DA /* AddCardHeader.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		ED63851D26FA0E83007F7F8D = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +157,7 @@
 				ED63854B26FA2277007F7F8D /* Extensions */,
 				EDF049FF270CD52000C4B4B0 /* ComponentNodes */,
 				ED63854126FA10F1007F7F8D /* CellNodes */,
+				ED5440CC273236FD000804DA /* Components */,
 				ED63854026FA10E3007F7F8D /* ViewControllers */,
 				ED63853F26FA10A3007F7F8D /* Supports */,
 			);
@@ -242,7 +253,7 @@
 			children = (
 				ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */,
 				ED71D7CA27048D63006347EC /* VoucherDetailCellNode.swift */,
-				ED71D7C82704497A006347EC /* AddCardHeaderNode.swift */,
+				ED5440CA27323259000804DA /* CollectionCellNode.swift */,
 			);
 			path = AddCard;
 			sourceTree = "<group>";
@@ -402,7 +413,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED71D7C92704497A006347EC /* AddCardHeaderNode.swift in Sources */,
 				ED63852A26FA0E83007F7F8D /* AppDelegate.swift in Sources */,
 				EDF04A03270CD56300C4B4B0 /* ChargeButton.swift in Sources */,
 				ED71D7C527044127006347EC /* AddCardController.swift in Sources */,
@@ -410,10 +420,12 @@
 				ED20D6A427167B4D00005770 /* CardListCellNode.swift in Sources */,
 				EDF049F9270CC4B300C4B4B0 /* Card.swift in Sources */,
 				EDF04A27270D6A1400C4B4B0 /* ASCellNode+.swift in Sources */,
+				ED5440CE2732371F000804DA /* AddCardHeader.swift in Sources */,
 				EDB20AE52717D8A7001D647E /* CardMenuCellNode.swift in Sources */,
 				ED63854826FA1AB2007F7F8D /* CardCellNode.swift in Sources */,
 				ED20D6A12716741500005770 /* CardListController.swift in Sources */,
 				ED71D7CF27049325006347EC /* EditableTextField.swift in Sources */,
+				ED5440CB27323259000804DA /* CollectionCellNode.swift in Sources */,
 				ED71D7CB27048D63006347EC /* VoucherDetailCellNode.swift in Sources */,
 				EDF04A05270CDA4300C4B4B0 /* CouponCellNode.swift in Sources */,
 				EDF04A2A270D78ED00C4B4B0 /* VoucherMenu.swift in Sources */,
