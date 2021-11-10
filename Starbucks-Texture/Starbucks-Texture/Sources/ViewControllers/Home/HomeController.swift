@@ -1,20 +1,13 @@
 //
-//  PayController.swift
+//  HomeController.swift
 //  Starbucks-Texture
 //
-//  Created by SHIN YOON AH on 2021/09/21.
+//  Created by SHIN YOON AH on 2021/11/10.
 //
 
 import AsyncDisplayKit
-import Then
 
-// MARK: - Protocol CardDelegate
-protocol CardDelegate: PayController {
-    func emptyCardClickedToPresent(_ viewController: AddCardController)
-    func cardClickedToPresent(_ viewController: DetailCardController)
-}
-
-final class PayController: ASDKViewController<ASDisplayNode> {
+final class HomeController: ASDKViewController<ASDisplayNode> {
     // MARK: - Section
     enum Section: Int, CaseIterable {
         case card
@@ -26,11 +19,6 @@ final class PayController: ASDKViewController<ASDisplayNode> {
     private lazy var tableNode = ASTableNode().then {
         $0.dataSource = self
         $0.backgroundColor = .white
-    }
-    private lazy var detailButton = UIButton().then {
-        $0.setImage(UIImage(systemName: "list.bullet"), for: .normal)
-        $0.setPreferredSymbolConfiguration(.init(pointSize: 17, weight: .regular, scale: .large), forImageIn: .normal)
-        $0.tintColor = .lightGray
     }
     
     // MARK: - Initializing
@@ -52,21 +40,12 @@ final class PayController: ASDKViewController<ASDisplayNode> {
     override func viewDidLoad() {
         tableNode.view.separatorStyle = .none
         tableNode.view.showsVerticalScrollIndicator = true
-        detailButton.addTarget(self, action: #selector(touchUpCardList), for: .touchUpInside)
         setupNavigationController()
     }
     
     // MARK: - Custom Method
     private func setupNavigationController() {
-        navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.layer.applyShadow(color: .gray, alpha: 0.3, x: 0, y: 0, blur: 12)
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .automatic
-        navigationItem.title = "Pay"
-        
-        let barButton = UIBarButtonItem(customView: detailButton)
-        navigationItem.rightBarButtonItem = barButton
+        navigationController?.isNavigationBarHidden = true
     }
     
     // MARK: - @objc
@@ -97,7 +76,7 @@ final class PayController: ASDKViewController<ASDisplayNode> {
 }
 
 // MARK: - ASTableDataSource
-extension PayController: ASTableDataSource {
+extension HomeController: ASTableDataSource {
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
@@ -109,7 +88,6 @@ extension PayController: ASTableDataSource {
             switch section {
             case .card:
                 let cardCellNode = CardCellNode()
-                cardCellNode.delegate = self
                 return cardCellNode
             case .coupon:
                 guard CardCellNode.cards.count > 0 else { return ASCellNode() }
@@ -137,25 +115,5 @@ extension PayController: ASTableDataSource {
 
     func tableNode(_ tableNode: ASTableNode, willDisplayRowWith node: ASCellNode) {
         node.backgroundColor = .white
-    }
-}
-
-// MARK: - CardDelegate
-extension PayController: CardDelegate {
-    func cardClickedToPresent(_ viewController: DetailCardController) {
-        viewController.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    func emptyCardClickedToPresent(_ viewController: AddCardController) {
-        viewController.addCard = {
-            CardCellNode.cards.append(contentsOf: [
-                Card(cardImage: "thankyou", name: "Thank You 카드", balance: "2,300원", code: "****-****-**36-6582"),
-                Card(cardImage: "limited", name: "Limited 카드", balance: "102,300원", code: "****-****-**70-7431")]
-            )
-            self.tableNode.reloadData()
-        }
-        viewController.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(viewController, animated: true)
     }
 }

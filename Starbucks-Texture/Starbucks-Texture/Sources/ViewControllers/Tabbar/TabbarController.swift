@@ -25,7 +25,8 @@ class TabbarController: UITabBarController {
     }
     
     private func setupTabs(){
-        let homeTab = PayController()
+        let homeNavi = UINavigationController(rootViewController: HomeController())
+        let homeTab = homeNavi
         homeTab.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
         
         let payNavi = UINavigationController(rootViewController: PayController())
@@ -44,6 +45,6 @@ class TabbarController: UITabBarController {
         let tabs =  [homeTab, payTab, orderTab, giftTab, otherTab]
         
         self.setViewControllers(tabs, animated: false)
-        self.selectedViewController = payTab
+        self.selectedViewController = homeTab
     }
 }
