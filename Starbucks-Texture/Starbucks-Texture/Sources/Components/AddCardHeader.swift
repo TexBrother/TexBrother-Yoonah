@@ -34,7 +34,7 @@ class AddCardHeader: UIView {
         super.init(frame: frame)
         backgroundColor = .white
         setupLayout()
-        self.layer.applyShadow()
+        self.layer.applyShadow(color: UIColor.black, alpha: 0.2, x: 0, y: 5, blur: 3)
     }
     
     required init?(coder: NSCoder) {

@@ -8,6 +8,7 @@
 import AsyncDisplayKit
 import Then
 import QuartzCore
+import UIKit
 
 private extension CGFloat {
     static let topHeight: CGFloat = 230
@@ -38,6 +39,7 @@ final class ContentNode: ASDisplayNode {
         }
     }
     private let statusbarView = UIView()
+    private let header = HomeHeader()
     
     // MARK: - Properties
     
@@ -161,7 +163,7 @@ extension ContentNode: ASTableDataSource {
 
 extension ContentNode: ASTableDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return HomeHeader()
+        return header
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -179,6 +181,7 @@ extension ContentNode: ASTableDelegate {
             }, completion: { _ in
                 self.setRatio(0.0)
                 self.statusbarView.backgroundColor = .white
+                self.header.layer.applyShadow(color: UIColor.black, alpha: 0.2, x: 0, y: 5, blur: 3)
             })
         }
         
@@ -206,6 +209,7 @@ extension ContentNode: ASTableDelegate {
                 self.topNode.transform = CATransform3DTranslate(self.topNode.transform, 0, 0, 0)
                 self.tableNode.transform = CATransform3DTranslate(self.tableNode.transform, 0, 0, 0)
                 self.statusbarView.backgroundColor = .clear
+                self.header.layer.applyShadow(color: UIColor.black, alpha: 0.0, x: 0, y: 0, blur: 0)
             }, completion: nil)
         }
         

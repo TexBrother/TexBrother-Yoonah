@@ -25,21 +25,20 @@ final class RecommendMenuCellNode: ASCellNode {
         $0.dataSource = self
         $0.backgroundColor = .white
         $0.showsHorizontalScrollIndicator = false
-        $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: 520)
+        $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: 200)
     }
     private lazy var flowLayout = UICollectionViewFlowLayout().then {
         $0.scrollDirection = .horizontal
         $0.minimumInteritemSpacing = 0
         $0.minimumLineSpacing = 20
-        $0.sectionInset = .init(top: 20, left: 25, bottom: 0, right: 25)
-        $0.itemSize = CGSize(width: 100, height: 150)
+        $0.sectionInset = .init(top: 0, left: 25, bottom: 0, right: 25)
+        $0.itemSize = CGSize(width: 130, height: 180)
         $0.headerReferenceSize = .zero
         $0.footerReferenceSize = .zero
     }
     
     // MARK: - Properties
-    static var cards: [Card] = []
-    weak var delegate: CardDelegate?
+    private var lists: [String] = ["아이스 자몽 허니 블랙 티", "초콜릿 크림 칩 프라푸치노", "아이스 핑크 캐모마일 릴렉서", "자바 칩 프라푸치노", "아이스 토피 넛 라떼", "토피 넛 프라푸치노", "아이스 카페 아메리카노", "아이스 골든 위시 라떼", "바닐라 크림 프라푸치노"]
     
     // MARK: - Initalizing
     override init() {
@@ -76,25 +75,15 @@ final class RecommendMenuCellNode: ASCellNode {
 // MARK: - ASCollectionDataSource
 extension RecommendMenuCellNode: ASCollectionDataSource {
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
-        guard CardCellNode.cards.count > 0 else { return 1 }
-        
-        return CardCellNode.cards.count
+        return lists.count
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
         let cellNodeBlock = { () -> ASCellNode in
-            guard CardCellNode.cards.count > 0 else {
-                let cellNode = DetailEmptyCellNode()
-                cellNode.delegate = self.delegate
-                return cellNode
-            }
-            
-            let cellNode = DetailCardCellNode(card: CardCellNode.cards[indexPath.item], index: indexPath.row)
-            cellNode.delegate = self.delegate
+            let cellNode = CoffeeCellNode(title: self.lists[indexPath.item])
             return cellNode
         }
         
         return cellNodeBlock
     }
 }
-
