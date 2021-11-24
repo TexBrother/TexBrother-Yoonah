@@ -23,6 +23,13 @@ final class TopView: ASDisplayNode {
         $0.attributedText = NSAttributedString(string: "환절기 따뜻한 차로\n수분 충전하세요☕️", attributes: Const.titleAttribute)
     }
     
+    private var clearView = ASDisplayNode().then {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height * 0.3)
+        gradientLayer.colors = [UIColor.systemGreen.cgColor, UIColor.white.cgColor]
+        $0.layer.addSublayer(gradientLayer)
+    }
+    
     // MARK: - Initalizing
     override init() {
         super.init()
@@ -59,9 +66,15 @@ final class TopView: ASDisplayNode {
     }
     
     private func contentInsetLayoutSpec() -> ASLayoutSpec {
-        return ASInsetLayoutSpec(
+        let inset = ASInsetLayoutSpec(
+            insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
+            child: clearView)
+        let headerInset = ASInsetLayoutSpec(
             insets: UIEdgeInsets(top: 100, left: 20, bottom: 0, right: 0),
             child: headerTitleNode
         )
+        let overlay = ASOverlayLayoutSpec(child: inset, overlay: headerInset)
+        
+        return overlay
     }
 }

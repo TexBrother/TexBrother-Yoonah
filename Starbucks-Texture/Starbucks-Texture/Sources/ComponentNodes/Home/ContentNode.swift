@@ -7,6 +7,7 @@
 
 import AsyncDisplayKit
 import Then
+import QuartzCore
 
 private extension CGFloat {
     static let topHeight: CGFloat = 230
@@ -32,7 +33,6 @@ final class ContentNode: ASDisplayNode {
         $0.backgroundColor = .white
     }
     private var topNode = TopView().then {
-        $0.backgroundColor = .systemBlue
         $0.styled {
             $0.height = ASDimension(unit: .points, value: .topHeight)
         }
