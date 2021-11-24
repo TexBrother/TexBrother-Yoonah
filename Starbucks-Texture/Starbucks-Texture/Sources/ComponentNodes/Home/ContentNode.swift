@@ -36,6 +36,7 @@ final class ContentNode: ASDisplayNode {
             $0.height = ASDimension(unit: .points, value: .topHeight)
         }
     }
+    private let statusbarView = UIView()
     
     // MARK: - Properties
     
@@ -48,6 +49,9 @@ final class ContentNode: ASDisplayNode {
         super.init()
         self.automaticallyManagesSubnodes = true
         self.automaticallyRelayoutOnSafeAreaChanges = true
+        self.onDidLoad { [weak self] _ in
+            self?.setupStatusBar(.clear)
+        }
     }
     
     // MARK: - Override Method
@@ -97,6 +101,26 @@ final class ContentNode: ASDisplayNode {
         )
 
         return contentLayout
+    }
+    
+    func setupStatusBar(_ color: UIColor) {
+        if #available(iOS 13.0, *) {
+            let margin = view.layoutMarginsGuide
+            statusbarView.backgroundColor = color
+            statusbarView.frame = CGRect.zero
+            view.addSubview(statusbarView)
+            statusbarView.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                statusbarView.topAnchor.constraint(equalTo: view.topAnchor),
+                statusbarView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.0),
+                statusbarView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                statusbarView.bottomAnchor.constraint(equalTo: margin.topAnchor)
+            ])
+        } else {
+            let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
+            statusBar?.backgroundColor = color
+        }
     }
 }
 
@@ -149,6 +173,7 @@ extension ContentNode: ASTableDelegate {
                 self.topNode.transform = CATransform3DTranslate(self.topNode.transform, 0, -.topHeight, 0)
             }, completion: { _ in
                 self.setRatio(0.0)
+                self.statusbarView.backgroundColor = .white
             })
         }
         
@@ -172,9 +197,10 @@ extension ContentNode: ASTableDelegate {
                            delay: 0.0,
                            options: .curveEaseOut,
                            animations: {
-                self.setRatio(0.3)
+                self.setRatio(0.25)
                 self.topNode.transform = CATransform3DTranslate(self.topNode.transform, 0, 0, 0)
                 self.tableNode.transform = CATransform3DTranslate(self.tableNode.transform, 0, 0, 0)
+                self.statusbarView.backgroundColor = .clear
             }, completion: nil)
         }
         
