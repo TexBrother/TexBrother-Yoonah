@@ -25,7 +25,7 @@ final class TopView: ASDisplayNode {
     
     private var clearView = ASDisplayNode().then {
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height * 0.3)
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height * 0.25)
         gradientLayer.colors = [UIColor.systemGreen.cgColor, UIColor.white.cgColor]
         $0.layer.addSublayer(gradientLayer)
     }

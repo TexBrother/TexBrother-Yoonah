@@ -28,9 +28,10 @@ final class ContentNode: ASDisplayNode {
     private lazy var tableNode = ASTableNode().then {
         $0.dataSource = self
         $0.delegate = self
+        $0.backgroundColor = .white
         $0.view.separatorStyle = .none
         $0.view.showsVerticalScrollIndicator = true
-        $0.backgroundColor = .white
+        $0.view.estimatedSectionHeaderHeight = 100
     }
     private var topNode = TopView().then {
         $0.styled {
@@ -42,7 +43,7 @@ final class ContentNode: ASDisplayNode {
     
     private var didScroll: Bool = false
     private var scrollToTop: Bool = false
-    private var ratio: CGFloat = 0.3
+    private var ratio: CGFloat = 0.25
     
     // MARK: - Initalizing
     override init() {
@@ -145,6 +146,10 @@ extension ContentNode: ASTableDataSource {
 }
 
 extension ContentNode: ASTableDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return HomeHeader()
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y
         
