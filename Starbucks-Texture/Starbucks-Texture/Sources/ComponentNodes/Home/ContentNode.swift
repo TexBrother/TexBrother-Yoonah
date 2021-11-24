@@ -20,6 +20,7 @@ final class ContentNode: ASDisplayNode {
     // MARK: - Section
     enum Section: Int, CaseIterable {
         case adverties
+        case recommend
     }
     
     // MARK: - UI
@@ -137,6 +138,8 @@ extension ContentNode: ASTableDataSource {
             switch section {
             case .adverties:
                 return HomeAdCellNode()
+            case .recommend:
+                return RecommendMenuCellNode()
             }
         }
     }
@@ -146,6 +149,8 @@ extension ContentNode: ASTableDataSource {
         switch section {
         case .adverties:
             return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width - 20, height: 250))
+        case .recommend:
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 250))
         }
     }
 
