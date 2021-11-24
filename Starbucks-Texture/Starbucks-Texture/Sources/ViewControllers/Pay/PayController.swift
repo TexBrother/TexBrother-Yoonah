@@ -56,10 +56,6 @@ final class PayController: ASDKViewController<ASDisplayNode> {
         setupNavigationController()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        setupTabbar()
-    }
-    
     // MARK: - Custom Method
     private func setupNavigationController() {
         navigationController?.navigationBar.barTintColor = .white
@@ -71,10 +67,6 @@ final class PayController: ASDKViewController<ASDisplayNode> {
         
         let barButton = UIBarButtonItem(customView: detailButton)
         navigationItem.rightBarButtonItem = barButton
-    }
-    
-    private func setupTabbar() {
-        tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - @objc
