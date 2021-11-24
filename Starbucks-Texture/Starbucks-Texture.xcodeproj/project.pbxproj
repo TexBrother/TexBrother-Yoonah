@@ -26,6 +26,7 @@
 		ED71D7CD2704918A006347EC /* CardDetailCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */; };
 		ED71D7CF27049325006347EC /* EditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CE27049325006347EC /* EditableTextField.swift */; };
 		EDABEF65274E0AE10031DE5A /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABEF64274E0AE10031DE5A /* HomeHeader.swift */; };
+		EDABEF67274E0D110031DE5A /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABEF66274E0D110031DE5A /* UIColor+.swift */; };
 		EDB20AE52717D8A7001D647E /* CardMenuCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB20AE42717D8A7001D647E /* CardMenuCellNode.swift */; };
 		EDB6BC8D26FA438A00A5F64C /* DetailEmptyCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB6BC8C26FA438A00A5F64C /* DetailEmptyCellNode.swift */; };
 		EDD3117E273B7A32003E2469 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3117D273B7A31003E2469 /* HomeController.swift */; };
@@ -63,6 +64,7 @@
 		ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailCellNode.swift; sourceTree = "<group>"; };
 		ED71D7CE27049325006347EC /* EditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTextField.swift; sourceTree = "<group>"; };
 		EDABEF64274E0AE10031DE5A /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
+		EDABEF66274E0D110031DE5A /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		EDB20AE42717D8A7001D647E /* CardMenuCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMenuCellNode.swift; sourceTree = "<group>"; };
 		EDB6BC8C26FA438A00A5F64C /* DetailEmptyCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEmptyCellNode.swift; sourceTree = "<group>"; };
 		EDD3117D273B7A31003E2469 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 			children = (
 				ED63854C26FA2298007F7F8D /* NavigationController+.swift */,
 				EDF04A26270D6A1400C4B4B0 /* ASCellNode+.swift */,
+				EDABEF66274E0D110031DE5A /* UIColor+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				ED5440CE2732371F000804DA /* AddCardHeader.swift in Sources */,
 				EDB20AE52717D8A7001D647E /* CardMenuCellNode.swift in Sources */,
 				ED63854826FA1AB2007F7F8D /* CardCellNode.swift in Sources */,
+				EDABEF67274E0D110031DE5A /* UIColor+.swift in Sources */,
 				ED20D6A12716741500005770 /* CardListController.swift in Sources */,
 				ED71D7CF27049325006347EC /* EditableTextField.swift in Sources */,
 				ED5440CB27323259000804DA /* CollectionCellNode.swift in Sources */,

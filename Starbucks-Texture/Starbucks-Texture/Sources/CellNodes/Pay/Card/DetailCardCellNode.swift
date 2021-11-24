@@ -40,7 +40,7 @@ final class DetailCardCellNode: ASCellNode {
         
         static var timeAttribute: [NSAttributedString.Key: Any] {
             return [.font: UIFont.systemFont(ofSize: 12.0, weight: .semibold),
-                    .foregroundColor: UIColor.systemGreen]
+                    .foregroundColor: UIColor.seaweedGreen]
         }
     }
     

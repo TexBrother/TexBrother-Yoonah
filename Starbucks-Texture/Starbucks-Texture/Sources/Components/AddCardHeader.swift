@@ -26,7 +26,7 @@ class AddCardHeader: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     var bottomView = UIView().then {
-        $0.backgroundColor = .systemGreen
+        $0.backgroundColor = .seaweedGreen
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
