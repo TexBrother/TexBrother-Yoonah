@@ -14,8 +14,6 @@ final class HomeAdCellNode: ASCellNode {
         $0.cornerRadius = 5
         $0.clipsToBounds = true
         $0.contentMode = .scaleAspectFill
-        $0.image = UIImage(named: "homead")
-        $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width - 20, height: 250)
     }
     
     // MARK: - Initializing
@@ -24,6 +22,12 @@ final class HomeAdCellNode: ASCellNode {
         self.automaticallyManagesSubnodes = true
         self.automaticallyRelayoutOnSafeAreaChanges = true
         self.selectionStyle = .none
+    }
+    
+    convenience init(image: String, size: CGSize) {
+        self.init()
+        adImageNode.image = UIImage(named: image)
+        adImageNode.style.preferredSize = size
     }
     
     // MARK: - Node Life Cycle

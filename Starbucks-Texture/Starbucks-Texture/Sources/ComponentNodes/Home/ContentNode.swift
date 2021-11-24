@@ -22,6 +22,7 @@ final class ContentNode: ASDisplayNode {
     enum Section: Int, CaseIterable {
         case adverties
         case recommend
+        case banner
     }
     
     // MARK: - UI
@@ -139,9 +140,11 @@ extension ContentNode: ASTableDataSource {
             
             switch section {
             case .adverties:
-                return HomeAdCellNode()
+                return HomeAdCellNode(image: "homead", size: CGSize(width: UIScreen.main.bounds.size.width - 20, height: 250))
             case .recommend:
                 return RecommendMenuCellNode()
+            case .banner:
+                return HomeAdCellNode(image: "christmasAd", size: CGSize(width: UIScreen.main.bounds.size.width - 20, height: 500))
             }
         }
     }
@@ -153,6 +156,8 @@ extension ContentNode: ASTableDataSource {
             return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width - 20, height: 250))
         case .recommend:
             return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 250))
+        case .banner:
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width - 20, height: 500))
         }
     }
 
@@ -186,7 +191,7 @@ extension ContentNode: ASTableDelegate {
         }
         
         // scroll up, when topView disappear
-        if offset == .scrollOffset && scrollToTop {
+        if scrollToTop {
             didScroll = false
         }
         
@@ -213,7 +218,8 @@ extension ContentNode: ASTableDelegate {
             }, completion: nil)
         }
         
-        print("didscroll: \(didScroll)")
+        print("scrollOffset: \(offset)")
         print("scrollToTop: \(scrollToTop)")
+        print("didScroll: \(didScroll)")
     }
 }
