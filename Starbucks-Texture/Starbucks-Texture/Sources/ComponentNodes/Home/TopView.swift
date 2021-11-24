@@ -12,8 +12,11 @@ final class TopView: ASDisplayNode {
     // MARK: - Const
     struct Const {
         static var titleAttribute: [NSAttributedString.Key: Any] {
-            return [.font: UIFont.systemFont(ofSize: 28.0, weight: .semibold),
-                    .foregroundColor: UIColor.black]
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 10.0
+            
+            return [.font: UIFont.systemFont(ofSize: 26.0, weight: .semibold),
+                    .foregroundColor: UIColor.black, .paragraphStyle: paragraphStyle]
         }
     }
     
@@ -71,7 +74,7 @@ final class TopView: ASDisplayNode {
             insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
             child: clearView)
         let headerInset = ASInsetLayoutSpec(
-            insets: UIEdgeInsets(top: 100, left: 20, bottom: 0, right: 0),
+            insets: UIEdgeInsets(top: 90, left: 20, bottom: 0, right: 0),
             child: headerTitleNode
         )
         let overlay = ASOverlayLayoutSpec(child: inset, overlay: headerInset)
