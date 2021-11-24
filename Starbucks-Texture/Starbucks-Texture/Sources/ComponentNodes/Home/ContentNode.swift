@@ -7,6 +7,8 @@
 
 import AsyncDisplayKit
 import Then
+import QuartzCore
+import UIKit
 
 private extension CGFloat {
     static let topHeight: CGFloat = 230
@@ -18,37 +20,42 @@ final class ContentNode: ASDisplayNode {
     
     // MARK: - Section
     enum Section: Int, CaseIterable {
-        case card
-        case coupon
-        case advertise
+        case adverties
+        case recommend
+        case banner
     }
     
     // MARK: - UI
     private lazy var tableNode = ASTableNode().then {
         $0.dataSource = self
         $0.delegate = self
+        $0.backgroundColor = .white
         $0.view.separatorStyle = .none
         $0.view.showsVerticalScrollIndicator = true
-        $0.backgroundColor = .white
+        $0.view.estimatedSectionHeaderHeight = 100
     }
     private var topNode = TopView().then {
-        $0.backgroundColor = .systemBlue
         $0.styled {
             $0.height = ASDimension(unit: .points, value: .topHeight)
         }
     }
+    private let statusbarView = UIView()
+    private let header = HomeHeader()
     
     // MARK: - Properties
     
     private var didScroll: Bool = false
     private var scrollToTop: Bool = false
-    private var ratio: CGFloat = 0.3
+    private var ratio: CGFloat = 0.25
     
     // MARK: - Initalizing
     override init() {
         super.init()
         self.automaticallyManagesSubnodes = true
         self.automaticallyRelayoutOnSafeAreaChanges = true
+        self.onDidLoad { [weak self] _ in
+            self?.setupStatusBar(.clear)
+        }
     }
     
     // MARK: - Override Method
@@ -99,12 +106,32 @@ final class ContentNode: ASDisplayNode {
 
         return contentLayout
     }
+    
+    func setupStatusBar(_ color: UIColor) {
+        if #available(iOS 13.0, *) {
+            let margin = view.layoutMarginsGuide
+            statusbarView.backgroundColor = color
+            statusbarView.frame = CGRect.zero
+            view.addSubview(statusbarView)
+            statusbarView.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                statusbarView.topAnchor.constraint(equalTo: view.topAnchor),
+                statusbarView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1.0),
+                statusbarView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                statusbarView.bottomAnchor.constraint(equalTo: margin.topAnchor)
+            ])
+        } else {
+            let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
+            statusBar?.backgroundColor = color
+        }
+    }
 }
 
 // MARK: - ASTableDataSource
 extension ContentNode: ASTableDataSource {
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return Section.allCases.count
     }
     
     func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
@@ -112,15 +139,12 @@ extension ContentNode: ASTableDataSource {
             guard let section = Section.init(rawValue: indexPath.row) else { return ASCellNode() }
             
             switch section {
-            case .card:
-                let cardCellNode = CardCellNode()
-                return cardCellNode
-            case .coupon:
-                guard CardCellNode.cards.count > 0 else { return ASCellNode() }
-                
-                return CouponCellNode()
-            case .advertise:
-                return AdCellNode()
+            case .adverties:
+                return HomeAdCellNode(image: "homead", size: CGSize(width: UIScreen.main.bounds.size.width - 20, height: 250))
+            case .recommend:
+                return RecommendMenuCellNode()
+            case .banner:
+                return HomeAdCellNode(image: "christmasAd", size: CGSize(width: UIScreen.main.bounds.size.width - 20, height: 500))
             }
         }
     }
@@ -128,14 +152,12 @@ extension ContentNode: ASTableDataSource {
     func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
         guard let section = Section.init(rawValue: indexPath.row) else { return ASSizeRange() }
         switch section {
-        case .card:
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 600))
-        case .coupon:
-            guard CardCellNode.cards.count > 0 else { return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 0)) }
-            
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
-        case .advertise:
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
+        case .adverties:
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width - 20, height: 250))
+        case .recommend:
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 250))
+        case .banner:
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width - 20, height: 500))
         }
     }
 
@@ -145,6 +167,10 @@ extension ContentNode: ASTableDataSource {
 }
 
 extension ContentNode: ASTableDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return header
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y
         
@@ -159,11 +185,13 @@ extension ContentNode: ASTableDelegate {
                 self.topNode.transform = CATransform3DTranslate(self.topNode.transform, 0, -.topHeight, 0)
             }, completion: { _ in
                 self.setRatio(0.0)
+                self.statusbarView.backgroundColor = .white
+                self.header.layer.applyShadow(color: UIColor.black, alpha: 0.2, x: 0, y: 5, blur: 3)
             })
         }
         
         // scroll up, when topView disappear
-        if offset == .scrollOffset && scrollToTop {
+        if scrollToTop {
             didScroll = false
         }
         
@@ -182,13 +210,16 @@ extension ContentNode: ASTableDelegate {
                            delay: 0.0,
                            options: .curveEaseOut,
                            animations: {
-                self.setRatio(0.3)
+                self.setRatio(0.25)
                 self.topNode.transform = CATransform3DTranslate(self.topNode.transform, 0, 0, 0)
                 self.tableNode.transform = CATransform3DTranslate(self.tableNode.transform, 0, 0, 0)
+                self.statusbarView.backgroundColor = .clear
+                self.header.layer.applyShadow(color: UIColor.black, alpha: 0.0, x: 0, y: 0, blur: 0)
             }, completion: nil)
         }
         
-        print("didscroll: \(didScroll)")
+        print("scrollOffset: \(offset)")
         print("scrollToTop: \(scrollToTop)")
+        print("didScroll: \(didScroll)")
     }
 }

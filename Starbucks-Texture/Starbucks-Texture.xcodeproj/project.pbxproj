@@ -25,6 +25,11 @@
 		ED71D7CB27048D63006347EC /* VoucherDetailCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CA27048D63006347EC /* VoucherDetailCellNode.swift */; };
 		ED71D7CD2704918A006347EC /* CardDetailCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */; };
 		ED71D7CF27049325006347EC /* EditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CE27049325006347EC /* EditableTextField.swift */; };
+		EDABEF65274E0AE10031DE5A /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABEF64274E0AE10031DE5A /* HomeHeader.swift */; };
+		EDABEF67274E0D110031DE5A /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABEF66274E0D110031DE5A /* UIColor+.swift */; };
+		EDABEF6A274E0F9C0031DE5A /* HomeAdCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABEF69274E0F9C0031DE5A /* HomeAdCellNode.swift */; };
+		EDABEF6E274E1FAE0031DE5A /* RecommendMenuCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABEF6D274E1FAE0031DE5A /* RecommendMenuCellNode.swift */; };
+		EDABEF70274E21A80031DE5A /* CoffeeCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABEF6F274E21A80031DE5A /* CoffeeCellNode.swift */; };
 		EDB20AE52717D8A7001D647E /* CardMenuCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB20AE42717D8A7001D647E /* CardMenuCellNode.swift */; };
 		EDB6BC8D26FA438A00A5F64C /* DetailEmptyCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB6BC8C26FA438A00A5F64C /* DetailEmptyCellNode.swift */; };
 		EDD3117E273B7A32003E2469 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3117D273B7A31003E2469 /* HomeController.swift */; };
@@ -61,6 +66,11 @@
 		ED71D7CA27048D63006347EC /* VoucherDetailCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoucherDetailCellNode.swift; sourceTree = "<group>"; };
 		ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailCellNode.swift; sourceTree = "<group>"; };
 		ED71D7CE27049325006347EC /* EditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTextField.swift; sourceTree = "<group>"; };
+		EDABEF64274E0AE10031DE5A /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
+		EDABEF66274E0D110031DE5A /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		EDABEF69274E0F9C0031DE5A /* HomeAdCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdCellNode.swift; sourceTree = "<group>"; };
+		EDABEF6D274E1FAE0031DE5A /* RecommendMenuCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendMenuCellNode.swift; sourceTree = "<group>"; };
+		EDABEF6F274E21A80031DE5A /* CoffeeCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeCellNode.swift; sourceTree = "<group>"; };
 		EDB20AE42717D8A7001D647E /* CardMenuCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMenuCellNode.swift; sourceTree = "<group>"; };
 		EDB6BC8C26FA438A00A5F64C /* DetailEmptyCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEmptyCellNode.swift; sourceTree = "<group>"; };
 		EDD3117D273B7A31003E2469 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -115,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				ED5440CD2732371F000804DA /* AddCardHeader.swift */,
+				EDABEF64274E0AE10031DE5A /* HomeHeader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -191,6 +202,7 @@
 		ED63854126FA10F1007F7F8D /* CellNodes */ = {
 			isa = PBXGroup;
 			children = (
+				EDABEF68274E0F850031DE5A /* Home */,
 				ED71D7C627044928006347EC /* Pay */,
 			);
 			path = CellNodes;
@@ -201,6 +213,7 @@
 			children = (
 				ED63854C26FA2298007F7F8D /* NavigationController+.swift */,
 				EDF04A26270D6A1400C4B4B0 /* ASCellNode+.swift */,
+				EDABEF66274E0D110031DE5A /* UIColor+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -225,6 +238,16 @@
 				ED20D6A6271693CA00005770 /* DetailCardController.swift */,
 			);
 			path = Pay;
+			sourceTree = "<group>";
+		};
+		EDABEF68274E0F850031DE5A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EDABEF69274E0F9C0031DE5A /* HomeAdCellNode.swift */,
+				EDABEF6D274E1FAE0031DE5A /* RecommendMenuCellNode.swift */,
+				EDABEF6F274E21A80031DE5A /* CoffeeCellNode.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		EDB20AE32717D89C001D647E /* CardDetail */ = {
@@ -439,10 +462,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED63852A26FA0E83007F7F8D /* AppDelegate.swift in Sources */,
+				EDABEF6E274E1FAE0031DE5A /* RecommendMenuCellNode.swift in Sources */,
 				EDD31180273BA17D003E2469 /* TopView.swift in Sources */,
 				EDF04A03270CD56300C4B4B0 /* ChargeButton.swift in Sources */,
+				EDABEF6A274E0F9C0031DE5A /* HomeAdCellNode.swift in Sources */,
 				ED71D7C527044127006347EC /* AddCardController.swift in Sources */,
 				EDB6BC8D26FA438A00A5F64C /* DetailEmptyCellNode.swift in Sources */,
+				EDABEF65274E0AE10031DE5A /* HomeHeader.swift in Sources */,
 				EDD31183273BBA42003E2469 /* ContentNode.swift in Sources */,
 				ED20D6A427167B4D00005770 /* CardListCellNode.swift in Sources */,
 				EDF049F9270CC4B300C4B4B0 /* Card.swift in Sources */,
@@ -450,7 +476,9 @@
 				ED5440CE2732371F000804DA /* AddCardHeader.swift in Sources */,
 				EDB20AE52717D8A7001D647E /* CardMenuCellNode.swift in Sources */,
 				ED63854826FA1AB2007F7F8D /* CardCellNode.swift in Sources */,
+				EDABEF67274E0D110031DE5A /* UIColor+.swift in Sources */,
 				ED20D6A12716741500005770 /* CardListController.swift in Sources */,
+				EDABEF70274E21A80031DE5A /* CoffeeCellNode.swift in Sources */,
 				ED71D7CF27049325006347EC /* EditableTextField.swift in Sources */,
 				ED5440CB27323259000804DA /* CollectionCellNode.swift in Sources */,
 				ED71D7CB27048D63006347EC /* VoucherDetailCellNode.swift in Sources */,

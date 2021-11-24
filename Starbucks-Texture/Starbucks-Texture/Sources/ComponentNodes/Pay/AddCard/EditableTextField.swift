@@ -95,7 +95,7 @@ final class EditableTextField: ASDisplayNode {
 extension EditableTextField: ASEditableTextNodeDelegate {
     func editableTextNodeDidBeginEditing(_ editableTextNode: ASEditableTextNode) {
         titleTextNode.isHidden = false
-        border.backgroundColor = UIColor.systemGreen.cgColor
+        border.backgroundColor = UIColor.seaweedGreen.cgColor
     }
     
     func editableTextNodeDidFinishEditing(_ editableTextNode: ASEditableTextNode) {
@@ -117,7 +117,7 @@ extension EditableTextField: ASEditableTextNodeDelegate {
                 border.backgroundColor = UIColor.systemRed.cgColor
             } else {
                 infoNode.isHidden = true
-                border.backgroundColor = UIColor.systemGreen.cgColor
+                border.backgroundColor = UIColor.seaweedGreen.cgColor
             }
         }
         

@@ -12,8 +12,11 @@ final class TopView: ASDisplayNode {
     // MARK: - Const
     struct Const {
         static var titleAttribute: [NSAttributedString.Key: Any] {
-            return [.font: UIFont.systemFont(ofSize: 28.0, weight: .semibold),
-                    .foregroundColor: UIColor.black]
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 10.0
+            
+            return [.font: UIFont.systemFont(ofSize: 26.0, weight: .semibold),
+                    .foregroundColor: UIColor.black, .paragraphStyle: paragraphStyle]
         }
     }
     
@@ -21,6 +24,14 @@ final class TopView: ASDisplayNode {
     private var headerTitleNode = ASTextNode().then {
         $0.maximumNumberOfLines = 2
         $0.attributedText = NSAttributedString(string: "환절기 따뜻한 차로\n수분 충전하세요☕️", attributes: Const.titleAttribute)
+    }
+    
+    private var clearView = ASDisplayNode().then {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height * 0.25)
+        gradientLayer.colors = [UIColor.seaweedGreen.cgColor, UIColor.white.cgColor]
+        gradientLayer.locations = [0.5, 1.0]
+        $0.layer.addSublayer(gradientLayer)
     }
     
     // MARK: - Initalizing
@@ -59,9 +70,15 @@ final class TopView: ASDisplayNode {
     }
     
     private func contentInsetLayoutSpec() -> ASLayoutSpec {
-        return ASInsetLayoutSpec(
-            insets: UIEdgeInsets(top: 100, left: 20, bottom: 0, right: 0),
+        let inset = ASInsetLayoutSpec(
+            insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0),
+            child: clearView)
+        let headerInset = ASInsetLayoutSpec(
+            insets: UIEdgeInsets(top: 90, left: 20, bottom: 0, right: 0),
             child: headerTitleNode
         )
+        let overlay = ASOverlayLayoutSpec(child: inset, overlay: headerInset)
+        
+        return overlay
     }
 }

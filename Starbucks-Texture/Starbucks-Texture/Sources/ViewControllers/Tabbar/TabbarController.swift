@@ -21,7 +21,7 @@ class TabbarController: UITabBarController {
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
         UITabBar.appearance().backgroundColor = UIColor.secondarySystemBackground
-        UITabBar.appearance().tintColor = .systemGreen
+        UITabBar.appearance().tintColor = .seaweedGreen
     }
     
     private func setupTabs(){

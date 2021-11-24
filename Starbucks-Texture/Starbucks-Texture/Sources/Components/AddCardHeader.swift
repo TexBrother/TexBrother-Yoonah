@@ -26,7 +26,7 @@ class AddCardHeader: UIView {
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
     var bottomView = UIView().then {
-        $0.backgroundColor = .systemGreen
+        $0.backgroundColor = .seaweedGreen
         $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -34,7 +34,7 @@ class AddCardHeader: UIView {
         super.init(frame: frame)
         backgroundColor = .white
         setupLayout()
-        self.layer.applyShadow()
+        self.layer.applyShadow(color: UIColor.black, alpha: 0.2, x: 0, y: 5, blur: 3)
     }
     
     required init?(coder: NSCoder) {
