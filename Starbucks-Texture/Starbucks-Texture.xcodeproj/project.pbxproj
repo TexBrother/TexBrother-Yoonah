@@ -27,6 +27,7 @@
 		ED71D7CF27049325006347EC /* EditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CE27049325006347EC /* EditableTextField.swift */; };
 		EDABEF65274E0AE10031DE5A /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABEF64274E0AE10031DE5A /* HomeHeader.swift */; };
 		EDABEF67274E0D110031DE5A /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABEF66274E0D110031DE5A /* UIColor+.swift */; };
+		EDABEF6A274E0F9C0031DE5A /* HomeAdCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABEF69274E0F9C0031DE5A /* HomeAdCellNode.swift */; };
 		EDB20AE52717D8A7001D647E /* CardMenuCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB20AE42717D8A7001D647E /* CardMenuCellNode.swift */; };
 		EDB6BC8D26FA438A00A5F64C /* DetailEmptyCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB6BC8C26FA438A00A5F64C /* DetailEmptyCellNode.swift */; };
 		EDD3117E273B7A32003E2469 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD3117D273B7A31003E2469 /* HomeController.swift */; };
@@ -65,6 +66,7 @@
 		ED71D7CE27049325006347EC /* EditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTextField.swift; sourceTree = "<group>"; };
 		EDABEF64274E0AE10031DE5A /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
 		EDABEF66274E0D110031DE5A /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		EDABEF69274E0F9C0031DE5A /* HomeAdCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdCellNode.swift; sourceTree = "<group>"; };
 		EDB20AE42717D8A7001D647E /* CardMenuCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardMenuCellNode.swift; sourceTree = "<group>"; };
 		EDB6BC8C26FA438A00A5F64C /* DetailEmptyCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEmptyCellNode.swift; sourceTree = "<group>"; };
 		EDD3117D273B7A31003E2469 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		ED63854126FA10F1007F7F8D /* CellNodes */ = {
 			isa = PBXGroup;
 			children = (
+				EDABEF68274E0F850031DE5A /* Home */,
 				ED71D7C627044928006347EC /* Pay */,
 			);
 			path = CellNodes;
@@ -231,6 +234,14 @@
 				ED20D6A6271693CA00005770 /* DetailCardController.swift */,
 			);
 			path = Pay;
+			sourceTree = "<group>";
+		};
+		EDABEF68274E0F850031DE5A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EDABEF69274E0F9C0031DE5A /* HomeAdCellNode.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		EDB20AE32717D89C001D647E /* CardDetail */ = {
@@ -447,6 +458,7 @@
 				ED63852A26FA0E83007F7F8D /* AppDelegate.swift in Sources */,
 				EDD31180273BA17D003E2469 /* TopView.swift in Sources */,
 				EDF04A03270CD56300C4B4B0 /* ChargeButton.swift in Sources */,
+				EDABEF6A274E0F9C0031DE5A /* HomeAdCellNode.swift in Sources */,
 				ED71D7C527044127006347EC /* AddCardController.swift in Sources */,
 				EDB6BC8D26FA438A00A5F64C /* DetailEmptyCellNode.swift in Sources */,
 				EDABEF65274E0AE10031DE5A /* HomeHeader.swift in Sources */,

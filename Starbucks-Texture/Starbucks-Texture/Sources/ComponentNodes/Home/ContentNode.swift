@@ -19,9 +19,7 @@ final class ContentNode: ASDisplayNode {
     
     // MARK: - Section
     enum Section: Int, CaseIterable {
-        case card
-        case coupon
-        case advertise
+        case adverties
     }
     
     // MARK: - UI
@@ -105,7 +103,7 @@ final class ContentNode: ASDisplayNode {
 // MARK: - ASTableDataSource
 extension ContentNode: ASTableDataSource {
     func tableNode(_ tableNode: ASTableNode, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return Section.allCases.count
     }
     
     func tableNode(_ tableNode: ASTableNode, nodeBlockForRowAt indexPath: IndexPath) -> ASCellNodeBlock {
@@ -113,15 +111,8 @@ extension ContentNode: ASTableDataSource {
             guard let section = Section.init(rawValue: indexPath.row) else { return ASCellNode() }
             
             switch section {
-            case .card:
-                let cardCellNode = CardCellNode()
-                return cardCellNode
-            case .coupon:
-                guard CardCellNode.cards.count > 0 else { return ASCellNode() }
-                
-                return CouponCellNode()
-            case .advertise:
-                return AdCellNode()
+            case .adverties:
+                return HomeAdCellNode()
             }
         }
     }
@@ -129,14 +120,8 @@ extension ContentNode: ASTableDataSource {
     func tableNode(_ tableNode: ASTableNode, constrainedSizeForRowAt indexPath: IndexPath) -> ASSizeRange {
         guard let section = Section.init(rawValue: indexPath.row) else { return ASSizeRange() }
         switch section {
-        case .card:
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 600))
-        case .coupon:
-            guard CardCellNode.cards.count > 0 else { return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 0)) }
-            
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
-        case .advertise:
-            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width, height: 70))
+        case .adverties:
+            return ASSizeRange(min: .zero, max: .init(width: self.view.frame.width - 20, height: 250))
         }
     }
 
