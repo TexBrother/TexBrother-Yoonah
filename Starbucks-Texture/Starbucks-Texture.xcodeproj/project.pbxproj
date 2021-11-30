@@ -121,15 +121,6 @@
 			path = CardList;
 			sourceTree = "<group>";
 		};
-		ED5440CC273236FD000804DA /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				ED5440CD2732371F000804DA /* AddCardHeader.swift */,
-				EDABEF64274E0AE10031DE5A /* HomeHeader.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		ED63851D26FA0E83007F7F8D = {
 			isa = PBXGroup;
 			children = (
@@ -151,34 +142,10 @@
 		ED63852826FA0E83007F7F8D /* Starbucks-Texture */ = {
 			isa = PBXGroup;
 			children = (
-				ED63853E26FA0F8F007F7F8D /* Sources */,
-				ED63853D26FA0F38007F7F8D /* Resources */,
+				ED66782F2756DAD8007AC51F /* Screens */,
+				ED66782D2756DA8C007AC51F /* Global */,
 			);
 			path = "Starbucks-Texture";
-			sourceTree = "<group>";
-		};
-		ED63853D26FA0F38007F7F8D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				ED63853226FA0E84007F7F8D /* Assets.xcassets */,
-				ED63853426FA0E84007F7F8D /* LaunchScreen.storyboard */,
-				ED63853726FA0E84007F7F8D /* Info.plist */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		ED63853E26FA0F8F007F7F8D /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				EDF049F7270CC4A500C4B4B0 /* Models */,
-				ED63854B26FA2277007F7F8D /* Extensions */,
-				EDF049FF270CD52000C4B4B0 /* ComponentNodes */,
-				ED63854126FA10F1007F7F8D /* CellNodes */,
-				ED5440CC273236FD000804DA /* Components */,
-				ED63854026FA10E3007F7F8D /* ViewControllers */,
-				ED63853F26FA10A3007F7F8D /* Supports */,
-			);
-			path = Sources;
 			sourceTree = "<group>";
 		};
 		ED63853F26FA10A3007F7F8D /* Supports */ = {
@@ -187,25 +154,6 @@
 				ED63852926FA0E83007F7F8D /* AppDelegate.swift */,
 			);
 			path = Supports;
-			sourceTree = "<group>";
-		};
-		ED63854026FA10E3007F7F8D /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				EDF049FE270CCC1100C4B4B0 /* Tabbar */,
-				ED71D7C727044959006347EC /* Pay */,
-				EDD3117C273B7A1F003E2469 /* Home */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		ED63854126FA10F1007F7F8D /* CellNodes */ = {
-			isa = PBXGroup;
-			children = (
-				EDABEF68274E0F850031DE5A /* Home */,
-				ED71D7C627044928006347EC /* Pay */,
-			);
-			path = CellNodes;
 			sourceTree = "<group>";
 		};
 		ED63854B26FA2277007F7F8D /* Extensions */ = {
@@ -218,18 +166,48 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		ED71D7C627044928006347EC /* Pay */ = {
+		ED66782D2756DA8C007AC51F /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				EDB20AE32717D89C001D647E /* CardDetail */,
-				ED20D6A227167B3800005770 /* CardList */,
-				EDF049FD270CC8D900C4B4B0 /* AddCard */,
-				EDF049FC270CC8C600C4B4B0 /* Card */,
+				EDF049F7270CC4A500C4B4B0 /* Models */,
+				ED66782E2756DAC1007AC51F /* Resource */,
+				ED63853F26FA10A3007F7F8D /* Supports */,
+				ED63854B26FA2277007F7F8D /* Extensions */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		ED66782E2756DAC1007AC51F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				ED63853226FA0E84007F7F8D /* Assets.xcassets */,
+				ED63853426FA0E84007F7F8D /* LaunchScreen.storyboard */,
+				ED63853726FA0E84007F7F8D /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		ED66782F2756DAD8007AC51F /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				ED6678392756DBA4007AC51F /* Tabbar */,
+				ED6678352756DB74007AC51F /* Home */,
+				ED6678302756DAE7007AC51F /* Pay */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		ED6678302756DAE7007AC51F /* Pay */ = {
+			isa = PBXGroup;
+			children = (
+				ED6678332756DAFD007AC51F /* Component */,
+				ED6678322756DAF0007AC51F /* CellNode */,
+				ED6678312756DAEB007AC51F /* VC */,
 			);
 			path = Pay;
 			sourceTree = "<group>";
 		};
-		ED71D7C727044959006347EC /* Pay */ = {
+		ED6678312756DAEB007AC51F /* VC */ = {
 			isa = PBXGroup;
 			children = (
 				ED63854526FA1263007F7F8D /* PayController.swift */,
@@ -237,17 +215,99 @@
 				ED20D6A02716741500005770 /* CardListController.swift */,
 				ED20D6A6271693CA00005770 /* DetailCardController.swift */,
 			);
-			path = Pay;
+			path = VC;
 			sourceTree = "<group>";
 		};
-		EDABEF68274E0F850031DE5A /* Home */ = {
+		ED6678322756DAF0007AC51F /* CellNode */ = {
+			isa = PBXGroup;
+			children = (
+				EDB20AE32717D89C001D647E /* CardDetail */,
+				ED20D6A227167B3800005770 /* CardList */,
+				EDF049FD270CC8D900C4B4B0 /* AddCard */,
+				EDF049FC270CC8C600C4B4B0 /* Card */,
+			);
+			path = CellNode;
+			sourceTree = "<group>";
+		};
+		ED6678332756DAFD007AC51F /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				ED6678342756DB05007AC51F /* Node */,
+				ED5440CD2732371F000804DA /* AddCardHeader.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		ED6678342756DB05007AC51F /* Node */ = {
+			isa = PBXGroup;
+			children = (
+				ED71D7CE27049325006347EC /* EditableTextField.swift */,
+				EDF04A29270D78ED00C4B4B0 /* VoucherMenu.swift */,
+				EDF04A02270CD56300C4B4B0 /* ChargeButton.swift */,
+			);
+			path = Node;
+			sourceTree = "<group>";
+		};
+		ED6678352756DB74007AC51F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				ED6678382756DB7F007AC51F /* Component */,
+				ED6678372756DB7C007AC51F /* CellNode */,
+				ED6678362756DB78007AC51F /* VC */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		ED6678362756DB78007AC51F /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3117D273B7A31003E2469 /* HomeController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		ED6678372756DB7C007AC51F /* CellNode */ = {
+			isa = PBXGroup;
+			children = (
+				ED66783A2756DBBB007AC51F /* Main */,
+			);
+			path = CellNode;
+			sourceTree = "<group>";
+		};
+		ED6678382756DB7F007AC51F /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				ED66783B2756DBCA007AC51F /* Node */,
+				EDABEF64274E0AE10031DE5A /* HomeHeader.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		ED6678392756DBA4007AC51F /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				ED63854326FA120F007F7F8D /* TabbarController.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		ED66783A2756DBBB007AC51F /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				EDABEF69274E0F9C0031DE5A /* HomeAdCellNode.swift */,
 				EDABEF6D274E1FAE0031DE5A /* RecommendMenuCellNode.swift */,
 				EDABEF6F274E21A80031DE5A /* CoffeeCellNode.swift */,
 			);
-			path = Home;
+			path = Main;
+			sourceTree = "<group>";
+		};
+		ED66783B2756DBCA007AC51F /* Node */ = {
+			isa = PBXGroup;
+			children = (
+				EDD3117F273BA17D003E2469 /* TopView.swift */,
+				EDD31182273BBA42003E2469 /* ContentNode.swift */,
+			);
+			path = Node;
 			sourceTree = "<group>";
 		};
 		EDB20AE32717D89C001D647E /* CardDetail */ = {
@@ -256,23 +316,6 @@
 				EDB20AE42717D8A7001D647E /* CardMenuCellNode.swift */,
 			);
 			path = CardDetail;
-			sourceTree = "<group>";
-		};
-		EDD3117C273B7A1F003E2469 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				EDD3117D273B7A31003E2469 /* HomeController.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		EDD31181273BA19A003E2469 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				EDD3117F273BA17D003E2469 /* TopView.swift */,
-				EDD31182273BBA42003E2469 /* ContentNode.swift */,
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		EDF049F7270CC4A500C4B4B0 /* Models */ = {
@@ -301,49 +344,6 @@
 				ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */,
 				ED71D7CA27048D63006347EC /* VoucherDetailCellNode.swift */,
 				ED5440CA27323259000804DA /* CollectionCellNode.swift */,
-			);
-			path = AddCard;
-			sourceTree = "<group>";
-		};
-		EDF049FE270CCC1100C4B4B0 /* Tabbar */ = {
-			isa = PBXGroup;
-			children = (
-				ED63854326FA120F007F7F8D /* TabbarController.swift */,
-			);
-			path = Tabbar;
-			sourceTree = "<group>";
-		};
-		EDF049FF270CD52000C4B4B0 /* ComponentNodes */ = {
-			isa = PBXGroup;
-			children = (
-				EDD31181273BA19A003E2469 /* Home */,
-				EDF04A00270CD53A00C4B4B0 /* Pay */,
-			);
-			path = ComponentNodes;
-			sourceTree = "<group>";
-		};
-		EDF04A00270CD53A00C4B4B0 /* Pay */ = {
-			isa = PBXGroup;
-			children = (
-				EDF04A28270D707500C4B4B0 /* AddCard */,
-				EDF04A01270CD54200C4B4B0 /* Card */,
-			);
-			path = Pay;
-			sourceTree = "<group>";
-		};
-		EDF04A01270CD54200C4B4B0 /* Card */ = {
-			isa = PBXGroup;
-			children = (
-				EDF04A02270CD56300C4B4B0 /* ChargeButton.swift */,
-			);
-			path = Card;
-			sourceTree = "<group>";
-		};
-		EDF04A28270D707500C4B4B0 /* AddCard */ = {
-			isa = PBXGroup;
-			children = (
-				ED71D7CE27049325006347EC /* EditableTextField.swift */,
-				EDF04A29270D78ED00C4B4B0 /* VoucherMenu.swift */,
 			);
 			path = AddCard;
 			sourceTree = "<group>";
