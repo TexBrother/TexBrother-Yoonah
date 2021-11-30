@@ -154,12 +154,13 @@
 			path = "Starbucks-Texture";
 			sourceTree = "<group>";
 		};
-		ED63853F26FA10A3007F7F8D /* Supports */ = {
+		ED63853F26FA10A3007F7F8D /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				ED63853726FA0E84007F7F8D /* Info.plist */,
 				ED63852926FA0E83007F7F8D /* AppDelegate.swift */,
 			);
-			path = Supports;
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 		ED63854B26FA2277007F7F8D /* Extensions */ = {
@@ -178,7 +179,7 @@
 				ED66783C2756DC1F007AC51F /* Literal */,
 				EDF049F7270CC4A500C4B4B0 /* Models */,
 				ED66782E2756DAC1007AC51F /* Resource */,
-				ED63853F26FA10A3007F7F8D /* Supports */,
+				ED63853F26FA10A3007F7F8D /* Supporting files */,
 				ED63854B26FA2277007F7F8D /* Extensions */,
 			);
 			path = Global;
@@ -189,7 +190,6 @@
 			children = (
 				ED63853226FA0E84007F7F8D /* Assets.xcassets */,
 				ED63853426FA0E84007F7F8D /* LaunchScreen.storyboard */,
-				ED63853726FA0E84007F7F8D /* Info.plist */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -652,7 +652,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Starbucks-Texture/Resources/Info.plist";
+				INFOPLIST_FILE = "Starbucks-Texture/Global/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -671,7 +671,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Starbucks-Texture/Resources/Info.plist";
+				INFOPLIST_FILE = "Starbucks-Texture/Global/Supporting files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

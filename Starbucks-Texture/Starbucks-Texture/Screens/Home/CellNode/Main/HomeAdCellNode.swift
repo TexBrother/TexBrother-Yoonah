@@ -13,7 +13,7 @@ final class HomeAdCellNode: ASCellNode {
     private var adImageNode = ASImageNode().then {
         $0.cornerRadius = 5
         $0.clipsToBounds = true
-        $0.contentMode = .scaleAspectFill
+        $0.contentMode = .scaleAspectFit
     }
     
     // MARK: - Initializing
