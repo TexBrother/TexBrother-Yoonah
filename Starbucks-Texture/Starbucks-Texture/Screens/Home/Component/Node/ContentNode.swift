@@ -12,6 +12,7 @@ import UIKit
 
 private extension CGFloat {
     static let topHeight: CGFloat = 230
+    static let buttonHeight: CGFloat = 30
     static let scrollIdentity: CGFloat = 0
     static let scrollOffset: CGFloat = -47
 }
@@ -39,6 +40,11 @@ final class ContentNode: ASDisplayNode {
             $0.height = ASDimension(unit: .points, value: .topHeight)
         }
     }
+    private var deliverButtonNode = ASButtonNode().then {
+        $0.imageNode.image = UIImage(systemName: "bicycle")
+        $0.backgroundColor = .seaweedGreen
+        $0.cornerRadius = 30
+    }
     private let statusbarView = UIView()
     private let header = HomeHeader()
     
@@ -47,6 +53,7 @@ final class ContentNode: ASDisplayNode {
     private var didScroll: Bool = false
     private var scrollToTop: Bool = false
     private var ratio: CGFloat = 0.25
+    private var scrollWidth: CGFloat = 0
     
     // MARK: - Initalizing
     override init() {
@@ -65,6 +72,9 @@ final class ContentNode: ASDisplayNode {
         let afterFrame = context.finalFrame(for: topNode)
         topNode.frame = beforeFrame
         topNode.alpha = scrollToTop ? 1.0 : 0.0
+        
+        scrollWidth = scrollToTop ? 80.0 : 0.0
+        deliverButtonNode.setTitle(scrollToTop ? "" : "Deliver", with: .boldSystemFont(ofSize: 20), with: .white, for: .normal)
         UIView.animate(withDuration: scrollToTop ? 0.0 : 0.2,
                        delay: 0.0,
                        options: .allowAnimatedContent,
@@ -103,8 +113,16 @@ final class ContentNode: ASDisplayNode {
                 tableNode
             ]
         )
+        
+        let insetLayout = ASInsetLayoutSpec(
+            insets: UIEdgeInsets(top: UIScreen.main.bounds.size.height - 160, left: UIScreen.main.bounds.size.width - 80 - scrollWidth, bottom: 100, right: 20),
+            child: deliverButtonNode)
+        
+        let overlayLayout = ASOverlayLayoutSpec(
+            child: contentLayout,
+            overlay: insetLayout)
 
-        return contentLayout
+        return overlayLayout
     }
     
     func setupStatusBar(_ color: UIColor) {
