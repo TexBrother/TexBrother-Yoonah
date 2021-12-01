@@ -24,6 +24,7 @@ final class RecommendMenuCellNode: ASCellNode {
     }
     private lazy var collectionNode = ASCollectionNode(collectionViewLayout: flowLayout).then {
         $0.dataSource = self
+        $0.delegate = self
         $0.backgroundColor = .white
         $0.showsHorizontalScrollIndicator = false
         $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: 200)
@@ -40,6 +41,7 @@ final class RecommendMenuCellNode: ASCellNode {
     
     // MARK: - Properties
     private var lists: [String: UIImage] = ["아이스 자몽 허니 블랙 티": IconLiteral.imgJamong, "초콜릿 크림 칩 프라푸치노": IconLiteral.imgChocolate, "아이스 핑크 캐모마일 릴렉서": IconLiteral.imgPink, "자바 칩 프라푸치노": IconLiteral.imgJava, "아이스 토피 넛 라떼": IconLiteral.imgLatte, "토피 넛 프라푸치노": IconLiteral.imgToffee, "아이스 카페 아메리카노": IconLiteral.imgAmericano, "토피 넛 콜드 브루": IconLiteral.imgColdbrew, "바닐라 크림 프라푸치노": IconLiteral.imgBanilla]
+    weak var root: UIViewController?
     
     // MARK: - Initalizing
     override init() {
@@ -88,5 +90,13 @@ extension RecommendMenuCellNode: ASCollectionDataSource {
         }
         
         return cellNodeBlock
+    }
+}
+
+// MARK: - ASCollectionDelegate
+extension RecommendMenuCellNode: ASCollectionDelegate {
+    func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
+        let vc = CoffeeDetailController()
+        root?.present(vc, animated: true, completion: nil)
     }
 }

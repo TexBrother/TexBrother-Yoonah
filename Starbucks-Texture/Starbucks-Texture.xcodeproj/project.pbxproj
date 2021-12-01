@@ -24,6 +24,7 @@
 		ED66783E2756DC29007AC51F /* ColorLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED66783D2756DC29007AC51F /* ColorLiteral.swift */; };
 		ED6678402756DC3B007AC51F /* IconLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED66783F2756DC3B007AC51F /* IconLiteral.swift */; };
 		ED6678422756DC70007AC51F /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6678412756DC70007AC51F /* Const.swift */; };
+		ED6678442757569C007AC51F /* CoffeeDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6678432757569C007AC51F /* CoffeeDetailController.swift */; };
 		ED71D7C527044127006347EC /* AddCardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7C427044127006347EC /* AddCardController.swift */; };
 		ED71D7CB27048D63006347EC /* VoucherDetailCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CA27048D63006347EC /* VoucherDetailCellNode.swift */; };
 		ED71D7CD2704918A006347EC /* CardDetailCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */; };
@@ -67,6 +68,7 @@
 		ED66783D2756DC29007AC51F /* ColorLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLiteral.swift; sourceTree = "<group>"; };
 		ED66783F2756DC3B007AC51F /* IconLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconLiteral.swift; sourceTree = "<group>"; };
 		ED6678412756DC70007AC51F /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		ED6678432757569C007AC51F /* CoffeeDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeDetailController.swift; sourceTree = "<group>"; };
 		ED71D7C427044127006347EC /* AddCardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardController.swift; sourceTree = "<group>"; };
 		ED71D7CA27048D63006347EC /* VoucherDetailCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoucherDetailCellNode.swift; sourceTree = "<group>"; };
 		ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailCellNode.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				EDD3117D273B7A31003E2469 /* HomeController.swift */,
+				ED6678432757569C007AC51F /* CoffeeDetailController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				ED71D7C527044127006347EC /* AddCardController.swift in Sources */,
 				EDB6BC8D26FA438A00A5F64C /* DetailEmptyCellNode.swift in Sources */,
 				EDABEF65274E0AE10031DE5A /* HomeHeader.swift in Sources */,
+				ED6678442757569C007AC51F /* CoffeeDetailController.swift in Sources */,
 				EDD31183273BBA42003E2469 /* ContentNode.swift in Sources */,
 				ED20D6A427167B4D00005770 /* CardListCellNode.swift in Sources */,
 				EDF049F9270CC4B300C4B4B0 /* Card.swift in Sources */,

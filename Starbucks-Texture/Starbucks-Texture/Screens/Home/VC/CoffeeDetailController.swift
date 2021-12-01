@@ -1,20 +1,18 @@
 //
-//  HomeController.swift
+//  CoffeeDetailController.swift
 //  Starbucks-Texture
 //
-//  Created by SHIN YOON AH on 2021/11/10.
+//  Created by SHIN YOON AH on 2021/12/01.
 //
 
 import AsyncDisplayKit
 import Then
 
-final class HomeController: ASDKViewController<ContentNode> {
+final class CoffeeDetailController: ASDKViewController<ContentNode> {
     
     // MARK: - Initializing
     override init() {
-        let node = ContentNode()
-        super.init(node: node)
-        node.root = self
+        super.init(node: ContentNode.init())
         self.node.backgroundColor = .white
         self.node.automaticallyManagesSubnodes = true
         self.node.automaticallyRelayoutOnSafeAreaChanges = true
@@ -25,12 +23,10 @@ final class HomeController: ASDKViewController<ContentNode> {
     }
     
     // MARK: - Life Cycle
+    
     override func viewDidLoad() {
-        setupNavigationController()
+        super.viewDidLoad()
     }
     
-    // MARK: - Custom Method
-    private func setupNavigationController() {
-        navigationController?.isNavigationBarHidden = true
-    }
 }
+

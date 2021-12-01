@@ -54,6 +54,7 @@ final class ContentNode: ASDisplayNode {
     private var scrollToTop: Bool = false
     private var ratio: CGFloat = 0.25
     private var scrollWidth: CGFloat = 0
+    weak var root: UIViewController?
     
     // MARK: - Initalizing
     override init() {
@@ -160,7 +161,9 @@ extension ContentNode: ASTableDataSource {
             case .adverties:
                 return HomeAdCellNode(image: IconLiteral.imgAdvertiseHome, size: CGSize(width: UIScreen.main.bounds.size.width - 20, height: 250))
             case .recommend:
-                return RecommendMenuCellNode()
+                let cell = RecommendMenuCellNode()
+                cell.root = self.root
+                return cell
             case .banner:
                 return HomeAdCellNode(image: IconLiteral.imgAdvertiseChristmas, size: CGSize(width: UIScreen.main.bounds.size.width - 20, height: 500))
             }
