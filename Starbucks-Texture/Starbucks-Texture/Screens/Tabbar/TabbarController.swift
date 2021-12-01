@@ -21,6 +21,7 @@ class TabbarController: UITabBarController {
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
         UITabBar.appearance().backgroundColor = UIColor.secondarySystemBackground
+        UITabBar.appearance().tintColor = .seaweedGreen
     }
     
     private func setupTabs(){
@@ -32,13 +33,13 @@ class TabbarController: UITabBarController {
         let payTab = payNavi
         payTab.tabBarItem = UITabBarItem(title: "", image: IconLiteral.btnPayUnSelected, selectedImage: IconLiteral.btnPaySelected)
         
-        let orderTab = Controller.pay
+        let orderTab = PayController()
         orderTab.tabBarItem = UITabBarItem(title: "", image: IconLiteral.btnOrderUnSelected, selectedImage: IconLiteral.btnOrderSelected)
         
-        let giftTab = Controller.pay
+        let giftTab = PayController()
         giftTab.tabBarItem = UITabBarItem(title: "", image: IconLiteral.btnGiftUnSelected, selectedImage: IconLiteral.btnGiftSelected)
 
-        let otherTab = Controller.pay
+        let otherTab = PayController()
         otherTab.tabBarItem = UITabBarItem(title: "", image: IconLiteral.btnOtherUnSelected, selectedImage: IconLiteral.btnOtherSelected)
         
         let tabs =  [homeTab, payTab, orderTab, giftTab, otherTab]

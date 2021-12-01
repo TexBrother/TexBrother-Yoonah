@@ -7,6 +7,7 @@
 
 import AsyncDisplayKit
 import Then
+import UIKit
 
 final class RecommendMenuCellNode: ASCellNode {
     // MARK: - Const
@@ -38,7 +39,7 @@ final class RecommendMenuCellNode: ASCellNode {
     }
     
     // MARK: - Properties
-    private var lists: [String] = ["아이스 자몽 허니 블랙 티", "초콜릿 크림 칩 프라푸치노", "아이스 핑크 캐모마일 릴렉서", "자바 칩 프라푸치노", "아이스 토피 넛 라떼", "토피 넛 프라푸치노", "아이스 카페 아메리카노", "아이스 골든 위시 라떼", "바닐라 크림 프라푸치노"]
+    private var lists: [String: UIImage] = ["아이스 자몽 허니 블랙 티": IconLiteral.imgJamong, "초콜릿 크림 칩 프라푸치노": IconLiteral.imgChocolate, "아이스 핑크 캐모마일 릴렉서": IconLiteral.imgPink, "자바 칩 프라푸치노": IconLiteral.imgJava, "아이스 토피 넛 라떼": IconLiteral.imgLatte, "토피 넛 프라푸치노": IconLiteral.imgToffee, "아이스 카페 아메리카노": IconLiteral.imgAmericano, "토피 넛 콜드 브루": IconLiteral.imgColdbrew, "바닐라 크림 프라푸치노": IconLiteral.imgBanilla]
     
     // MARK: - Initalizing
     override init() {
@@ -80,7 +81,9 @@ extension RecommendMenuCellNode: ASCollectionDataSource {
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeBlockForItemAt indexPath: IndexPath) -> ASCellNodeBlock {
         let cellNodeBlock = { () -> ASCellNode in
-            let cellNode = CoffeeCellNode(title: self.lists[indexPath.item])
+            let key = Array(self.lists.keys)[indexPath.row]
+            guard let value = self.lists[key] else { return ASCellNode() }
+            let cellNode = CoffeeCellNode(title: key, image: value)
             return cellNode
         }
         

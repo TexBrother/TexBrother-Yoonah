@@ -30,6 +30,15 @@ public enum IconLiteral {
     public static var imgBarcode: UIImage { .load(name: "img_barcode") }
     public static var imgCardLimited: UIImage { .load(name: "img_cardLimited") }
     public static var imgCardThankyou: UIImage { .load(name: "img_cardThankyou") }
+    public static var imgAmericano: UIImage { .load(name: "img_americano") }
+    public static var imgBanilla: UIImage { .load(name: "img_banilla") }
+    public static var imgChocolate: UIImage { .load(name: "img_chocolate") }
+    public static var imgColdbrew: UIImage { .load(name: "img_coldbrew") }
+    public static var imgJamong: UIImage { .load(name: "img_jamong") }
+    public static var imgJava: UIImage { .load(name: "img_java") }
+    public static var imgLatte: UIImage { .load(name: "img_latte") }
+    public static var imgPink: UIImage { .load(name: "img_pink") }
+    public static var imgToffee: UIImage { .load(name: "img_toffee") }
     
     // MARK: - Icon
     

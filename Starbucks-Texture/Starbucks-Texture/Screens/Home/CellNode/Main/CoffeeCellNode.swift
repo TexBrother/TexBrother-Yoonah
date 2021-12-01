@@ -22,10 +22,7 @@ final class CoffeeCellNode: ASCellNode {
     
     // MARK: - UI
     private var imageNode = ASImageNode().then {
-        $0.cornerRadius = 130 / 2
-        $0.clipsToBounds = true
         $0.contentMode = .scaleAspectFill
-        $0.backgroundColor = .seaweedGreen
         $0.styled {
             $0.height = ASDimension(unit: .points, value: 130)
             $0.width = ASDimension(unit: .points, value: 130)
@@ -45,9 +42,10 @@ final class CoffeeCellNode: ASCellNode {
         self.selectionStyle = .none
     }
     
-    convenience init(title: String) {
+    convenience init(title: String, image: UIImage) {
         self.init()
         textNode.attributedText = NSAttributedString(string: title, attributes: Const.titleAttribute)
+        imageNode.image = image
     }
     
     // MARK: - Node Life Cycle
