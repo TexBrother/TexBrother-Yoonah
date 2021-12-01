@@ -42,9 +42,9 @@ final class ChargeButton: ASDisplayNode {
         }
     }
     
-    convenience init(_ image: String, title: String) {
+    convenience init(_ image: UIImage, title: String) {
         self.init()
-        imageNode.image = UIImage(named: image)
+        imageNode.image = image
         titleTextNode.attributedText = NSAttributedString(string: title, attributes: Const.titleAttribute)
     }
     

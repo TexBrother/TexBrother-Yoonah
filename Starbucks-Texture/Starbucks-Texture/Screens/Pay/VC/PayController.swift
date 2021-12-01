@@ -72,7 +72,7 @@ final class PayController: ASDKViewController<ASDisplayNode> {
     // MARK: - @objc
     @objc
     private func touchUpCardList() {
-        let vc = CardListController()
+        let vc = Controller.cardList
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

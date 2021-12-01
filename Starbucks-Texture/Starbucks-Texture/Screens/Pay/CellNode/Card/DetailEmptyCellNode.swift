@@ -73,7 +73,7 @@ final class DetailEmptyCellNode: ASCellNode {
     // MARK: - @objc
     @objc
     func didTappedAddCardButton() {
-        let vc = AddCardController()
+        let vc = Controller.addCard
         delegate?.emptyCardClickedToPresent(vc)
     }
     

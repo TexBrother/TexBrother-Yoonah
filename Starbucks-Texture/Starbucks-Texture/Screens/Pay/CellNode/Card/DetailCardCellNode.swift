@@ -83,8 +83,8 @@ final class DetailCardCellNode: ASCellNode {
     private var nameTextNode = ASTextNode()
     private var balanceTextNode = ASTextNode()
     private var barcodeTextNode = ASTextNode()
-    private var autoChargeButtonNode = ChargeButton("auto", title: "자동 충전")
-    private var normalChargeButtonNode = ChargeButton("normal", title: "일반 충전")
+    private var autoChargeButtonNode = ChargeButton(IconLiteral.icAutoCharge, title: "자동 충전")
+    private var normalChargeButtonNode = ChargeButton(IconLiteral.icNormalCharge, title: "일반 충전")
     
     // MARK: - Properties
     private var index: Int?

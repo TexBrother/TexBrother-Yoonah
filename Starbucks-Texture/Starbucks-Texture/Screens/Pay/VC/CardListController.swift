@@ -63,7 +63,7 @@ final class CardListController: ASDKViewController<ASDisplayNode> {
     // MARK: - @objc
     @objc
     private func touchUpAddCard() {
-        let vc = AddCardController()
+        let vc = Controller.addCard
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

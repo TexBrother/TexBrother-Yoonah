@@ -96,7 +96,7 @@ extension RecommendMenuCellNode: ASCollectionDataSource {
 // MARK: - ASCollectionDelegate
 extension RecommendMenuCellNode: ASCollectionDelegate {
     func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
-        let vc = CoffeeDetailController()
+        let vc = Controller.detailedCoffee
         root?.present(vc, animated: true, completion: nil)
     }
 }
