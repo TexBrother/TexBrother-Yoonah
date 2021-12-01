@@ -150,8 +150,8 @@ extension PayController: CardDelegate {
     func emptyCardClickedToPresent(_ viewController: AddCardController) {
         viewController.addCard = {
             CardCellNode.cards.append(contentsOf: [
-                Card(cardImage: "thankyou", name: "Thank You 카드", balance: "2,300원", code: "****-****-**36-6582"),
-                Card(cardImage: "limited", name: "Limited 카드", balance: "102,300원", code: "****-****-**70-7431")]
+                Card(cardImage: IconLiteral.imgCardThankyou, name: "Thank You 카드", balance: "2,300원", code: "****-****-**36-6582"),
+                Card(cardImage: IconLiteral.imgCardLimited, name: "Limited 카드", balance: "102,300원", code: "****-****-**70-7431")]
             )
             self.tableNode.reloadData()
         }

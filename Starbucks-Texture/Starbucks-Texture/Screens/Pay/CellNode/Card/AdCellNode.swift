@@ -13,7 +13,7 @@ final class AdCellNode: ASCellNode {
     private var adImageNode = ASImageNode().then {
         $0.clipsToBounds = true
         $0.contentMode = .scaleAspectFill
-        $0.image = UIImage(named: "advertise")
+        $0.image = IconLiteral.imgAdvertisePay
         $0.style.preferredSize = CGSize(width: UIScreen.main.bounds.size.width, height: 70)
     }
     

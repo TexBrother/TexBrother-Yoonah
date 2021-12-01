@@ -140,11 +140,11 @@ extension ContentNode: ASTableDataSource {
             
             switch section {
             case .adverties:
-                return HomeAdCellNode(image: "homead", size: CGSize(width: UIScreen.main.bounds.size.width - 20, height: 250))
+                return HomeAdCellNode(image: IconLiteral.imgAdvertiseHome, size: CGSize(width: UIScreen.main.bounds.size.width - 20, height: 250))
             case .recommend:
                 return RecommendMenuCellNode()
             case .banner:
-                return HomeAdCellNode(image: "christmasAd", size: CGSize(width: UIScreen.main.bounds.size.width - 20, height: 500))
+                return HomeAdCellNode(image: IconLiteral.imgAdvertiseChristmas, size: CGSize(width: UIScreen.main.bounds.size.width - 20, height: 500))
             }
         }
     }

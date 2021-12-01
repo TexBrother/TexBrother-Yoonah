@@ -58,9 +58,10 @@ final class DetailCardCellNode: ASCellNode {
         $0.backgroundColor = .systemGray4.withAlphaComponent(0.4)
         $0.cornerRadius = 8
         $0.clipsToBounds = true
+        $0.imageNode.contentMode = .scaleAspectFit
     }
     private var barcodeImageNode = ASImageNode().then {
-        $0.image = UIImage(named: "barcode")
+        $0.image = IconLiteral.imgBarcode
         $0.contentMode = .scaleAspectFit
         $0.styled {
             $0.height = ASDimension(unit: .points, value: 38)
@@ -68,7 +69,7 @@ final class DetailCardCellNode: ASCellNode {
         }
     }
     private var favoriteImageNode = ASImageNode().then {
-        $0.image = UIImage(named: "favorite")
+        $0.image = IconLiteral.icFavorite
         $0.contentMode = .scaleAspectFit
         $0.styled {
             $0.height = ASDimension(unit: .points, value: 21)
@@ -103,7 +104,7 @@ final class DetailCardCellNode: ASCellNode {
     
     convenience init(card: Card, index: Int) {
         self.init()
-        cardButtonNode.setImage(UIImage(named: card.cardImage), for: .normal)
+        cardButtonNode.setImage(card.cardImage, for: .normal)
         nameTextNode.attributedText = NSAttributedString(string: card.name, attributes: Const.nameAttribute)
         balanceTextNode.attributedText = NSAttributedString(string: card.balance, attributes: Const.balanceAttribute)
         barcodeTextNode.attributedText = NSAttributedString(string: card.code, attributes: Const.barcodeAttribute)

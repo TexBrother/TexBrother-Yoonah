@@ -60,7 +60,7 @@ final class DetailCardController: ASDKViewController<ASDisplayNode> {
         }
     }
     private var barcodeImageNode = ASImageNode().then {
-        $0.image = UIImage(named: "barcode")
+        $0.image = IconLiteral.imgBarcode
         $0.contentMode = .scaleAspectFit
         $0.styled {
             $0.height = ASDimension(unit: .points, value: 60)
@@ -94,7 +94,7 @@ final class DetailCardController: ASDKViewController<ASDisplayNode> {
         self.init()
         
         titleTextNode.attributedText = NSAttributedString(string: CardCellNode.cards[index].name, attributes: Const.titleAttribute)
-        cardImageNode.image = UIImage(named: CardCellNode.cards[index].cardImage)
+        cardImageNode.image = CardCellNode.cards[index].cardImage
         balanceTextNode.attributedText = NSAttributedString(string: CardCellNode.cards[index].balance, attributes: Const.balanceAttribute)
         barcodeTextNode.attributedText = NSAttributedString(string: CardCellNode.cards[index].code, attributes: Const.barcodeAttribute)
     }

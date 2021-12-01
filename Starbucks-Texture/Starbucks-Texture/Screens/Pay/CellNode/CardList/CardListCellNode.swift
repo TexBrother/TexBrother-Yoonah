@@ -43,7 +43,7 @@ final class CardListCellNode: ASCellNode {
         }
     }
     private let favoriteButtonNode = ASButtonNode().then {
-        $0.setImage(UIImage(named: "favorite"), for: .normal)
+        $0.setImage(IconLiteral.icFavorite, for: .normal)
         $0.styled {
             $0.height = ASDimension(unit: .points, value: 40)
             $0.width = ASDimension(unit: .points, value: 40)
@@ -63,11 +63,11 @@ final class CardListCellNode: ASCellNode {
         self.selectionStyle = .none
     }
     
-    convenience init(isBasic: Bool = true,_ image: String,_ title: String,_ balance: String) {
+    convenience init(isBasic: Bool = true,_ image: UIImage,_ title: String,_ balance: String) {
         self.init()
         self.isBasic = isBasic
         
-        cardImageNode.image = UIImage(named: image)
+        cardImageNode.image = image
         titleTextNode.attributedText = NSAttributedString(string: title, attributes: isBasic ?
                                                           Const.subTitleAttribute : Const.titleAttribute)
         balanceTextNode.attributedText = NSAttributedString(string: balance, attributes: isBasic ?

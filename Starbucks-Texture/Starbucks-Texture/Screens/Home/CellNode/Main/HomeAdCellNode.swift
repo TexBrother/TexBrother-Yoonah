@@ -24,9 +24,9 @@ final class HomeAdCellNode: ASCellNode {
         self.selectionStyle = .none
     }
     
-    convenience init(image: String, size: CGSize) {
+    convenience init(image: UIImage, size: CGSize) {
         self.init()
-        adImageNode.image = UIImage(named: image)
+        adImageNode.image = image
         adImageNode.style.preferredSize = size
     }
     

@@ -21,26 +21,25 @@ class TabbarController: UITabBarController {
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
         UITabBar.appearance().backgroundColor = UIColor.secondarySystemBackground
-        UITabBar.appearance().tintColor = .seaweedGreen
     }
     
     private func setupTabs(){
         let homeNavi = UINavigationController(rootViewController: HomeController())
         let homeTab = homeNavi
-        homeTab.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
+        homeTab.tabBarItem = UITabBarItem(title: "", image: IconLiteral.btnHomeUnSelected, selectedImage: IconLiteral.btnHomeSelected)
         
         let payNavi = UINavigationController(rootViewController: PayController())
         let payTab = payNavi
-        payTab.tabBarItem = UITabBarItem(title: "Pay", image: UIImage(systemName: "creditcard.fill"), tag: 1)
+        payTab.tabBarItem = UITabBarItem(title: "", image: IconLiteral.btnPayUnSelected, selectedImage: IconLiteral.btnPaySelected)
         
         let orderTab = PayController()
-        orderTab.tabBarItem = UITabBarItem(title: "Order", image: UIImage(systemName: "arrow.up.bin.fill"), tag: 2)
+        orderTab.tabBarItem = UITabBarItem(title: "", image: IconLiteral.btnOrderUnSelected, selectedImage: IconLiteral.btnOrderSelected)
         
         let giftTab = PayController()
-        giftTab.tabBarItem = UITabBarItem(title: "Gift", image: UIImage(systemName: "gift.fill"), tag: 3)
+        giftTab.tabBarItem = UITabBarItem(title: "", image: IconLiteral.btnGiftUnSelected, selectedImage: IconLiteral.btnGiftSelected)
 
         let otherTab = PayController()
-        otherTab.tabBarItem = UITabBarItem(title: "Other", image: UIImage(named: "detailTabIconSelected"), tag: 4)
+        otherTab.tabBarItem = UITabBarItem(title: "", image: IconLiteral.btnOtherUnSelected, selectedImage: IconLiteral.btnOtherSelected)
         
         let tabs =  [homeTab, payTab, orderTab, giftTab, otherTab]
         
