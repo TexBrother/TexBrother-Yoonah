@@ -24,21 +24,21 @@ class TabbarController: UITabBarController {
     }
     
     private func setupTabs(){
-        let homeNavi = UINavigationController(rootViewController: HomeController())
+        let homeNavi = UINavigationController(rootViewController: Controller.home)
         let homeTab = homeNavi
         homeTab.tabBarItem = UITabBarItem(title: "", image: IconLiteral.btnHomeUnSelected, selectedImage: IconLiteral.btnHomeSelected)
         
-        let payNavi = UINavigationController(rootViewController: PayController())
+        let payNavi = UINavigationController(rootViewController: Controller.pay)
         let payTab = payNavi
         payTab.tabBarItem = UITabBarItem(title: "", image: IconLiteral.btnPayUnSelected, selectedImage: IconLiteral.btnPaySelected)
         
-        let orderTab = PayController()
+        let orderTab = Controller.pay
         orderTab.tabBarItem = UITabBarItem(title: "", image: IconLiteral.btnOrderUnSelected, selectedImage: IconLiteral.btnOrderSelected)
         
-        let giftTab = PayController()
+        let giftTab = Controller.pay
         giftTab.tabBarItem = UITabBarItem(title: "", image: IconLiteral.btnGiftUnSelected, selectedImage: IconLiteral.btnGiftSelected)
 
-        let otherTab = PayController()
+        let otherTab = Controller.pay
         otherTab.tabBarItem = UITabBarItem(title: "", image: IconLiteral.btnOtherUnSelected, selectedImage: IconLiteral.btnOtherSelected)
         
         let tabs =  [homeTab, payTab, orderTab, giftTab, otherTab]

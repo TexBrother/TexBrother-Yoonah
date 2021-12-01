@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct Controller {
+    static let home = HomeController()
+    static let pay = PayController()
+}
