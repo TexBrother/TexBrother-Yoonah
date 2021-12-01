@@ -29,7 +29,6 @@
 		ED71D7CD2704918A006347EC /* CardDetailCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */; };
 		ED71D7CF27049325006347EC /* EditableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED71D7CE27049325006347EC /* EditableTextField.swift */; };
 		EDABEF65274E0AE10031DE5A /* HomeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABEF64274E0AE10031DE5A /* HomeHeader.swift */; };
-		EDABEF67274E0D110031DE5A /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABEF66274E0D110031DE5A /* UIColor+.swift */; };
 		EDABEF6A274E0F9C0031DE5A /* HomeAdCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABEF69274E0F9C0031DE5A /* HomeAdCellNode.swift */; };
 		EDABEF6E274E1FAE0031DE5A /* RecommendMenuCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABEF6D274E1FAE0031DE5A /* RecommendMenuCellNode.swift */; };
 		EDABEF70274E21A80031DE5A /* CoffeeCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDABEF6F274E21A80031DE5A /* CoffeeCellNode.swift */; };
@@ -73,7 +72,6 @@
 		ED71D7CC2704918A006347EC /* CardDetailCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailCellNode.swift; sourceTree = "<group>"; };
 		ED71D7CE27049325006347EC /* EditableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableTextField.swift; sourceTree = "<group>"; };
 		EDABEF64274E0AE10031DE5A /* HomeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeader.swift; sourceTree = "<group>"; };
-		EDABEF66274E0D110031DE5A /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		EDABEF69274E0F9C0031DE5A /* HomeAdCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdCellNode.swift; sourceTree = "<group>"; };
 		EDABEF6D274E1FAE0031DE5A /* RecommendMenuCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendMenuCellNode.swift; sourceTree = "<group>"; };
 		EDABEF6F274E21A80031DE5A /* CoffeeCellNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeCellNode.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 			children = (
 				ED63854C26FA2298007F7F8D /* NavigationController+.swift */,
 				EDF04A26270D6A1400C4B4B0 /* ASCellNode+.swift */,
-				EDABEF66274E0D110031DE5A /* UIColor+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -493,7 +490,6 @@
 				ED5440CE2732371F000804DA /* AddCardHeader.swift in Sources */,
 				EDB20AE52717D8A7001D647E /* CardMenuCellNode.swift in Sources */,
 				ED63854826FA1AB2007F7F8D /* CardCellNode.swift in Sources */,
-				EDABEF67274E0D110031DE5A /* UIColor+.swift in Sources */,
 				ED20D6A12716741500005770 /* CardListController.swift in Sources */,
 				EDABEF70274E21A80031DE5A /* CoffeeCellNode.swift in Sources */,
 				ED71D7CF27049325006347EC /* EditableTextField.swift in Sources */,
